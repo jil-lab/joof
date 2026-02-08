@@ -4,10 +4,25 @@ import Button from '../common/Button';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-gradient-teal">
-      {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-600/30 via-transparent to-teal-950/50"></div>
-      <div className="absolute inset-0 opacity-10" style={{
+    <section className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[800px] flex items-center justify-center overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero/main-hero.jpg"
+          alt="JOOF Foundation helping communities"
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            // Fallback to gradient if image fails to load
+            e.target.style.display = 'none';
+            e.target.parentElement.style.background = 'linear-gradient(135deg, #0d9488 0%, #115e59 50%, #042622 100%)';
+          }}
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/80 via-teal-800/70 to-teal-950/90"></div>
+      </div>
+
+      {/* Decorative Pattern Overlay */}
+      <div className="absolute inset-0 opacity-5" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
       }}></div>
 

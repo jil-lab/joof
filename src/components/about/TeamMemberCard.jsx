@@ -1,0 +1,55 @@
+import { motion } from 'framer-motion';
+import { FaLinkedin } from 'react-icons/fa';
+
+const TeamMemberCard = ({ member, index = 0 }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="bg-white rounded-card shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden group"
+    >
+      {/* Image Container */}
+      <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+          onError={(e) => {
+            // Fallback for missing images
+            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=400&background=0d9488&color=ffffff&bold=true`;
+          }}
+        />
+        {/* LinkedIn Overlay */}
+        {member.linkedin && member.linkedin !== '#' && (
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-teal-500 hover:text-white"
+            aria-label={`${member.name}'s LinkedIn profile`}
+          >
+            <FaLinkedin className="w-5 h-5" />
+          </a>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-1">
+          {member.name}
+        </h3>
+        <p className="text-teal-600 font-medium mb-3">
+          {member.role}
+        </p>
+        <p className="text-gray-600 text-sm leading-relaxed">
+          {member.bio}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+export default TeamMemberCard;

@@ -31,9 +31,31 @@ const MissionSection = () => {
             reach their full potential and build a brighter future for
             generations to come.
           </p>
+
+          {/* Feature highlights */}
+          <div className="mt-8 grid grid-cols-2 gap-4">
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
+                <span className="text-teal-600 text-lg">✓</span>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">Healthcare Access</p>
+                <p className="text-sm text-gray-600">Free medical services</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0 w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
+                <span className="text-teal-600 text-lg">✓</span>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">Education Support</p>
+                <p className="text-sm text-gray-600">Scholarships & mentoring</p>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Image/Visual */}
+        {/* Image */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -41,32 +63,26 @@ const MissionSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative"
         >
-          <div className="aspect-square bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl overflow-hidden shadow-xl">
-            {/* Placeholder for image - replace with actual image */}
-            <div className="w-full h-full flex items-center justify-center bg-teal-500/10">
-              <div className="text-center p-8">
-                <svg
-                  className="w-32 h-32 mx-auto text-teal-500 mb-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-                <p className="text-gray-600 italic">
-                  Mission image will be placed here
-                </p>
-              </div>
+          <div className="relative rounded-2xl overflow-hidden shadow-xl">
+            <img
+              src="/images/mission/community-gathering.jpg"
+              alt="Community members gathering at JOOF Foundation event"
+              className="w-full h-full object-cover aspect-[4/3]"
+              onError={(e) => {
+                // Fallback to placeholder
+                e.target.src = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop';
+              }}
+            />
+            {/* Overlay badge */}
+            <div className="absolute top-6 left-6 bg-white rounded-lg shadow-lg p-4">
+              <p className="text-3xl font-bold text-teal-600">10+</p>
+              <p className="text-sm text-gray-600">Years of Impact</p>
             </div>
           </div>
 
           {/* Decorative Element */}
           <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-400 rounded-full opacity-20 -z-10"></div>
+          <div className="absolute -top-6 -left-6 w-24 h-24 bg-teal-500 rounded-full opacity-10 -z-10"></div>
         </motion.div>
       </div>
     </Section>

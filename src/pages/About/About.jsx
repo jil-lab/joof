@@ -62,9 +62,9 @@ const About = () => {
         </div>
       </Section>
 
-      {/* Foundation History */}
+      {/* Foundation History with Images */}
       <Section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -78,43 +78,104 @@ const About = () => {
             <div className="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="prose prose-lg max-w-none"
-          >
-            <p className="text-gray-700 leading-relaxed mb-6">
-              The John Oyediran Olabisi Foundation (JOOF) was established in 2015 with a clear vision:
-              to transform lives through accessible healthcare and quality education. Founded by John
-              Oyediran Olabisi, a visionary leader who witnessed firsthand the challenges faced by
-              underserved communities in Nigeria, JOOF has grown from a small initiative into a
-              registered charity making significant impact across multiple communities.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="prose prose-lg max-w-none"
+            >
+              <p className="text-gray-700 leading-relaxed mb-6">
+                The John Oyediran Olabisi Foundation (JOOF) was established in 2015 with a clear vision:
+                to transform lives through accessible healthcare and quality education. Founded by John
+                Oyediran Olabisi, a visionary leader who witnessed firsthand the challenges faced by
+                underserved communities in Nigeria, JOOF has grown from a small initiative into a
+                registered charity making significant impact across multiple communities.
+              </p>
 
-            <p className="text-gray-700 leading-relaxed mb-6">
-              What began as a single medical outreach program has evolved into a comprehensive foundation
-              addressing critical needs in healthcare, education, and community development. Our work is
-              driven by the belief that every individual, regardless of their background or circumstances,
-              deserves access to basic healthcare services and educational opportunities that can unlock
-              their potential.
-            </p>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                What began as a single medical outreach program has evolved into a comprehensive foundation
+                addressing critical needs in healthcare, education, and community development. Our work is
+                driven by the belief that every individual, regardless of their background or circumstances,
+                deserves access to basic healthcare services and educational opportunities that can unlock
+                their potential.
+              </p>
+            </motion.div>
 
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Over the years, JOOF has provided medical care to over 1,650 individuals, facilitated 29
-              safe deliveries, performed 15 life-changing surgical procedures, and supported countless
-              students through our education scholarship and mentorship programs. Our community outreach
-              initiatives continue to bring hope, resources, and practical support to those who need it most.
-            </p>
+            {/* Image 1 */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src="/images/about/foundation-work.jpg"
+                  alt="JOOF Foundation team working with community members"
+                  className="w-full h-full object-cover aspect-[4/3]"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.src = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/50 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 text-white">
+                  <p className="text-sm font-medium">Established 2015</p>
+                  <p className="text-2xl font-bold">10 Years of Service</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
-            <p className="text-gray-700 leading-relaxed">
-              Today, as a registered charity, JOOF stands as a beacon of hope and a testament to what
-              compassionate action can achieve. We continue to expand our reach, deepen our impact, and
-              work tirelessly toward our vision of a Nigeria where every person has the opportunity to
-              thrive and build a brighter future.
-            </p>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Image 2 */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative order-2 lg:order-1"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src="/images/about/community-impact.jpg"
+                  alt="Communities benefiting from JOOF Foundation programs"
+                  className="w-full h-full object-cover aspect-[4/3]"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.src = 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop';
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Continued Text */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="prose prose-lg max-w-none order-1 lg:order-2"
+            >
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Over the years, JOOF has provided medical care to over 1,650 individuals, facilitated 29
+                safe deliveries, performed 15 life-changing surgical procedures, and supported countless
+                students through our education scholarship and mentorship programs. Our community outreach
+                initiatives continue to bring hope, resources, and practical support to those who need it most.
+              </p>
+
+              <p className="text-gray-700 leading-relaxed">
+                Today, as a registered charity, JOOF stands as a beacon of hope and a testament to what
+                compassionate action can achieve. We continue to expand our reach, deepen our impact, and
+                work tirelessly toward our vision of a Nigeria where every person has the opportunity to
+                thrive and build a brighter future.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </Section>
 
