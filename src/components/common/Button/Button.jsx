@@ -13,9 +13,9 @@ const Button = ({
   const baseStyles = 'font-semibold transition-all duration-200 rounded-lg inline-flex items-center justify-center';
 
   const variants = {
-    primary: 'bg-teal-500 hover:bg-teal-600 text-white shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed',
+    primary: 'bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed',
     secondary: 'bg-yellow-400 hover:bg-yellow-500 text-gray-900 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed',
-    outline: 'border-2 border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed',
+    outline: 'border-2 border-teal-600 text-teal-600 hover:bg-gradient-to-r hover:from-teal-600 hover:to-teal-700 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed',
   };
 
   const sizes = {

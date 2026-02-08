@@ -7,18 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary brand colors
+        // Primary brand colors - Darker, richer teal
         teal: {
           50: '#f0fdfa',
           100: '#ccfbf1',
           200: '#99f6e4',
           300: '#5eead4',
           400: '#2dd4bf',
-          500: '#14b8a6',  // Main teal
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
+          500: '#0d9488',  // Main teal - darker
+          600: '#0f766e',  // Darker
+          700: '#115e59',  // Even darker
+          800: '#0a3f3a',  // Deep teal
+          900: '#083531',  // Deepest teal
+          950: '#042622',  // Ultra deep
         },
         yellow: {
           50: '#fefce8',
@@ -54,6 +55,11 @@ export default {
       boxShadow: {
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+      },
+      backgroundImage: {
+        'gradient-teal': 'linear-gradient(135deg, #0d9488 0%, #115e59 50%, #042622 100%)',
+        'gradient-teal-dark': 'linear-gradient(135deg, #0f766e 0%, #0a3f3a 50%, #042622 100%)',
+        'gradient-radial-teal': 'radial-gradient(circle at top right, #0d9488, #115e59, #042622)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',

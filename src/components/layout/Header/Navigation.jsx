@@ -53,8 +53,8 @@ const Navigation = () => {
               <button
                 className={`flex items-center space-x-1 font-medium transition-colors ${
                   isActivePath(item.path)
-                    ? 'text-teal-500'
-                    : 'text-gray-700 hover:text-teal-500'
+                    ? 'text-teal-600'
+                    : 'text-gray-700 hover:text-teal-600'
                 }`}
               >
                 <span>{item.label}</span>
@@ -69,8 +69,8 @@ const Navigation = () => {
               to={item.path}
               className={`font-medium transition-colors ${
                 isActivePath(item.path)
-                  ? 'text-teal-500'
-                  : 'text-gray-700 hover:text-teal-500'
+                  ? 'text-teal-600'
+                  : 'text-gray-700 hover:text-teal-600'
               }`}
             >
               {item.label}
