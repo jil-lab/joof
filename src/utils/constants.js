@@ -243,6 +243,139 @@ export const TESTIMONIALS = [
   },
 ];
 
+// Programs Data
+export const PROGRAMS = [
+  {
+    id: 1,
+    slug: 'healthcare',
+    title: 'Healthcare Programs',
+    shortDescription: 'Providing accessible medical care, maternal health services, surgical interventions, and preventative care to underserved communities.',
+    description: 'Our healthcare programs are designed to bridge the gap in medical access for underserved communities across Nigeria. We provide comprehensive medical care including routine check-ups, maternal and child health services, surgical interventions, and preventative care education.',
+    image: '/images/programs/healthcare.jpg',
+    icon: '🏥',
+    stats: [
+      { number: 1651, label: 'Medical Care Services Provided', icon: '🏥' },
+      { number: 29, label: 'Safe Deliveries Supported', icon: '👶' },
+      { number: 15, label: 'Life-Changing Surgeries', icon: '⚕️' },
+    ],
+    features: [
+      {
+        title: 'Medical Outreach',
+        description: 'Regular community health camps providing free medical consultations, basic diagnostics, and essential medications.',
+        icon: '🩺',
+      },
+      {
+        title: 'Maternal & Child Health',
+        description: 'Comprehensive prenatal care, safe delivery services, postnatal support, and child immunization programs.',
+        icon: '👶',
+      },
+      {
+        title: 'Surgical Interventions',
+        description: 'Sponsoring critical surgical procedures for individuals who cannot afford life-saving operations.',
+        icon: '⚕️',
+      },
+      {
+        title: 'Health Education',
+        description: 'Community awareness programs on hygiene, nutrition, disease prevention, and healthy living practices.',
+        icon: '📚',
+      },
+    ],
+    impact: 'Through our healthcare programs, we have touched over 1,600 lives, ensuring that quality medical care is not a privilege but a right for all.',
+    gallery: [
+      '/images/programs/healthcare-1.jpg',
+      '/images/programs/healthcare-2.jpg',
+      '/images/programs/healthcare-3.jpg',
+      '/images/programs/healthcare-4.jpg',
+    ],
+  },
+  {
+    id: 2,
+    slug: 'education',
+    title: 'Education Programs',
+    shortDescription: 'Empowering young minds through scholarships, learning resources, mentorship programs, and school infrastructure support.',
+    description: 'Education is the foundation for breaking the cycle of poverty. Our education programs provide scholarships, learning materials, mentorship, and infrastructure support to ensure every child has the opportunity to learn and thrive.',
+    image: '/images/programs/education.jpg',
+    icon: '📚',
+    stats: [
+      { number: 150, label: 'Students Supported', icon: '🎓' },
+      { number: 25, label: 'Scholarships Awarded', icon: '💰' },
+      { number: 5, label: 'Schools Partnered With', icon: '🏫' },
+    ],
+    features: [
+      {
+        title: 'Scholarship Program',
+        description: 'Merit and need-based scholarships covering tuition, books, and supplies for underprivileged students.',
+        icon: '🎓',
+      },
+      {
+        title: 'Learning Resources',
+        description: 'Providing textbooks, digital learning tools, and educational materials to schools in underserved areas.',
+        icon: '📖',
+      },
+      {
+        title: 'Mentorship Program',
+        description: 'Connecting students with professional mentors for guidance, career counseling, and personal development.',
+        icon: '👥',
+      },
+      {
+        title: 'School Support',
+        description: 'Renovating classrooms, building libraries, and improving school infrastructure for better learning environments.',
+        icon: '🏫',
+      },
+    ],
+    impact: 'Our education initiatives have helped over 150 students continue their education, opening doors to brighter futures and breaking barriers.',
+    gallery: [
+      '/images/programs/education-1.jpg',
+      '/images/programs/education-2.jpg',
+      '/images/programs/education-3.jpg',
+      '/images/programs/education-4.jpg',
+    ],
+  },
+  {
+    id: 3,
+    slug: 'community',
+    title: 'Community Programs',
+    shortDescription: 'Building stronger communities through outreach initiatives, skill development, and sustainable local impact projects.',
+    description: 'Our community programs focus on sustainable development and empowerment. We work directly with local communities to identify needs and implement solutions that create lasting positive change.',
+    image: '/images/programs/community.jpg',
+    icon: '🤲',
+    stats: [
+      { number: 3, label: 'Active Outreach Programs', icon: '🤲' },
+      { number: 500, label: 'Community Members Reached', icon: '👥' },
+      { number: 8, label: 'Communities Served', icon: '🌍' },
+    ],
+    features: [
+      {
+        title: 'Community Outreach',
+        description: 'Regular visits to rural and underserved communities, providing essential services and support.',
+        icon: '🤝',
+      },
+      {
+        title: 'Skills Development',
+        description: 'Vocational training programs equipping community members with marketable skills for economic empowerment.',
+        icon: '🛠️',
+      },
+      {
+        title: 'Food Security',
+        description: 'Emergency food distribution and agricultural support programs to combat hunger and promote self-sufficiency.',
+        icon: '🌾',
+      },
+      {
+        title: 'Infrastructure Projects',
+        description: 'Building wells, community centers, and other essential facilities to improve quality of life.',
+        icon: '🏗️',
+      },
+    ],
+    impact: 'Through community-centered approaches, we have empowered over 500 individuals and strengthened 8 communities across Nigeria.',
+    gallery: [
+      '/images/programs/community-1.jpg',
+      '/images/programs/community-2.jpg',
+      '/images/programs/community-3.jpg',
+      '/images/programs/community-4.jpg',
+    ],
+  },
+];
+
 // Navigation Links
 export const NAV_LINKS = {
   main: [
