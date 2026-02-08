@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-gray-900 bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  h1 {
+    @apply text-hero;
+  }
+
+  h2 {
+    @apply text-section-title;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-lg
+           font-semibold transition-colors duration-200 shadow-md
+           hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3
+           rounded-lg font-semibold transition-colors duration-200
+           shadow-md hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border-2 border-teal-500 text-teal-500 hover:bg-teal-500
+           hover:text-white px-6 py-3 rounded-lg font-semibold
+           transition-all duration-200;
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-white rounded-card shadow-card hover:shadow-card-hover
+           transition-shadow duration-300 overflow-hidden;
+  }
+
+  /* Section wrapper */
+  .section {
+    @apply py-section px-4 md:px-6 lg:px-8;
+  }
+
+  .section-sm {
+    @apply py-section-sm px-4 md:px-6 lg:px-8;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-content mx-auto;
+  }
+
+  /* Link styles */
+  .link-primary {
+    @apply text-teal-500 hover:text-teal-600 underline-offset-4
+           hover:underline transition-colors;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-teal-500 to-teal-700 bg-clip-text text-transparent;
+  }
+}
