@@ -286,7 +286,16 @@ export const PROGRAMS = [
       '/images/programs/healthcare-2.jpg',
       '/images/programs/healthcare-3.jpg',
       '/images/programs/healthcare-4.jpg',
+      '/images/programs/healthcare-5.jpg',
+      '/images/programs/healthcare-6.jpg',
     ],
+    additionalImages: {
+      outreach: '/images/programs/healthcare-outreach.jpg',
+      maternalHealth: '/images/programs/maternal-health.jpg',
+      surgery1: '/images/programs/surgery-1.jpg',
+      surgery2: '/images/programs/surgery-2.jpg',
+      healthEducationBg: '/images/programs/health-education-bg.jpg',
+    },
   },
   {
     id: 2,
@@ -329,7 +338,16 @@ export const PROGRAMS = [
       '/images/programs/education-2.jpg',
       '/images/programs/education-3.jpg',
       '/images/programs/education-4.jpg',
+      '/images/programs/education-5.jpg',
+      '/images/programs/education-6.jpg',
     ],
+    additionalImages: {
+      scholarshipStudents: '/images/programs/scholarship-students.jpg',
+      learningResources1: '/images/programs/learning-resources-1.jpg',
+      learningResources2: '/images/programs/learning-resources-2.jpg',
+      mentorshipBg: '/images/programs/mentorship-bg.jpg',
+      schoolInfrastructure: '/images/programs/school-infrastructure.jpg',
+    },
   },
   {
     id: 3,
@@ -372,7 +390,19 @@ export const PROGRAMS = [
       '/images/programs/community-2.jpg',
       '/images/programs/community-3.jpg',
       '/images/programs/community-4.jpg',
+      '/images/programs/community-5.jpg',
+      '/images/programs/community-6.jpg',
     ],
+    additionalImages: {
+      communityOutreach: '/images/programs/community-outreach.jpg',
+      skillsTraining1: '/images/programs/skills-training-1.jpg',
+      skillsTraining2: '/images/programs/skills-training-2.jpg',
+      foodSecurity: '/images/programs/food-security.jpg',
+      infrastructureBg: '/images/programs/infrastructure-bg.jpg',
+      waterProject: '/images/programs/water-project.jpg',
+      communityCenter: '/images/programs/community-center.jpg',
+      sanitationProject: '/images/programs/sanitation-project.jpg',
+    },
   },
 ];
 

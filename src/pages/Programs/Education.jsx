@@ -90,6 +90,268 @@ const Education = () => {
         </div>
       </Section>
 
+      {/* Scholarship Program - Image + Text */}
+      <Section className="py-16 md:py-20">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center text-2xl">
+                  🎓
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900">Scholarship Program</h3>
+              </div>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Financial barriers should never stand between a bright student and their dreams. Our
+                scholarship program provides full tuition coverage, books, supplies, and ongoing support
+                to deserving students from underprivileged backgrounds.
+              </p>
+              <ul className="space-y-3 text-gray-700 mb-6">
+                <li className="flex items-start gap-3">
+                  <span className="text-yellow-500 text-xl">✓</span>
+                  <span>Full tuition and examination fees coverage</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-yellow-500 text-xl">✓</span>
+                  <span>School supplies, textbooks, and uniforms</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-yellow-500 text-xl">✓</span>
+                  <span>Academic monitoring and mentorship</span>
+                </li>
+              </ul>
+              <div className="bg-yellow-50 p-5 rounded-lg border-l-4 border-yellow-400">
+                <p className="text-gray-800 font-medium">
+                  <span className="text-yellow-600">25 scholarships</span> awarded, transforming 25 futures
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="aspect-[4/3] rounded-card overflow-hidden shadow-2xl">
+                <img
+                  src="/images/programs/scholarship-students.jpg"
+                  alt="Scholarship program beneficiaries"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-card opacity-20 -z-10" />
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Learning Resources - Image + Text (Reversed) */}
+      <Section className="py-16 md:py-20 bg-gray-50">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative lg:order-1"
+            >
+              <div className="grid grid-cols-2 gap-4">
+                <div className="aspect-square rounded-card overflow-hidden shadow-lg">
+                  <img
+                    src="/images/programs/learning-resources-1.jpg"
+                    alt="Educational materials distribution"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="aspect-square rounded-card overflow-hidden shadow-lg mt-8">
+                  <img
+                    src="/images/programs/learning-resources-2.jpg"
+                    alt="Students with new learning materials"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:order-2"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center text-2xl">
+                  📖
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900">Learning Resources</h3>
+              </div>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Access to quality learning materials shouldn't be a luxury. We supply schools in
+                underserved areas with textbooks, digital learning tools, library books, and
+                educational equipment to create conducive learning environments.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl">📚</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Textbooks & Materials</h4>
+                    <p className="text-gray-600 text-sm">Distributing over 500 textbooks across 5 partner schools</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl">💻</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-1">Digital Learning Tools</h4>
+                    <p className="text-gray-600 text-sm">Tablets and educational software for modern learning</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Mentorship Program - Full Width Image Section */}
+      <Section className="py-16 md:py-20 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/programs/mentorship-bg.jpg"
+            alt="Mentorship session"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 to-gray-800/90" />
+        </div>
+        <div className="container-custom relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            >
+              <div className="text-white">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center text-2xl">
+                    👥
+                  </div>
+                  <h3 className="text-3xl font-bold">Mentorship Program</h3>
+                </div>
+                <p className="text-lg text-gray-200 mb-6 leading-relaxed">
+                  Beyond academics, students need guidance to navigate their career paths. We connect
+                  students with experienced professionals who provide mentorship, career counseling,
+                  and real-world insights to help them make informed decisions about their futures.
+                </p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                  <div className="text-4xl mb-3">🌟</div>
+                  <p className="text-gray-200 leading-relaxed">
+                    "Having a mentor changed my perspective on what was possible. I'm now pursuing
+                    engineering, something I never thought I could achieve."
+                  </p>
+                  <p className="text-yellow-400 font-semibold mt-3">- Mentorship Program Participant</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                    <div className="text-3xl mb-2">💼</div>
+                    <h4 className="text-white font-bold mb-2">Career Guidance</h4>
+                    <p className="text-gray-300 text-sm">Professional mentors share industry insights</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                    <div className="text-3xl mb-2">🎯</div>
+                    <h4 className="text-white font-bold mb-2">Goal Setting</h4>
+                    <p className="text-gray-300 text-sm">Setting and achieving academic milestones</p>
+                  </div>
+                </div>
+                <div className="space-y-4 mt-8">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                    <div className="text-3xl mb-2">🤝</div>
+                    <h4 className="text-white font-bold mb-2">Personal Development</h4>
+                    <p className="text-gray-300 text-sm">Building confidence and life skills</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                    <div className="text-3xl mb-2">📈</div>
+                    <h4 className="text-white font-bold mb-2">Progress Tracking</h4>
+                    <p className="text-gray-300 text-sm">Regular check-ins and support</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* School Support - Image + Text */}
+      <Section className="py-16 md:py-20">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center text-2xl">
+                  🏫
+                </div>
+                <h3 className="text-3xl font-bold text-gray-900">School Infrastructure Support</h3>
+              </div>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                A conducive learning environment is crucial for effective education. We partner with
+                schools to renovate classrooms, build libraries, improve sanitation facilities, and
+                create spaces where students can thrive.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-5 rounded-lg">
+                  <div className="text-3xl mb-2">🏗️</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">5</div>
+                  <div className="text-sm text-gray-700">Schools Renovated</div>
+                </div>
+                <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-5 rounded-lg">
+                  <div className="text-3xl mb-2">📚</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">3</div>
+                  <div className="text-sm text-gray-700">Libraries Built</div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="aspect-[4/3] rounded-card overflow-hidden shadow-2xl">
+                <img
+                  src="/images/programs/school-infrastructure.jpg"
+                  alt="Renovated school classroom"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-teal-400 to-teal-500 rounded-card opacity-20 -z-10" />
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
       {/* Success Story */}
       <Section className="py-16 md:py-20 bg-gradient-to-br from-yellow-400 to-yellow-500">
         <div className="container-custom">
@@ -98,7 +360,7 @@ const Education = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
             <div className="text-center mb-8">
               <div className="text-6xl mb-4">🎓</div>
@@ -106,16 +368,27 @@ const Education = () => {
                 Success Story
               </h2>
             </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-card p-8 md:p-10 shadow-xl">
-              <blockquote className="text-xl md:text-2xl text-gray-800 mb-6 italic">
-                "Thanks to the scholarship program, I was able to complete my education and now I am giving back to my community. JOOF Foundation invests in futures."
-              </blockquote>
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <div>
-                  <p className="font-bold text-gray-900 text-lg">Chioma Adeyemi</p>
-                  <p className="text-gray-600">Student Beneficiary</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="aspect-[3/4] rounded-card overflow-hidden shadow-2xl">
+                <img
+                  src="/images/testimonials/chioma.jpg"
+                  alt="Chioma Adeyemi - Scholarship Beneficiary"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="bg-white/90 backdrop-blur-sm rounded-card p-8 md:p-10 shadow-xl">
+                <blockquote className="text-xl md:text-2xl text-gray-800 mb-6 italic leading-relaxed">
+                  "Thanks to the scholarship program, I was able to complete my education and now I am giving back to my community. JOOF Foundation invests in futures."
+                </blockquote>
+                <div className="border-t border-gray-300 pt-6">
+                  <p className="font-bold text-gray-900 text-xl mb-1">Chioma Adeyemi</p>
+                  <p className="text-gray-600 mb-4">Student Beneficiary • University Graduate</p>
+                  <div className="flex items-center gap-2 text-yellow-600">
+                    <span>✨</span>
+                    <span className="text-sm font-medium">Now working as a community health educator</span>
+                  </div>
                 </div>
-                <div className="text-4xl">✨</div>
               </div>
             </div>
           </motion.div>
@@ -133,7 +406,7 @@ const Education = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <div className="text-6xl mb-6">📖</div>
-            <blockquote className="text-2xl md:text-3xl font-medium text-gray-800 mb-8">
+            <blockquote className="text-2xl md:text-3xl font-medium text-gray-800 mb-8 leading-relaxed">
               {program.impact}
             </blockquote>
           </motion.div>
