@@ -44,24 +44,31 @@ const Navigation = () => {
       {menuItems.map((item) => (
         <div
           key={item.label}
-          className="relative"
+          className="relative group"
           onMouseEnter={() => item.children && setActiveDropdown(item.label)}
-          onMouseLeave={() => setActiveDropdown(null)}
+          onMouseLeave={() => item.children && setActiveDropdown(null)}
         >
           {item.children ? (
             <>
               <button
-                className={`flex items-center space-x-1 font-medium transition-colors ${
+                className={`flex items-center space-x-1 font-medium transition-colors py-2 ${
                   isActivePath(item.path)
                     ? 'text-teal-600'
                     : 'text-gray-700 hover:text-teal-600'
                 }`}
               >
                 <span>{item.label}</span>
-                <HiChevronDown className="w-4 h-4" />
+                <HiChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    activeDropdown === item.label ? 'rotate-180' : ''
+                  }`}
+                />
               </button>
               {activeDropdown === item.label && (
-                <DropdownMenu items={item.children} />
+                <DropdownMenu
+                  items={item.children}
+                  onClose={() => setActiveDropdown(null)}
+                />
               )}
             </>
           ) : (
