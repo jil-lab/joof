@@ -1,15 +1,12 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
 import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 import { contactFormSchema, contactFormDefaults } from '../../utils/validation';
+import { useContactForm } from '../../hooks/useApi';
 
 const ContactForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
-
   const {
     register,
     handleSubmit,
@@ -20,37 +17,21 @@ const ContactForm = () => {
     defaultValues: contactFormDefaults,
   });
 
+  // Use React Query mutation for contact form submission
+  const { mutate, isPending, isSuccess, isError } = useContactForm();
+
   const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+    mutate(data, {
+      onSuccess: () => {
+        // Clear form on success
+        reset();
 
-    try {
-      // TODO: Replace with actual Strapi API call in Phase 7
-      // For now, log to console
-      console.log('Contact form submission:', data);
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Show success message
-      setSubmitStatus('success');
-      reset(); // Clear form
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-
-      // Hide error message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
-    } finally {
-      setIsSubmitting(false);
-    }
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          // The success state will be managed by React Query
+        }, 5000);
+      },
+    });
   };
 
   return (
@@ -98,15 +79,15 @@ const ContactForm = () => {
           type="submit"
           variant="primary"
           size="lg"
-          disabled={isSubmitting}
+          disabled={isPending}
           className="w-full"
         >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {isPending ? 'Sending...' : 'Send Message'}
         </Button>
       </form>
 
       {/* Success Message */}
-      {submitStatus === 'success' && (
+      {isSuccess && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,7 +116,7 @@ const ContactForm = () => {
       )}
 
       {/* Error Message */}
-      {submitStatus === 'error' && (
+      {isError && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
