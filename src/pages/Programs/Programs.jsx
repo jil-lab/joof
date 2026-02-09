@@ -2,8 +2,24 @@ import { motion } from 'framer-motion';
 import ProgramCard from '../../components/programs/ProgramCard';
 import Section from '../../components/common/Section/Section';
 import { PROGRAMS, MISSION_VISION } from '../../utils/constants';
+import { usePrograms } from '../../hooks/useApi';
+import { getStrapiImageUrl } from '../../utils/formatters';
 
 const Programs = () => {
+  const { data: strapiData, isLoading } = usePrograms();
+
+  // Map Strapi data to expected format, fallback to constants
+  const programs = strapiData?.data?.length > 0
+    ? strapiData.data.map((program, index) => ({
+        id: program.id,
+        slug: program.type || `program-${index}`,
+        title: program.title,
+        shortDescription: program.shortDescription || program.description?.substring(0, 150) + '...',
+        description: program.description,
+        image: program.images?.[0] ? getStrapiImageUrl(program.images[0]) : '/images/programs/default.jpg',
+        icon: program.type === 'healthcare' ? '🏥' : program.type === 'education' ? '📚' : '🤝',
+      }))
+    : PROGRAMS;
   return (
     <div>
       {/* Hero Section */}
@@ -48,11 +64,18 @@ const Programs = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROGRAMS.map((program, index) => (
-              <ProgramCard key={program.id} program={program} index={index} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-teal-500 border-t-transparent"></div>
+              <p className="mt-4 text-gray-600">Loading programs...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {programs.map((program, index) => (
+                <ProgramCard key={program.id} program={program} index={index} />
+              ))}
+            </div>
+          )}
         </div>
       </Section>
 

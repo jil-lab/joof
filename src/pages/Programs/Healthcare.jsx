@@ -4,9 +4,25 @@ import ProgramHero from '../../components/programs/ProgramHero';
 import Section from '../../components/common/Section/Section';
 import Button from '../../components/common/Button/Button';
 import { PROGRAMS } from '../../utils/constants';
+import { useProgramsByType } from '../../hooks/useApi';
+import { getStrapiImageUrl } from '../../utils/formatters';
 
 const Healthcare = () => {
-  const program = PROGRAMS.find(p => p.slug === 'healthcare');
+  const { data: strapiData, isLoading } = useProgramsByType('healthcare');
+
+  // Get program from Strapi or fallback to constants
+  const defaultProgram = PROGRAMS.find(p => p.slug === 'healthcare');
+  const strapiProgram = strapiData?.data?.[0];
+
+  const program = strapiProgram
+    ? {
+        ...defaultProgram, // Keep structure from constants
+        title: strapiProgram.title,
+        description: strapiProgram.description,
+        shortDescription: strapiProgram.shortDescription,
+        image: strapiProgram.images?.[0] ? getStrapiImageUrl(strapiProgram.images[0]) : defaultProgram.image,
+      }
+    : defaultProgram;
 
   if (!program) return null;
 

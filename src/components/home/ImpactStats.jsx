@@ -8,6 +8,8 @@ import {
 import Section from '../common/Section';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import useCountUp from '../../hooks/useCountUp';
+import { useImpactStats } from '../../hooks/useApi';
+import { IMPACT_STATS } from '../../utils/constants';
 
 const StatCard = ({ icon: Icon, number, label, delay = 0 }) => {
   const { ref, hasIntersected } = useIntersectionObserver({ threshold: 0.3 });
@@ -35,7 +37,20 @@ const StatCard = ({ icon: Icon, number, label, delay = 0 }) => {
 };
 
 const ImpactStats = () => {
-  const stats = [
+  const { data: strapiData, isLoading } = useImpactStats();
+
+  // Icon mapping for Strapi data
+  const iconMap = {
+    FaUserMd,
+    FaHeartbeat: FaUserMd,
+    FaBaby,
+    FaHospital,
+    FaHandsHelping,
+    FaUsers: FaHandsHelping,
+  };
+
+  // Default stats
+  const defaultStats = [
     {
       icon: FaUserMd,
       number: 1651,
@@ -57,6 +72,15 @@ const ImpactStats = () => {
       label: 'Outreach Programs',
     },
   ];
+
+  // Use Strapi data if available, otherwise fallback to constants
+  const stats = strapiData?.data?.length > 0
+    ? strapiData.data.map(stat => ({
+        icon: iconMap[stat.icon] || FaUserMd,
+        number: stat.number,
+        label: stat.label,
+      }))
+    : defaultStats;
 
   return (
     <Section
