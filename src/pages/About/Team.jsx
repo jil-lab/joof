@@ -1,9 +1,22 @@
 import { motion } from 'framer-motion';
 import Section from '../../components/common/Section/Section';
 import TeamGrid from '../../components/about/TeamGrid';
-import { TEAM_MEMBERS } from '../../utils/constants';
+import { useTeamMembers } from '../../hooks/useApi';
+import { getStrapiImageUrl } from '../../utils/formatters';
 
 const Team = () => {
+  const { data, isLoading, error } = useTeamMembers();
+
+  // Extract and format team members data from Strapi
+  const teamMembers = data?.data?.map(member => ({
+    id: member.id,
+    name: member.name || 'Unknown',
+    role: member.role || 'Team Member',
+    bio: member.bio || '',
+    linkedin: member.linkedin || '#',
+    image: member.photo ? getStrapiImageUrl(member.photo) : null,
+  })) || [];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -45,7 +58,28 @@ const Team = () => {
         </motion.div>
 
         {/* Team Grid */}
-        <TeamGrid members={TEAM_MEMBERS} />
+        {isLoading && (
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-teal-500 border-t-transparent"></div>
+            <p className="mt-4 text-gray-600">Loading team members...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center py-12">
+            <p className="text-red-600">Error loading team members. Please try again later.</p>
+          </div>
+        )}
+
+        {!isLoading && !error && teamMembers.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-600">No team members found. Please add team members in Strapi.</p>
+          </div>
+        )}
+
+        {!isLoading && !error && teamMembers.length > 0 && (
+          <TeamGrid members={teamMembers} />
+        )}
       </Section>
 
       {/* Join Our Team CTA */}
