@@ -14,14 +14,16 @@ const Header = () => {
         <div className="flex items-center justify-between h-20 px-4 md:px-6 lg:px-8">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">JOOF</span>
-              </div>
-              <span className="hidden md:block font-heading font-bold text-xl text-gray-900">
-                JOOF Foundation
-              </span>
-            </div>
+            <img
+              src="/images/joof-logo.png"
+              alt="JOOF Foundation - John Oyediran Olabisi Foundation"
+              className="h-16 md:h-20 w-auto object-contain"
+              onError={(e) => {
+                // Fallback to text logo if image is not found
+                e.target.style.display = 'none';
+                e.target.nextElementSibling.style.display = 'flex';
+              }}
+            />
           </Link>
 
           {/* Desktop Navigation */}
