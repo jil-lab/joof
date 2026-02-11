@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion';
 import { FaLinkedin } from 'react-icons/fa';
+import { useState } from 'react';
 
 const TeamMemberCard = ({ member, index = 0 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const BIO_CHAR_LIMIT = 500;
+  const shouldTruncate = member.bio && member.bio.length > BIO_CHAR_LIMIT;
+  const displayBio = shouldTruncate && !isExpanded
+    ? `${member.bio.substring(0, BIO_CHAR_LIMIT)}...`
+    : member.bio;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -45,8 +53,16 @@ const TeamMemberCard = ({ member, index = 0 }) => {
           {member.role}
         </p>
         <p className="text-gray-600 text-sm leading-relaxed">
-          {member.bio}
+          {displayBio}
         </p>
+        {shouldTruncate && (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="mt-2 text-teal-600 hover:text-teal-700 text-sm font-medium transition-colors duration-200"
+          >
+            {isExpanded ? 'Show less' : 'Read more...'}
+          </button>
+        )}
       </div>
     </motion.div>
   );
