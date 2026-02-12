@@ -19,45 +19,6 @@ const About = () => {
         </div>
       </Section>
 
-      {/* Mission & Vision Section */}
-      <Section className="py-16 md:py-20 bg-white">
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Mission */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="bg-teal-50 rounded-card p-8 md:p-10 border-l-4 border-teal-500"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center">
-              <span className="text-4xl mr-3">🎯</span>
-              Our Mission
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
-              {MISSION_VISION.mission}
-            </p>
-          </motion.div>
-
-          {/* Vision */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="bg-yellow-50 rounded-card p-8 md:p-10 border-l-4 border-yellow-400"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center">
-              <span className="text-4xl mr-3">🔭</span>
-              Our Vision
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
-              {MISSION_VISION.vision}
-            </p>
-          </motion.div>
-        </div>
-      </Section>
-
       {/* Foundation History with Images */}
       <Section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto">
@@ -180,7 +141,7 @@ const About = () => {
       </Section>
 
       {/* Founder's Vision Section */}
-      <Section className="py-16 md:py-20 bg-gray-50">
+      <Section className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -259,6 +220,45 @@ const About = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </Section>
+
+      {/* Mission & Vision Section */}
+      <Section className="py-16 md:py-20 bg-gray-50">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Mission */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="bg-teal-50 rounded-card p-8 md:p-10 border-l-4 border-teal-500"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center">
+              <span className="text-4xl mr-3">🎯</span>
+              Our Mission
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              {MISSION_VISION.mission}
+            </p>
+          </motion.div>
+
+          {/* Vision */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="bg-yellow-50 rounded-card p-8 md:p-10 border-l-4 border-yellow-400"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center">
+              <span className="text-4xl mr-3">🔭</span>
+              Our Vision
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              {MISSION_VISION.vision}
+            </p>
+          </motion.div>
         </div>
       </Section>
 
