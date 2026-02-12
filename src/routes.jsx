@@ -13,6 +13,8 @@ const Education = lazy(() => import('./pages/Programs/Education'));
 const Community = lazy(() => import('./pages/Programs/Community'));
 const Donate = lazy(() => import('./pages/Donate'));
 const Contact = lazy(() => import('./pages/Contact'));
+const NewsList = lazy(() => import('./pages/News/NewsList'));
+const NewsPost = lazy(() => import('./pages/News/NewsPost'));
 
 // Loading component
 const PageLoader = () => (
@@ -87,6 +89,20 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: withSuspense(Contact),
+      },
+      // News routes
+      {
+        path: 'news',
+        children: [
+          {
+            index: true,
+            element: withSuspense(NewsList),
+          },
+          {
+            path: ':slug',
+            element: withSuspense(NewsPost),
+          },
+        ],
       },
     ],
   },

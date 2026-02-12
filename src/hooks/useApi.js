@@ -17,6 +17,12 @@ import {
   submitContactForm,
   subscribeNewsletter,
 } from '../api/services/contact.service';
+import {
+  getBlogPosts,
+  getBlogPostBySlug,
+  getRelatedBlogPosts,
+} from '../api/services/blog.service';
+import { getCategories } from '../api/services/categories.service';
 
 /**
  * Custom React Query hooks for API calls
@@ -176,5 +182,72 @@ export const useNewsletterSubscription = () => {
       // Invalidate and refetch any relevant queries if needed
       queryClient.invalidateQueries({ queryKey: ['newsletterSubscriptions'] });
     },
+  });
+};
+
+// ============================================
+// BLOG POSTS HOOKS
+// ============================================
+
+/**
+ * Hook to fetch blog posts with pagination and filtering
+ * @param {Object} options - Query options
+ * @param {number} options.page - Page number
+ * @param {number} options.pageSize - Items per page
+ * @param {string} options.category - Category ID filter
+ * @returns {Object} Query result with blog posts data
+ */
+export const useBlogPosts = ({ page = 1, pageSize = 6, category = null } = {}) => {
+  return useQuery({
+    queryKey: ['blogPosts', page, pageSize, category],
+    queryFn: () => getBlogPosts({ page, pageSize, category }),
+    staleTime: 5 * 60 * 1000,
+    keepPreviousData: true, // Keep previous data while fetching new page
+  });
+};
+
+/**
+ * Hook to fetch a single blog post by slug
+ * @param {string} slug - Blog post slug
+ * @returns {Object} Query result with blog post data
+ */
+export const useBlogPostBySlug = (slug) => {
+  return useQuery({
+    queryKey: ['blogPost', slug],
+    queryFn: () => getBlogPostBySlug(slug),
+    enabled: !!slug,
+    staleTime: 5 * 60 * 1000,
+  });
+};
+
+/**
+ * Hook to fetch related blog posts
+ * @param {string} categoryId - Category ID to match
+ * @param {string} excludeId - ID to exclude
+ * @param {number} limit - Number of posts
+ * @returns {Object} Query result with related posts
+ */
+export const useRelatedBlogPosts = (categoryId, excludeId, limit = 3) => {
+  return useQuery({
+    queryKey: ['relatedBlogPosts', categoryId, excludeId, limit],
+    queryFn: () => getRelatedBlogPosts(categoryId, excludeId, limit),
+    enabled: !!(categoryId && excludeId),
+    staleTime: 5 * 60 * 1000,
+  });
+};
+
+// ============================================
+// CATEGORIES HOOKS
+// ============================================
+
+/**
+ * Hook to fetch all categories
+ * @returns {Object} Query result with categories data
+ */
+export const useCategories = () => {
+  return useQuery({
+    queryKey: ['categories'],
+    queryFn: getCategories,
+    staleTime: 5 * 60 * 1000,
   });
 };
