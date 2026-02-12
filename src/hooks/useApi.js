@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { queryKeys } from '../api/queryKeys';
 import {
   getTeamMembers,
   getTeamMember,
@@ -39,9 +40,12 @@ import { getCategories } from '../api/services/categories.service';
  */
 export const useTeamMembers = () => {
   return useQuery({
-    queryKey: ['teamMembers'],
+    queryKey: queryKeys.teamMembers.all,
     queryFn: getTeamMembers,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 30 * 60 * 1000, // 30 minutes (optimized for static data)
+    cacheTime: 60 * 60 * 1000, // 1 hour (keep in memory longer)
+    refetchOnMount: true,
+    refetchOnReconnect: true,
   });
 };
 
@@ -52,10 +56,11 @@ export const useTeamMembers = () => {
  */
 export const useTeamMember = (id) => {
   return useQuery({
-    queryKey: ['teamMember', id],
+    queryKey: queryKeys.teamMembers.detail(id),
     queryFn: () => getTeamMember(id),
     enabled: !!id, // Only run if ID is provided
-    staleTime: 5 * 60 * 1000,
+    staleTime: 30 * 60 * 1000, // 30 minutes
+    cacheTime: 60 * 60 * 1000, // 1 hour
   });
 };
 
@@ -69,9 +74,9 @@ export const useTeamMember = (id) => {
  */
 export const usePrograms = () => {
   return useQuery({
-    queryKey: ['programs'],
+    queryKey: queryKeys.programs.all,
     queryFn: getPrograms,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 30 * 60 * 1000, // 30 minutes (static data)
   });
 };
 
@@ -82,10 +87,10 @@ export const usePrograms = () => {
  */
 export const useProgram = (id) => {
   return useQuery({
-    queryKey: ['program', id],
+    queryKey: queryKeys.programs.detail(id),
     queryFn: () => getProgram(id),
     enabled: !!id,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 30 * 60 * 1000,
   });
 };
 
@@ -96,10 +101,10 @@ export const useProgram = (id) => {
  */
 export const useProgramsByType = (type) => {
   return useQuery({
-    queryKey: ['programs', type],
+    queryKey: queryKeys.programs.list({ type }),
     queryFn: () => getProgramsByType(type),
     enabled: !!type,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 30 * 60 * 1000,
   });
 };
 
@@ -113,9 +118,9 @@ export const useProgramsByType = (type) => {
  */
 export const useTestimonials = () => {
   return useQuery({
-    queryKey: ['testimonials'],
+    queryKey: queryKeys.testimonials.all,
     queryFn: getTestimonials,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 30 * 60 * 1000, // 30 minutes (static data)
   });
 };
 
@@ -126,10 +131,10 @@ export const useTestimonials = () => {
  */
 export const useTestimonial = (id) => {
   return useQuery({
-    queryKey: ['testimonial', id],
+    queryKey: queryKeys.testimonials.detail(id),
     queryFn: () => getTestimonial(id),
     enabled: !!id,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 30 * 60 * 1000,
   });
 };
 
@@ -143,9 +148,9 @@ export const useTestimonial = (id) => {
  */
 export const useImpactStats = () => {
   return useQuery({
-    queryKey: ['impactStats'],
+    queryKey: queryKeys.impactStats.all,
     queryFn: getImpactStats,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 10 * 60 * 1000, // 10 minutes (updates occasionally)
   });
 };
 
@@ -164,7 +169,7 @@ export const useContactForm = () => {
     mutationFn: submitContactForm,
     onSuccess: () => {
       // Invalidate and refetch any relevant queries if needed
-      queryClient.invalidateQueries({ queryKey: ['contactSubmissions'] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.contactSubmissions.all });
     },
   });
 };
@@ -180,7 +185,7 @@ export const useNewsletterSubscription = () => {
     mutationFn: subscribeNewsletter,
     onSuccess: () => {
       // Invalidate and refetch any relevant queries if needed
-      queryClient.invalidateQueries({ queryKey: ['newsletterSubscriptions'] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.newsletterSubscriptions.all });
     },
   });
 };
@@ -199,9 +204,9 @@ export const useNewsletterSubscription = () => {
  */
 export const useBlogPosts = ({ page = 1, pageSize = 6, category = null } = {}) => {
   return useQuery({
-    queryKey: ['blogPosts', page, pageSize, category],
+    queryKey: queryKeys.blogPosts.list({ page, pageSize, category }),
     queryFn: () => getBlogPosts({ page, pageSize, category }),
-    staleTime: 5 * 60 * 1000,
+    staleTime: 5 * 60 * 1000, // 5 minutes (updates more frequently)
     keepPreviousData: true, // Keep previous data while fetching new page
   });
 };
@@ -213,7 +218,7 @@ export const useBlogPosts = ({ page = 1, pageSize = 6, category = null } = {}) =
  */
 export const useBlogPostBySlug = (slug) => {
   return useQuery({
-    queryKey: ['blogPost', slug],
+    queryKey: queryKeys.blogPosts.detail(slug),
     queryFn: () => getBlogPostBySlug(slug),
     enabled: !!slug,
     staleTime: 5 * 60 * 1000,
@@ -229,7 +234,7 @@ export const useBlogPostBySlug = (slug) => {
  */
 export const useRelatedBlogPosts = (categoryId, excludeId, limit = 3) => {
   return useQuery({
-    queryKey: ['relatedBlogPosts', categoryId, excludeId, limit],
+    queryKey: queryKeys.blogPosts.related(categoryId, excludeId, limit),
     queryFn: () => getRelatedBlogPosts(categoryId, excludeId, limit),
     enabled: !!(categoryId && excludeId),
     staleTime: 5 * 60 * 1000,
@@ -246,8 +251,8 @@ export const useRelatedBlogPosts = (categoryId, excludeId, limit = 3) => {
  */
 export const useCategories = () => {
   return useQuery({
-    queryKey: ['categories'],
+    queryKey: queryKeys.categories.all,
     queryFn: getCategories,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 30 * 60 * 1000, // 30 minutes (static data)
   });
 };

@@ -1,10 +1,26 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useQueryClient } from '@tanstack/react-query';
 import Section from '../../components/common/Section/Section';
 import { MISSION_VISION } from '../../utils/constants';
+import { queryKeys } from '../../api/queryKeys';
+import { getTeamMembers } from '../../api/services/team.service';
 // import { TIMELINE_MILESTONES } from '../../utils/constants';
 // import Timeline from '../../components/about/Timeline';
 
 const About = () => {
+  const queryClient = useQueryClient();
+
+  // Prefetch team members when user is on About page
+  // This makes the Team page load instantly when they navigate to it
+  useEffect(() => {
+    queryClient.prefetchQuery({
+      queryKey: queryKeys.teamMembers.all,
+      queryFn: getTeamMembers,
+      staleTime: 30 * 60 * 1000, // 30 minutes
+    });
+  }, [queryClient]);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
