@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import Section from '../../components/common/Section/Section';
-import { MISSION_VISION, CORE_VALUES } from '../../utils/constants';
-import { FaCheckCircle } from 'react-icons/fa';
+import { MISSION_VISION } from '../../utils/constants';
+// import { TIMELINE_MILESTONES } from '../../utils/constants';
+// import Timeline from '../../components/about/Timeline';
 
 const About = () => {
   return (
@@ -178,114 +179,164 @@ const About = () => {
         </div>
       </Section>
 
-      {/* Core Values Section */}
+      {/* Founder's Vision Section */}
+      <Section className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              The Founder's Vision
+            </h2>
+            <div className="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Founder Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="order-2 md:order-1"
+            >
+              <div className="relative rounded-card overflow-hidden shadow-card aspect-[4/5] bg-gray-100">
+                <img
+                  src="/images/team/founder.jpg"
+                  alt="John Oyediran Olabisi - Founder"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.src = `https://ui-avatars.com/api/?name=John+Oyediran+Olabisi&size=600&background=0d9488&color=ffffff&bold=true`;
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Founder Story */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="order-1 md:order-2"
+            >
+              <div className="prose prose-lg max-w-none">
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  <span className="text-4xl font-serif text-teal-500 float-left mr-2 leading-none mt-1">"</span>
+                  In 2015, I witnessed firsthand the devastating impact of inadequate healthcare and
+                  limited educational opportunities in underserved communities across Nigeria. Families
+                  struggling to access basic medical care. Children with untapped potential unable to
+                  pursue their dreams due to lack of resources. It became clear that change was needed
+                  — and that it starts with compassionate action.
+                </p>
+
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  The John Oyediran Olabisi Foundation was born from a simple but powerful belief:
+                  every person deserves the chance to live a healthy life and reach their full
+                  potential. What began as a vision has grown into a movement of hope, touching
+                  thousands of lives and building pathways to brighter futures.
+                </p>
+
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Today, I am humbled and inspired by the incredible team, partners, and supporters
+                  who have joined us on this journey. Together, we continue to expand our reach,
+                  deepen our impact, and remain steadfast in our commitment to serve with compassion,
+                  integrity, and excellence.
+                  <span className="text-4xl font-serif text-teal-500 ml-1">"</span>
+                </p>
+
+                <p className="text-gray-900 font-semibold text-lg">
+                  — John Oyediran Olabisi
+                </p>
+                <p className="text-teal-600 font-medium">
+                  Founder & Director
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Timeline Section */}
+      {/* <Section className="py-16 md:py-20 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Our Journey
+          </h2>
+          <div className="w-24 h-1 bg-teal-500 mx-auto mb-4"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            From our founding in 2015 to today, explore the key milestones that have shaped
+            JOOF Foundation and the lives we've touched along the way.
+          </p>
+        </motion.div>
+
+        <div className="max-w-6xl mx-auto">
+          <Timeline milestones={TIMELINE_MILESTONES} />
+        </div>
+      </Section> */}
+
+      {/* Looking Forward Section */}
       <Section className="py-16 md:py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Our Core Values
-          </h2>
-          <div className="w-24 h-1 bg-teal-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            These values guide every decision we make and every action we take as we work
-            toward our mission of transforming lives.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {CORE_VALUES.map((value, index) => (
-            <motion.div
-              key={value.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="bg-white rounded-card shadow-card hover:shadow-card-hover transition-all duration-300 p-6 border-t-4 border-teal-500"
-            >
-              <div className="text-5xl mb-4">{value.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                {value.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {value.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Registered Charity Information */}
-      <Section className="py-16 md:py-20 bg-teal-50">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="bg-white rounded-card shadow-card p-8 md:p-10">
-            <div className="flex items-start mb-6">
-              <FaCheckCircle className="text-teal-500 text-3xl mr-4 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  Registered Charity Status
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  The John Oyediran Olabisi Foundation is a registered charitable organization
-                  committed to operating with the highest standards of transparency, accountability,
-                  and ethical conduct. Our registered status ensures that all donations and resources
-                  are managed responsibly and directed toward our mission of serving underserved
-                  communities.
-                </p>
-              </div>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Looking Forward
+            </h2>
+            <div className="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mt-8 pt-8 border-t border-gray-200">
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  Transparency & Accountability
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  We maintain detailed records of all financial transactions and program outcomes,
-                  ensuring donors and stakeholders have full visibility into our operations.
-                </p>
-              </div>
+          <div className="bg-gradient-to-br from-teal-50 to-yellow-50 rounded-card p-8 md:p-12 shadow-card">
+            <p className="text-gray-700 leading-relaxed text-lg mb-6">
+              As we look to the future, our commitment remains unwavering. We envision expanding our
+              healthcare programs to reach even more communities, providing comprehensive medical care
+              and support to those who need it most. Our education initiatives will continue to empower
+              the next generation through scholarships, mentorship, and learning resources that unlock
+              potential and create opportunities.
+            </p>
 
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  Tax-Deductible Donations
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  As a registered charity, contributions to JOOF Foundation may be eligible for
-                  tax deductions in accordance with applicable regulations.
-                </p>
-              </div>
+            <p className="text-gray-700 leading-relaxed text-lg mb-6">
+              We are building partnerships, strengthening our programs, and innovating new ways to
+              create sustainable, long-term impact. Every step forward is guided by our core values
+              and driven by the stories of the individuals and families whose lives have been
+              transformed through JOOF Foundation.
+            </p>
 
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  Governance & Oversight
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Our foundation operates under strong governance structures with regular oversight
-                  to ensure we remain true to our mission and values.
-                </p>
-              </div>
+            <p className="text-gray-900 font-semibold text-xl text-center">
+              The journey continues, and we invite you to be part of it.
+            </p>
+          </div>
 
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  Impact Reporting
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  We regularly publish reports documenting our programs, outcomes, and the tangible
-                  impact of donor contributions in the communities we serve.
-                </p>
-              </div>
-            </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+            <a
+              href="/programs"
+              className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white font-medium rounded-lg hover:bg-teal-600 transition-colors duration-300 shadow-md hover:shadow-lg"
+            >
+              Explore Our Programs
+            </a>
+            <a
+              href="/donate"
+              className="inline-flex items-center justify-center px-6 py-3 bg-yellow-400 text-gray-900 font-medium rounded-lg hover:bg-yellow-500 transition-colors duration-300 shadow-md hover:shadow-lg"
+            >
+              Support Our Mission
+            </a>
           </div>
         </motion.div>
       </Section>

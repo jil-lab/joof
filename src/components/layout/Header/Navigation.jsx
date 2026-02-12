@@ -15,7 +15,6 @@ const Navigation = () => {
       children: [
         { label: 'About Us', path: '/about' },
         { label: 'Our Team', path: '/about/team' },
-        { label: 'Our Story', path: '/about/our-story' },
       ],
     },
     {
@@ -51,7 +50,8 @@ const Navigation = () => {
           {item.children ? (
             <>
               <button
-                className={`flex items-center space-x-1 font-medium transition-colors py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded ${
+                onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
+                className={`flex items-center space-x-1 font-medium transition-colors py-2 px-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded ${
                   isActivePath(item.path)
                     ? 'text-teal-600'
                     : 'text-gray-700 hover:text-teal-600'
