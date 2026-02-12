@@ -5,6 +5,7 @@ import Section from '../../components/common/Section/Section';
 import { MISSION_VISION } from '../../utils/constants';
 import { queryKeys } from '../../api/queryKeys';
 import { getTeamMembers } from '../../api/services/team.service';
+import { conditionalPrefetch } from '../../utils/prefetchHelpers';
 // import { TIMELINE_MILESTONES } from '../../utils/constants';
 // import Timeline from '../../components/about/Timeline';
 
@@ -14,11 +15,12 @@ const About = () => {
   // Prefetch team members when user is on About page
   // This makes the Team page load instantly when they navigate to it
   useEffect(() => {
-    queryClient.prefetchQuery({
-      queryKey: queryKeys.teamMembers.all,
-      queryFn: getTeamMembers,
-      staleTime: 30 * 60 * 1000, // 30 minutes
-    });
+    conditionalPrefetch(
+      queryClient,
+      queryKeys.teamMembers.all,
+      getTeamMembers,
+      30 * 60 * 1000 // 30 minutes
+    );
   }, [queryClient]);
 
   return (

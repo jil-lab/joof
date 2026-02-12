@@ -1,12 +1,28 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useQueryClient } from '@tanstack/react-query';
 import ProgramCard from '../../components/programs/ProgramCard';
 import Section from '../../components/common/Section/Section';
 import { PROGRAMS, MISSION_VISION } from '../../utils/constants';
 import { usePrograms } from '../../hooks/useApi';
 import { getStrapiImageUrl } from '../../utils/formatters';
+import { queryKeys } from '../../api/queryKeys';
+import { getBlogPosts } from '../../api/services/blog.service';
+import { conditionalPrefetch } from '../../utils/prefetchHelpers';
 
 const Programs = () => {
+  const queryClient = useQueryClient();
   const { data: strapiData, isLoading } = usePrograms();
+
+  // Prefetch blog posts for users who might navigate to blog
+  useEffect(() => {
+    conditionalPrefetch(
+      queryClient,
+      queryKeys.blogPosts.list({ page: 1, pageSize: 6, category: null }),
+      () => getBlogPosts({ page: 1, pageSize: 6, category: null }),
+      5 * 60 * 1000 // 5 minutes
+    );
+  }, [queryClient]);
 
   // Map Strapi data to expected format, fallback to constants
   const programs = strapiData?.data?.length > 0
