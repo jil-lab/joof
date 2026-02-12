@@ -8,19 +8,14 @@ const About = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <Section className="bg-gradient-teal text-white py-20 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
+        <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             About JOOF Foundation
           </h1>
           <p className="text-xl md:text-2xl text-teal-50 leading-relaxed">
             {MISSION_VISION.tagline}
           </p>
-        </motion.div>
+        </div>
       </Section>
 
       {/* Mission & Vision Section */}
@@ -31,7 +26,7 @@ const About = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="bg-teal-50 rounded-card p-8 md:p-10 border-l-4 border-teal-500"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center">
@@ -48,7 +43,7 @@ const About = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="bg-yellow-50 rounded-card p-8 md:p-10 border-l-4 border-yellow-400"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center">
@@ -117,9 +112,11 @@ const About = () => {
                   src="/images/about/foundation-work.jpg"
                   alt="JOOF Foundation team working with community members"
                   className="w-full h-full object-cover aspect-[4/3]"
-                  loading="lazy"
+                  loading="eager"
+                  width="800"
+                  height="600"
                   onError={(e) => {
-                    e.target.src = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop';
+                    e.target.src = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop&auto=format&q=75';
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-900/50 to-transparent"></div>
@@ -146,8 +143,10 @@ const About = () => {
                   alt="Communities benefiting from JOOF Foundation programs"
                   className="w-full h-full object-cover aspect-[4/3]"
                   loading="lazy"
+                  width="800"
+                  height="600"
                   onError={(e) => {
-                    e.target.src = 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop';
+                    e.target.src = 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&auto=format&q=75';
                   }}
                 />
               </div>
@@ -205,7 +204,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
               className="bg-white rounded-card shadow-card hover:shadow-card-hover transition-all duration-300 p-6 border-t-4 border-teal-500"
             >
               <div className="text-5xl mb-4">{value.icon}</div>
