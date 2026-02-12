@@ -11,7 +11,7 @@ const Hero = () => {
           src="/images/hero/main-hero.jpg"
           alt="JOOF Foundation helping communities"
           className="w-full h-full object-cover"
-          fetchpriority="high"
+          fetchPriority="high"
           onError={(e) => {
             // Fallback to gradient if image fails to load
             e.target.style.display = 'none';
