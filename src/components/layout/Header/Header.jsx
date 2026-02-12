@@ -18,6 +18,7 @@ const Header = () => {
               src="/images/joof-logo.png"
               alt="JOOF Foundation - John Oyediran Olabisi Foundation"
               className="h-16 md:h-20 w-auto object-contain"
+              fetchpriority="high"
               onError={(e) => {
                 // Fallback to text logo if image is not found
                 e.target.style.display = 'none';

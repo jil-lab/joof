@@ -68,6 +68,7 @@ const MissionSection = () => {
               src="/images/mission/community-gathering.jpg"
               alt="Community members gathering at JOOF Foundation event"
               className="w-full h-full object-cover aspect-[4/3]"
+              loading="lazy"
               onError={(e) => {
                 // Fallback to placeholder
                 e.target.src = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop';

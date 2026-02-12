@@ -4,4 +4,43 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    // Optimize bundle size
+    target: 'esnext',
+    minify: 'esbuild', // Using esbuild for faster builds
+    // Note: esbuild doesn't support drop_console. To remove console.log, install terser:
+    // npm install -D terser, then set minify: 'terser' with terserOptions
+    // Manual chunks for better code splitting
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'framer-motion': ['framer-motion'],
+          'form-libs': ['react-hook-form', 'zod', '@hookform/resolvers'],
+          'data-libs': ['@tanstack/react-query', 'axios'],
+          'ui-libs': ['swiper', 'react-leaflet', 'leaflet'],
+        },
+      },
+    },
+    // Chunk size warnings
+    chunkSizeWarningLimit: 1000,
+    // Generate sourcemaps for production debugging (can disable if not needed)
+    sourcemap: false,
+  },
+  // Optimize dependencies
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'framer-motion',
+      '@tanstack/react-query',
+    ],
+  },
+  // Performance optimizations
+  server: {
+    // Enable HMR for faster development
+    hmr: true,
+  },
 })

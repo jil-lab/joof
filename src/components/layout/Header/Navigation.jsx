@@ -40,7 +40,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="hidden lg:flex items-center space-x-8">
+    <nav className="hidden lg:flex items-center space-x-8" aria-label="Main navigation">
       {menuItems.map((item) => (
         <div
           key={item.label}
@@ -51,17 +51,21 @@ const Navigation = () => {
           {item.children ? (
             <>
               <button
-                className={`flex items-center space-x-1 font-medium transition-colors py-2 ${
+                className={`flex items-center space-x-1 font-medium transition-colors py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded ${
                   isActivePath(item.path)
                     ? 'text-teal-600'
                     : 'text-gray-700 hover:text-teal-600'
                 }`}
+                aria-expanded={activeDropdown === item.label}
+                aria-haspopup="true"
+                aria-label={`${item.label} menu`}
               >
                 <span>{item.label}</span>
                 <HiChevronDown
                   className={`w-4 h-4 transition-transform duration-200 ${
                     activeDropdown === item.label ? 'rotate-180' : ''
                   }`}
+                  aria-hidden="true"
                 />
               </button>
               {activeDropdown === item.label && (
@@ -74,11 +78,12 @@ const Navigation = () => {
           ) : (
             <Link
               to={item.path}
-              className={`font-medium transition-colors ${
+              className={`font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded px-2 py-1 ${
                 isActivePath(item.path)
                   ? 'text-teal-600'
                   : 'text-gray-700 hover:text-teal-600'
               }`}
+              aria-current={isActivePath(item.path) ? 'page' : undefined}
             >
               {item.label}
             </Link>

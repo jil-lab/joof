@@ -1,15 +1,35 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
-import About from './pages/About/About';
-import Team from './pages/About/Team';
-import OurStory from './pages/About/OurStory';
-import Programs from './pages/Programs/Programs';
-import Healthcare from './pages/Programs/Healthcare';
-import Education from './pages/Programs/Education';
-import Community from './pages/Programs/Community';
-import Donate from './pages/Donate';
-import Contact from './pages/Contact';
+
+// Lazy load other pages for better performance
+const About = lazy(() => import('./pages/About/About'));
+const Team = lazy(() => import('./pages/About/Team'));
+const OurStory = lazy(() => import('./pages/About/OurStory'));
+const Programs = lazy(() => import('./pages/Programs/Programs'));
+const Healthcare = lazy(() => import('./pages/Programs/Healthcare'));
+const Education = lazy(() => import('./pages/Programs/Education'));
+const Community = lazy(() => import('./pages/Programs/Community'));
+const Donate = lazy(() => import('./pages/Donate'));
+const Contact = lazy(() => import('./pages/Contact'));
+
+// Loading component
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center space-y-4">
+      <div className="w-16 h-16 border-4 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+      <p className="text-gray-600 font-medium">Loading...</p>
+    </div>
+  </div>
+);
+
+// Wrapper to add Suspense to lazy-loaded components
+const withSuspense = (Component) => (
+  <Suspense fallback={<PageLoader />}>
+    <Component />
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
@@ -26,15 +46,15 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <About />,
+            element: withSuspense(About),
           },
           {
             path: 'team',
-            element: <Team />,
+            element: withSuspense(Team),
           },
           {
             path: 'our-story',
-            element: <OurStory />,
+            element: withSuspense(OurStory),
           },
         ],
       },
@@ -44,29 +64,29 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Programs />,
+            element: withSuspense(Programs),
           },
           {
             path: 'education',
-            element: <Education />,
+            element: withSuspense(Education),
           },
           {
             path: 'healthcare',
-            element: <Healthcare />,
+            element: withSuspense(Healthcare),
           },
           {
             path: 'community',
-            element: <Community />,
+            element: withSuspense(Community),
           },
         ],
       },
       {
         path: 'donate',
-        element: <Donate />,
+        element: withSuspense(Donate),
       },
       {
         path: 'contact',
-        element: <Contact />,
+        element: withSuspense(Contact),
       },
     ],
   },

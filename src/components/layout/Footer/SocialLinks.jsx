@@ -34,10 +34,10 @@ const SocialLinks = () => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-teal-400 transition-colors"
-            aria-label={link.name}
+            className="text-gray-400 hover:text-teal-400 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded"
+            aria-label={`Visit our ${link.name} page`}
           >
-            <Icon className="w-6 h-6" />
+            <Icon className="w-6 h-6" aria-hidden="true" />
           </a>
         );
       })}

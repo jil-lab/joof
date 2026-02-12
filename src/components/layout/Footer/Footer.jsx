@@ -5,9 +5,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white" role="contentinfo">
       <div className="container-custom px-4 md:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" role="navigation" aria-label="Footer navigation">
           {/* About Column */}
           <div>
             <h3 className="font-heading font-bold text-lg mb-4">JOOF Foundation</h3>
@@ -21,22 +21,22 @@ const Footer = () => {
             <h3 className="font-heading font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-teal-400 transition-colors text-sm">
+                <Link to="/about" className="text-gray-400 hover:text-teal-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/programs" className="text-gray-400 hover:text-teal-400 transition-colors text-sm">
+                <Link to="/programs" className="text-gray-400 hover:text-teal-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">
                   Programs
                 </Link>
               </li>
               <li>
-                <Link to="/about/team" className="text-gray-400 hover:text-teal-400 transition-colors text-sm">
+                <Link to="/about/team" className="text-gray-400 hover:text-teal-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">
                   Our Team
                 </Link>
               </li>
               <li>
-                <Link to="/news" className="text-gray-400 hover:text-teal-400 transition-colors text-sm">
+                <Link to="/news" className="text-gray-400 hover:text-teal-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">
                   News
                 </Link>
               </li>
