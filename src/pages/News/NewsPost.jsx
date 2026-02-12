@@ -12,10 +12,10 @@ const NewsPost = () => {
 
   // Extract post data
   const post = postData ? {
-    id: postData.id,
-    ...postData.attributes,
-    featuredImage: postData.attributes.featuredImage?.data?.attributes,
-    category: postData.attributes.category?.data?.attributes,
+    id: postData?.id,
+    ...postData?.attributes,
+    featuredImage: postData?.attributes?.featuredImage?.data?.attributes,
+    category: postData?.attributes?.category?.data?.attributes,
   } : null;
 
   // Fetch related posts
@@ -26,10 +26,10 @@ const NewsPost = () => {
   );
 
   const relatedPosts = relatedData?.data?.map(p => ({
-    id: p.id,
-    ...p.attributes,
-    featuredImage: p.attributes.featuredImage?.data?.attributes,
-    category: p.attributes.category?.data?.attributes,
+    id: p?.id,
+    ...p?.attributes,
+    featuredImage: p?.attributes?.featuredImage?.data?.attributes,
+    category: p?.attributes?.category?.data?.attributes,
   })) || [];
 
   // Loading state
@@ -124,10 +124,14 @@ const NewsPost = () => {
               <div className="flex items-center gap-2">
                 <span className="font-medium">By {post.author || 'JOOF Foundation'}</span>
               </div>
-              <span>•</span>
-              <time dateTime={post.publishedAt}>
-                {formatStrapiDate(post.publishedAt)}
-              </time>
+              {post.publishedAt && (
+                <>
+                  <span>•</span>
+                  <time dateTime={post.publishedAt}>
+                    {formatStrapiDate(post.publishedAt)}
+                  </time>
+                </>
+              )}
               {post.readTime && (
                 <>
                   <span>•</span>

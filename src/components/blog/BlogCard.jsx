@@ -30,12 +30,12 @@ const BlogCard = ({ post, index = 0 }) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
     >
-      <Link to={`/news/${post.slug}`} className="block">
+      <Link to={`/news/${post?.slug || '#'}`} className="block">
         {/* Featured Image */}
         <div className="relative h-56 overflow-hidden bg-gray-200">
           <img
             src={imageUrl}
-            alt={post.title}
+            alt={post?.title || 'Blog post'}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
@@ -50,27 +50,33 @@ const BlogCard = ({ post, index = 0 }) => {
         {/* Content */}
         <div className="p-6">
           {/* Meta Info */}
-          <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
-            <time dateTime={post.publishedAt}>
-              {formatStrapiDate(post.publishedAt)}
-            </time>
-            {post.readTime && (
-              <>
-                <span>•</span>
+          {(post?.publishedAt || post?.readTime) && (
+            <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
+              {post.publishedAt && (
+                <time dateTime={post.publishedAt}>
+                  {formatStrapiDate(post.publishedAt)}
+                </time>
+              )}
+              {post.publishedAt && post.readTime && <span>•</span>}
+              {post.readTime && (
                 <span>{post.readTime} min read</span>
-              </>
-            )}
-          </div>
+              )}
+            </div>
+          )}
 
           {/* Title */}
-          <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-teal-600 transition-colors">
-            {post.title}
-          </h3>
+          {post?.title && (
+            <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-teal-600 transition-colors">
+              {post.title}
+            </h3>
+          )}
 
           {/* Excerpt */}
-          <p className="text-gray-600 line-clamp-3 mb-4">
-            {post.excerpt}
-          </p>
+          {post?.excerpt && (
+            <p className="text-gray-600 line-clamp-3 mb-4">
+              {post.excerpt}
+            </p>
+          )}
 
           {/* Read More Link */}
           <div className="flex items-center text-teal-600 font-semibold group-hover:text-teal-700 transition-colors">

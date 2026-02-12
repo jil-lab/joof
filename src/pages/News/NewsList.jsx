@@ -19,10 +19,10 @@ const NewsList = () => {
 
   // Extract blog posts and pagination meta
   const blogPosts = data?.data?.map(post => ({
-    id: post.id,
-    ...post.attributes,
-    featuredImage: post.attributes.featuredImage?.data?.attributes,
-    category: post.attributes.category?.data?.attributes,
+    id: post?.id,
+    ...post?.attributes,
+    featuredImage: post?.attributes?.featuredImage?.data?.attributes,
+    category: post?.attributes?.category?.data?.attributes,
   })) || [];
 
   const pagination = data?.meta?.pagination || {
