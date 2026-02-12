@@ -7,15 +7,19 @@ import { getStrapiImageUrl } from '../../utils/formatters';
 const Team = () => {
   const { data, isLoading, error } = useTeamMembers();
 
-  // Extract and format team members data from Strapi
-  const teamMembers = data?.data?.map(member => ({
-    id: member.id,
-    name: member.name || 'Unknown',
-    role: member.role || 'Team Member',
-    bio: member.bio || '',
-    linkedin: member.linkedin || '#',
-    image: member.photo ? getStrapiImageUrl(member.photo) : null,
-  })) || [];
+  // Extract and format team members data from Strapi v5
+  const teamMembers = data?.data?.map(member => {
+    if (!member) return null;
+
+    return {
+      id: member.id || Date.now(),
+      name: member.name || 'Unknown',
+      role: member.role || 'Team Member',
+      bio: member.bio || '',
+      linkedin: member.linkedin || '#',
+      image: member.photo ? getStrapiImageUrl(member.photo) : null,
+    };
+  }).filter(Boolean) || [];
 
   return (
     <div className="min-h-screen">
@@ -42,7 +46,7 @@ const Team = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.1 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">

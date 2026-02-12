@@ -4,11 +4,17 @@ import { useState } from 'react';
 
 const TeamMemberCard = ({ member, index = 0 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Handle null/undefined member gracefully
+  if (!member) {
+    return null;
+  }
+
   const BIO_CHAR_LIMIT = 500;
   const shouldTruncate = member.bio && member.bio.length > BIO_CHAR_LIMIT;
   const displayBio = shouldTruncate && !isExpanded
     ? `${member.bio.substring(0, BIO_CHAR_LIMIT)}...`
-    : member.bio;
+    : member.bio || '';
 
   return (
     <motion.div
@@ -21,13 +27,13 @@ const TeamMemberCard = ({ member, index = 0 }) => {
       {/* Image Container */}
       <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
         <img
-          src={member.image}
-          alt={member.name}
+          src={member.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'Team Member')}&size=400&background=0d9488&color=ffffff&bold=true`}
+          alt={member.name || 'Team Member'}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
           onError={(e) => {
             // Fallback for missing images
-            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=400&background=0d9488&color=ffffff&bold=true`;
+            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'Team Member')}&size=400&background=0d9488&color=ffffff&bold=true`;
           }}
         />
         {/* LinkedIn Overlay */}
@@ -47,14 +53,16 @@ const TeamMemberCard = ({ member, index = 0 }) => {
       {/* Content */}
       <div className="p-6">
         <h3 className="text-xl font-semibold text-gray-900 mb-1">
-          {member.name}
+          {member.name || 'Team Member'}
         </h3>
         <p className="text-teal-600 font-medium mb-3">
-          {member.role}
+          {member.role || 'Team Member'}
         </p>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          {displayBio}
-        </p>
+        {displayBio && (
+          <p className="text-gray-600 text-sm leading-relaxed">
+            {displayBio}
+          </p>
+        )}
         {shouldTruncate && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
