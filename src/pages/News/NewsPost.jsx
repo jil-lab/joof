@@ -10,12 +10,19 @@ const NewsPost = () => {
   const { slug } = useParams();
   const { data: postData, isLoading, error } = useBlogPostBySlug(slug);
 
-  // Extract post data
+  // Extract post data (Strapi v5 format - data is not nested under attributes)
   const post = postData ? {
     id: postData?.id,
-    ...postData?.attributes,
-    featuredImage: postData?.attributes?.featuredImage?.data?.attributes,
-    category: postData?.attributes?.category?.data?.attributes,
+    title: postData?.title,
+    slug: postData?.slug,
+    content: postData?.content,
+    excerpt: postData?.excerpt,
+    author: postData?.author,
+    publishedAt: postData?.publishedAt,
+    readTime: postData?.readTime,
+    tags: postData?.tags,
+    featuredImage: postData?.featuredImage,
+    category: postData?.category,
   } : null;
 
   // Fetch related posts
@@ -25,11 +32,16 @@ const NewsPost = () => {
     3
   );
 
+  // Transform related posts data (Strapi v5 format)
   const relatedPosts = relatedData?.data?.map(p => ({
     id: p?.id,
-    ...p?.attributes,
-    featuredImage: p?.attributes?.featuredImage?.data?.attributes,
-    category: p?.attributes?.category?.data?.attributes,
+    title: p?.title,
+    slug: p?.slug,
+    excerpt: p?.excerpt,
+    publishedAt: p?.publishedAt,
+    readTime: p?.readTime,
+    featuredImage: p?.featuredImage,
+    category: p?.category,
   })) || [];
 
   // Loading state
@@ -120,7 +132,7 @@ const NewsPost = () => {
             </h1>
 
             {/* Meta Info */}
-            <div className="flex flex-wrap items-center gap-4 text-gray-300">
+            <div className="flex flex-wrap items-center gap-4 text-gray-300 mb-6">
               <div className="flex items-center gap-2">
                 <span className="font-medium">By {post.author || 'JOOF Foundation'}</span>
               </div>
@@ -139,6 +151,13 @@ const NewsPost = () => {
                 </>
               )}
             </div>
+
+            {/* Excerpt in Hero */}
+            {post.excerpt && (
+              <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-3xl">
+                {post.excerpt}
+              </p>
+            )}
           </motion.div>
         </div>
       </div>
@@ -150,25 +169,8 @@ const NewsPost = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="prose prose-lg max-w-none"
           >
-            {/* Featured Image (if available) */}
-            {imageUrl && (
-              <div className="mb-12 rounded-lg overflow-hidden shadow-xl">
-                <img
-                  src={imageUrl}
-                  alt={post.title}
-                  className="w-full h-auto"
-                />
-              </div>
-            )}
-
-            {/* Excerpt */}
-            {post.excerpt && (
-              <div className="text-xl text-gray-700 leading-relaxed mb-8 pb-8 border-b border-gray-200 italic">
-                {post.excerpt}
-              </div>
-            )}
-
             {/* Rich Text Content */}
             <RichTextRenderer content={post.content} />
 

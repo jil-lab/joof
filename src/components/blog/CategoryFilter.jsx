@@ -4,10 +4,13 @@ import { useCategories } from '../../hooks/useApi';
 const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
   const { data: categoriesData, isLoading } = useCategories();
 
-  // Extract categories from Strapi response
+  // Extract categories from Strapi v5 response (data is not nested under attributes)
   const categories = categoriesData?.data?.map(cat => ({
     id: cat?.id,
-    ...cat?.attributes,
+    name: cat?.name,
+    slug: cat?.slug,
+    icon: cat?.icon,
+    color: cat?.color,
   })) || [];
 
   if (isLoading) {

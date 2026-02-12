@@ -17,12 +17,16 @@ const NewsList = () => {
     category: selectedCategory,
   });
 
-  // Extract blog posts and pagination meta
+  // Extract blog posts and pagination meta (Strapi v5 format - data is not nested)
   const blogPosts = data?.data?.map(post => ({
     id: post?.id,
-    ...post?.attributes,
-    featuredImage: post?.attributes?.featuredImage?.data?.attributes,
-    category: post?.attributes?.category?.data?.attributes,
+    title: post?.title,
+    slug: post?.slug,
+    excerpt: post?.excerpt,
+    publishedAt: post?.publishedAt,
+    readTime: post?.readTime,
+    featuredImage: post?.featuredImage,
+    category: post?.category,
   })) || [];
 
   const pagination = data?.meta?.pagination || {
