@@ -202,7 +202,7 @@ export const CORE_VALUES = [
 
 // Mission & Vision
 export const MISSION_VISION = {
-  mission: 'To provide accessible healthcare services and quality education opportunities to underserved communities, empowering individuals to reach their full potential and build brighter futures.',
+  mission: 'To honour the legacy of Dr. John Oyediran Olabisi by expanding access to quality healthcare, education, and community development for underserved families in Iwajowa Local Government Area and across Nigeria.',
   vision: 'A Nigeria where every individual, regardless of their background, has access to quality healthcare and education, enabling them to thrive and contribute meaningfully to society.',
   tagline: 'For a Brighter Future',
 };

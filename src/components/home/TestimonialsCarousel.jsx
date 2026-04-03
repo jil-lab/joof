@@ -2,8 +2,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { FaQuoteLeft } from 'react-icons/fa';
 import Section from '../common/Section';
-import { useTestimonials } from '../../hooks/useApi';
-import { TESTIMONIALS } from '../../utils/constants';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -31,10 +29,7 @@ const TestimonialCard = ({ quote, author, role, location }) => {
 };
 
 const TestimonialsCarousel = () => {
-  const { data: strapiData, isLoading } = useTestimonials();
-
-  // Default testimonials
-  const defaultTestimonials = [
+  const testimonials = [
     {
       quote:
         "The JOOF Foundation's healthcare program changed our lives. When my wife was in labor, they provided the medical support we desperately needed. Our family is forever grateful for their compassion and care.",
@@ -57,16 +52,6 @@ const TestimonialsCarousel = () => {
       location: 'Enugu, Nigeria',
     },
   ];
-
-  // Use Strapi data if available, otherwise fallback to default
-  const testimonials = strapiData?.data?.length > 0
-    ? strapiData.data.map(t => ({
-        quote: t.quote,
-        author: t.author,
-        role: '', // Strapi doesn't have role field
-        location: t.location || '',
-      }))
-    : defaultTestimonials;
 
   return (
     <Section

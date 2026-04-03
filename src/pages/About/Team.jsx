@@ -1,26 +1,51 @@
 import { motion } from 'framer-motion';
 import Section from '../../components/common/Section/Section';
 import TeamGrid from '../../components/about/TeamGrid';
-import { useTeamMembers } from '../../hooks/useApi';
-import { getStrapiImageUrl } from '../../utils/formatters';
+
+const TEAM_MEMBERS = [
+  {
+    id: 1,
+    name: 'Deaconess Bolanle Adekunbi Olabisi',
+    role: 'Chairperson',
+    bio: 'Deaconess Bolanle Adekunbi Olabisi is the wife of Late Deacon Dr John Oyediran Olabisi and the Chairperson of the Trustees. She was born on May  23, 1952 at Oyo, Oyo State, Nigeria. She attended Oliver Baptist High School, Oyo from 1966 to 1970. She obtained her B. Sc. Education and M.Sc  Adult Education degrees from the University of Ife( now Obafemi Awolowo University)in 1976 and the University of Edinburgh, Scotland in 1983 respectively. She retired voluntarily as the pioneer Principal of Oritamefa Baptist Model School, Ibadan in 2007. She is currently the Administrator of Highland Specialist Hospital, Yemetu Ibadan.',
+    linkedin: '#',
+    image: '/images/team/member1.png',
+  },
+  {
+    id: 2,
+    name: 'DR. Mrs. Taiwo Olufunmilola Agbaje',
+    role: '',
+    bio: 'Taiwo Oluwafunmilola Agbaje (nee Olabisi) works as a medical practitioner offering clinical and public health services to government and private establishments. She also serves as the Medical Director (Admin) of Highland Specialist Hospital, Ibadan. Dr. Agbaje obtained a MPH (Management & Leadership) from the University OF Sheffield, UK and a medical degree (MBBS) from LAUTECH Ogbomoso, Nigeria.  She is married with children.',
+    linkedin: '#',
+    image: '/images/team/member2.png',
+  },
+  {
+    id: 3,
+    name: 'Mrs. Adetola Grace Amure',
+    role: '',
+    bio: 'Detola Amure is a dynamic leader who combines over 20 years of corporate and business experience with her expertise in leadership, productivity, and emotional well-being to drive transformative results. \n As the CEO of The Productivity Company, she helps teams and organisations unlock productivity, confidence, and leadership by overcoming hidden emotional and mindset barriers. She is also the Founder of Super Working Mum (SWM), a faith-based organization that equips working mothers with the tools to maximize their time and achieve their biggest dreams. \n A Certified Maxwell Leadership Coach, Speaker & Trainer, and Certified Maxwell DISC Behavioral Consultant, Detola is passionate about fostering thriving cultures and impactful leadership. She also serves as a Certified Grief Specialist, offering invaluable support to individuals navigating the complexities of grief. \n Her commitment to service extends beyond coaching and leadership. She believes that true impact comes from bridging the gap between vision and action, and she is committed to helping drive meaningful change. \n Detola is also an international speaker, co-host of the When Life Stops podcast, and the author of four books, making her a sought-after voice for inspiration and transformation. Additionally, she is the compassionate Founder and Director of the My Little Warrior Child Foundation, which provides support to bereaved parents. \n She lives in the UK with her husband and children.',
+    linkedin: '#',
+    image: '/images/team/member4.png',
+  },
+  {
+    id: 4,
+    name: 'Dr. Johnson Oladiran Olabisi',
+    role: '',
+    bio: 'Dr. Johnson Oladiran Olabisi works as a physician offering clinical & occupational health services to government and private establishments. He also serves as the CEO of Highland Specialist Hospital, Ibadan. Dr Olabisi obtained a fellowship in Community Medicine with the West African College of Physicians, a MPH (Health Economics) from the LSHTM, a MSc in Epidemiology & medical statistics and a medical degree (MBBS) both from the University of Ibadan, Nigeria. He is married with children.',
+    linkedin: '#',
+    image: '/images/team/member3.png',
+  },
+  {
+    id: 5,
+    name: 'Dr. Mrs. Oyebola Okunogbe',
+    role: '',
+    bio: 'Oyebola Okunogbe is the daughter of late Dr John Oyediran Olabisi and Mrs Bolanle Olabisi. She works as an economist in an international organization where she conducts research on public finance, nation building, education, employment and gender in low and middle income countries.  Oyebola obtained her PhD in Public Policy and MPA in International Development from Harvard University, and her B.A. in Economics from Dartmouth College. She is married with children.',
+    linkedin: '#',
+    image: '/images/team/member5.png',
+  },
+];
 
 const Team = () => {
-  const { data, isLoading, error } = useTeamMembers();
-
-  // Extract and format team members data from Strapi v5
-  const teamMembers = data?.data?.map(member => {
-    if (!member) return null;
-
-    return {
-      id: member.id || Date.now(),
-      name: member.name || 'Unknown',
-      role: member.role || 'Team Member',
-      bio: member.bio || '',
-      linkedin: member.linkedin || '#',
-      image: member.photo ? getStrapiImageUrl(member.photo) : null,
-    };
-  }).filter(Boolean) || [];
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -61,29 +86,7 @@ const Team = () => {
           </p>
         </motion.div>
 
-        {/* Team Grid */}
-        {isLoading && (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-teal-500 border-t-transparent"></div>
-            <p className="mt-4 text-gray-600">Loading team members...</p>
-          </div>
-        )}
-
-        {error && (
-          <div className="text-center py-12">
-            <p className="text-red-600">Error loading team members. Please try again later.</p>
-          </div>
-        )}
-
-        {!isLoading && !error && teamMembers.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-600">No team members found. Please add team members in Strapi.</p>
-          </div>
-        )}
-
-        {!isLoading && !error && teamMembers.length > 0 && (
-          <TeamGrid members={teamMembers} />
-        )}
+        <TeamGrid members={TEAM_MEMBERS} />
       </Section>
 
       {/* Join Our Team CTA */}

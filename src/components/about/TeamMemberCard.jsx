@@ -10,10 +10,14 @@ const TeamMemberCard = ({ member, index = 0 }) => {
     return null;
   }
 
-  const BIO_CHAR_LIMIT = 500;
-  const shouldTruncate = member.bio && member.bio.length > BIO_CHAR_LIMIT;
+  const getTruncationIndex = (bio) => {
+    const firstNewline = bio.indexOf('\n');
+    const firstParagraphEnd = firstNewline !== -1 ? firstNewline : Infinity;
+    return Math.min(200, firstParagraphEnd);
+  };
+  const shouldTruncate = member.bio && member.bio.length > getTruncationIndex(member.bio);
   const displayBio = shouldTruncate && !isExpanded
-    ? `${member.bio.substring(0, BIO_CHAR_LIMIT)}...`
+    ? `${member.bio.substring(0, getTruncationIndex(member.bio))}...`
     : member.bio || '';
 
   return (
