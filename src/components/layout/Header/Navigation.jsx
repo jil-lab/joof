@@ -24,7 +24,7 @@ const menuItems = [
       { label: 'Community', path: '/programs/community' },
     ],
   },
-  { label: 'News', path: '/news' },
+  // { label: 'News', path: '/news' },
   { label: 'Contact', path: '/contact' },
 ];
 
