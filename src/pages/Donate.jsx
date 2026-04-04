@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import PageHero from '../components/common/PageHero/PageHero';
 
 const Donate = () => {
   const stats = [
@@ -9,22 +10,10 @@ const Donate = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-teal-700 text-white py-20">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-5 leading-tight">Support Our Mission</h1>
-            <p className="text-lg text-teal-100 leading-relaxed">
-              Your contribution helps us bring healthcare and education to communities across Nigeria.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title="Support Our Mission"
+        subtitle="Your contribution helps us bring healthcare and education to communities across Nigeria."
+      />
 
       {/* Stats */}
       <section className="border-b border-gray-100">
@@ -89,7 +78,7 @@ const Donate = () => {
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-amber-50 border border-amber-100 rounded-xl">
+            {/* <div className="mt-6 p-4 bg-amber-50 border border-amber-100 rounded-xl">
               <p className="text-sm text-gray-600 text-center">
                 <strong className="text-gray-900">Note:</strong> After making your donation, please email us at{' '}
                 <a href="mailto:joofoundationhub@gmail.com" className="text-teal-600 hover:underline font-medium">
@@ -97,7 +86,7 @@ const Donate = () => {
                 </a>{' '}
                 with your transfer details so we can acknowledge your generous contribution.
               </p>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </section>
