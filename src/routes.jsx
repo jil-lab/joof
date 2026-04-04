@@ -6,6 +6,7 @@ import Home from './pages/Home';
 // Lazy load other pages for better performance
 const About = lazy(() => import('./pages/About/About'));
 const Team = lazy(() => import('./pages/About/Team'));
+const Reports = lazy(() => import('./pages/About/Reports'));
 const Programs = lazy(() => import('./pages/Programs/Programs'));
 const Healthcare = lazy(() => import('./pages/Programs/Healthcare'));
 const Education = lazy(() => import('./pages/Programs/Education'));
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
           {
             path: 'team',
             element: withSuspense(Team),
+          },
+          {
+            path: 'reports',
+            element: withSuspense(Reports),
           },
         ],
       },
