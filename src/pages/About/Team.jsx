@@ -59,9 +59,9 @@ const Team = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Meet Our Team
           </h1>
-          <p className="text-xl md:text-2xl text-teal-50 leading-relaxed">
+          {/* <p className="text-xl md:text-2xl text-teal-50 leading-relaxed">
             Dedicated individuals working together to transform lives and build brighter futures
-          </p>
+          </p> */}
         </motion.div>
       </Section>
 
