@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaHeartbeat, FaGraduationCap } from 'react-icons/fa';
+import { FaHeartbeat, FaGraduationCap, FaUsers } from 'react-icons/fa';
 import Section from '../common/Section';
 
 const DualFocus = () => {
@@ -9,8 +9,12 @@ const DualFocus = () => {
       title: 'Healthcare',
       icon: FaHeartbeat,
       description:
-        'Providing essential medical services, maternal and child health support, surgical interventions, and preventative care to underserved communities.',
-      stats: ['1,651 Medical Care Recipients', '29 Deliveries', '15 Surgeries'],
+        'Good health should never be a privilege. We carry forward Dr. Olabisi\'s lifelong mission of mercy by supporting specialist hospital care in Iganna, bringing skilled medical services, maternal care, and surgical support to communities that have gone without for too long.',
+      stats: [
+        'General & Specialist Outpatient Care',
+        'Maternal Health & Safe Deliveries',
+        'Surgical Procedures & Emergency Care',
+      ],
       link: '/programs/healthcare',
       color: 'teal',
       gradient: 'from-teal-600 via-teal-700 to-teal-800',
@@ -21,17 +25,33 @@ const DualFocus = () => {
       title: 'Education',
       icon: FaGraduationCap,
       description:
-        'Empowering youth through scholarships, learning resources, mentorship programs, and school support to unlock their full potential.',
+        'Every child deserves the chance to learn, grow, and become. We open doors for young people across Oyo State, providing scholarships, emergency grants, and mentorship so that financial hardship never has the final say over a bright future.',
       stats: [
-        'Scholarship Programs',
-        'Learning Resources',
-        'Mentorship Support',
+        'Scholarship Support for secondary & tertiary students',
+        'Bursary Grants for students at risk of dropping out',
+        'Mentorship Programmes with accomplished professionals',
       ],
       link: '/programs/education',
       color: 'yellow',
       gradient: 'from-yellow-400 to-yellow-500',
       image: '/images/programs/education-hero.jpg',
       fallback: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop',
+    },
+    {
+      title: 'Community',
+      icon: FaUsers,
+      description:
+        'We never forget where we come from. Just as Dr. Olabisi remained rooted in Iganna long after his greatest achievements, we pour back into the communities that shaped us, strengthening the social bonds that allow healthcare, education, and human dignity to truly take root.',
+      stats: [
+        'Community Health Outreach',
+        'Youth Development',
+        'Infrastructure and Environment',
+      ],
+      link: '/programs/community',
+      color: 'blue',
+      gradient: 'from-blue-500 via-blue-600 to-blue-700',
+      image: '/images/programs/community-hero.jpg',
+      fallback: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop',
     },
   ];
 
@@ -42,7 +62,7 @@ const DualFocus = () => {
       backgroundColor="gray"
       padding="normal"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {focuses.map((focus, index) => {
           const Icon = focus.icon;
           return (
@@ -129,6 +149,34 @@ const DualFocus = () => {
           );
         })}
       </div>
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="text-center mt-12"
+      >
+        <a
+          href="/programs"
+          className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white font-medium rounded-lg hover:bg-teal-600 transition-colors duration-300 shadow-md hover:shadow-lg"
+        >
+          Explore All Our Programs
+          <svg
+            className="w-5 h-5 ml-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </a>
+      </motion.div>
     </Section>
   );
 };

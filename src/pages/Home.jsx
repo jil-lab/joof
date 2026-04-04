@@ -13,8 +13,8 @@ const Home = () => {
       <MissionSection />
       <DualFocus />
       <ImpactStats />
-      <ImpactGallery />
-      <TestimonialsCarousel />
+      {/* <ImpactGallery /> */}
+      {/* <TestimonialsCarousel /> */}
       <Newsletter />
     </div>
   );

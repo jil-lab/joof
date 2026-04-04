@@ -1,74 +1,65 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import ProgramHero from '../../components/programs/ProgramHero';
 import Section from '../../components/common/Section/Section';
 import Button from '../../components/common/Button/Button';
-import { PROGRAMS } from '../../utils/constants';
-import { useProgramsByType } from '../../hooks/useApi';
-import { getStrapiImageUrl } from '../../utils/formatters';
+
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1600&q=80';
+
+const INITIATIVES = [
+  {
+    title: 'Community Health Outreach',
+    description:
+      'Organising free medical outreach programmes, screenings, and health education workshops in Iganna and surrounding towns.',
+    image:
+      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
+    alt: 'Healthcare workers conducting a community outreach programme',
+  },
+  {
+    title: 'Youth Development',
+    description:
+      'Creating opportunities for young students to learn, lead, and contribute meaningfully to their communities.',
+    image:
+      'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80',
+    alt: 'Young students engaged in a learning session',
+  },
+  {
+    title: 'Infrastructure and Environment',
+    description:
+      'Partnering with local stakeholders to improve basic community infrastructure and the living environment where possible.',
+    image:
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+    alt: 'Community infrastructure development project',
+  },
+];
 
 const Community = () => {
-  const { data: strapiData, isLoading } = useProgramsByType('community');
-
-  // Get program from Strapi or fallback to constants
-  const defaultProgram = PROGRAMS.find(p => p.slug === 'community');
-  const strapiProgram = strapiData?.data?.[0];
-
-  const program = strapiProgram
-    ? {
-        ...defaultProgram,
-        title: strapiProgram.title,
-        description: strapiProgram.description,
-        shortDescription: strapiProgram.shortDescription,
-        image: strapiProgram.images?.[0] ? getStrapiImageUrl(strapiProgram.images[0]) : defaultProgram.image,
-      }
-    : defaultProgram;
-
-  if (!program) return null;
-
   return (
     <div>
       {/* Hero Section */}
-      <ProgramHero
-        title={program.title}
-        description={program.description}
-        image={program.image}
-        icon={program.icon}
-      />
-
-      {/* Impact Stats */}
-      <Section className="py-16 md:py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Our Community Impact
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Building stronger, more resilient communities together
+      <div className="relative h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-teal-700 to-teal-900">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 to-teal-700/80" />
+        <div className="relative h-full container-custom flex flex-col justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Community
+            </h1>
+            <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
+              Community is not a word we use lightly. It is the heartbeat of everything we do.
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {program.stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-card p-8 text-center shadow-card hover:shadow-card-hover transition-shadow"
-              >
-                <div className="text-5xl mb-4">{stat.icon}</div>
-                <div className="text-4xl md:text-5xl font-bold text-teal-600 mb-2">
-                  {stat.number.toLocaleString()}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
+          </motion.div>
         </div>
-      </Section>
+      </div>
 
-      {/* Community Outreach - Image + Text */}
+      {/* Introduction */}
       <Section className="py-16 md:py-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -78,35 +69,23 @@ const Community = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-2xl">
-                  🤝
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900">Community Outreach</h3>
-              </div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                We believe in meeting communities where they are. Our regular outreach programs bring
-                essential services, support, and hope directly to rural and underserved areas. We listen,
-                understand, and respond to the unique needs of each community.
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Rooted in Community
+              </h2>
+              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
+                Dr. John Oyediran Olabisi never forgot where he came from. Despite his
+                accomplishments — his fellowships, his hospital, his public service career — he
+                remained rooted in Iganna, in his people, and in the belief that a great man's
+                first responsibility is to his community. He served as General Secretary of the
+                League of Iganna Patriots. He showed up. He gave back. He brought people together.
               </p>
-              <ul className="space-y-3 text-gray-700 mb-6">
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Regular visits to 8 communities across Nigeria</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Distribution of essential supplies and resources</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Needs assessment and community engagement</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Partnerships with local leaders and organizations</span>
-                </li>
-              </ul>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                At the John Oyediran Olabisi Foundation, community is not a word we use lightly.
+                It is the heartbeat of everything we do. We recognise that healthcare and education
+                do not exist in isolation — they thrive or fail depending on the social, economic,
+                and spiritual health of the communities around them. That is why community
+                development is one of JOOF's core pillars.
+              </p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -117,8 +96,8 @@ const Community = () => {
             >
               <div className="aspect-[4/3] rounded-card overflow-hidden shadow-2xl">
                 <img
-                  src="/images/programs/community-outreach.jpg"
-                  alt="Community outreach program in action"
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80"
+                  alt="Community members gathered together"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -129,7 +108,7 @@ const Community = () => {
         </div>
       </Section>
 
-      {/* Skills Development - Image + Text (Reversed) */}
+      {/* Our Approach */}
       <Section className="py-16 md:py-20 bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -143,16 +122,16 @@ const Community = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square rounded-card overflow-hidden shadow-lg">
                   <img
-                    src="/images/programs/skills-training-1.jpg"
-                    alt="Vocational skills training session"
+                    src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80"
+                    alt="Community members working together"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
                 </div>
                 <div className="aspect-square rounded-card overflow-hidden shadow-lg mt-8">
                   <img
-                    src="/images/programs/skills-training-2.jpg"
-                    alt="Community members learning new skills"
+                    src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=600&q=80"
+                    alt="Local community engagement"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
@@ -166,44 +145,34 @@ const Community = () => {
               transition={{ duration: 0.6 }}
               className="lg:order-2"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-2xl">
-                  🛠️
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900">Skills Development</h3>
-              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Our Approach to Community
+              </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Economic empowerment starts with marketable skills. We provide vocational training programs
-                that equip community members with practical skills to start businesses, secure employment,
-                and achieve financial independence.
+                JOOF takes a holistic approach to community development — working not just to
+                address immediate needs, but to build the long-term resilience and wellbeing of
+                the communities we serve. We engage community members as active partners, not
+                passive recipients.
               </p>
               <div className="space-y-4">
-                <div className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                  <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl">✂️</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-1">Tailoring & Fashion Design</h4>
-                    <p className="text-gray-600 text-sm">Training in garment making and fashion entrepreneurship</p>
-                  </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-1 h-full min-h-[40px] bg-teal-500 rounded-full flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    We listen before we act, ensuring our programmes reflect genuine community needs.
+                  </p>
                 </div>
-                <div className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                  <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl">💇</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-1">Beauty & Cosmetology</h4>
-                    <p className="text-gray-600 text-sm">Professional beauty skills and salon management</p>
-                  </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-1 h-full min-h-[40px] bg-teal-500 rounded-full flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    We work alongside local leaders, organisations, and families to design and
+                    deliver meaningful programmes.
+                  </p>
                 </div>
-                <div className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                  <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl">🔧</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-1">Technical & Repair Skills</h4>
-                    <p className="text-gray-600 text-sm">Electronics repair, carpentry, and other technical trades</p>
-                  </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-1 h-full min-h-[40px] bg-teal-500 rounded-full flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">
+                    We invest in long-term resilience, not just short-term relief.
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -211,8 +180,54 @@ const Community = () => {
         </div>
       </Section>
 
-      {/* Food Security - Image + Text */}
+      {/* Key Community Initiatives */}
       <Section className="py-16 md:py-20">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Key Community Initiatives
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Focused programmes that address the most pressing needs in the communities we serve.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {INITIATIVES.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-card shadow-card hover:shadow-card-hover transition-shadow overflow-hidden"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* The Iganna Community */}
+      <Section className="py-16 md:py-20 bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -221,43 +236,88 @@ const Community = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-2xl">
-                  🌾
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900">Food Security</h3>
-              </div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                No one should go hungry. Our food security programs provide immediate relief through
-                emergency food distribution while promoting long-term sustainability through agricultural
-                support, training, and resources to help communities become self-sufficient.
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                The Iganna Community
+              </h2>
+              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
+                Iganna holds a special place in JOOF's work. It is the ancestral home of
+                Dr. Olabisi, a royal kingdom with a rich heritage and a warm, resilient people.
+                It is also a community that has, for too long, been underserved in terms of
+                health and economic infrastructure.
               </p>
-              <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-lg mb-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="text-3xl font-bold text-teal-700 mb-1">500+</div>
-                    <div className="text-sm text-gray-700">Families Fed</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-teal-700 mb-1">50</div>
-                    <div className="text-sm text-gray-700">Farmers Trained</div>
-                  </div>
+              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
+                JOOF's investment in Iganna is both an act of love and a practical commitment to
+                sustainable development.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                By establishing the specialist hospital in Iganna, JOOF is already reshaping the
+                community's access to healthcare. But we do not stop there. We seek to support
+                the full flourishing of Iganna — in its schools, its homes, its economic life,
+                and its future.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="grid grid-cols-2 gap-4">
+                <div className="aspect-[3/4] rounded-card overflow-hidden shadow-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
+                    alt="Rural community in Nigeria"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="aspect-[3/4] rounded-card overflow-hidden shadow-lg mt-8">
+                  <img
+                    src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80"
+                    alt="Community life and heritage in West Africa"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
                 </div>
               </div>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-gray-700">
-                  <span className="text-teal-600">🍚</span>
-                  <span>Emergency food relief distribution</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-700">
-                  <span className="text-teal-600">🌱</span>
-                  <span>Agricultural training and resources</span>
-                </div>
-                <div className="flex items-center gap-3 text-gray-700">
-                  <span className="text-teal-600">🚜</span>
-                  <span>Farming equipment and seedlings</span>
-                </div>
-              </div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-teal-400 to-teal-600 rounded-card opacity-20 -z-10" />
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Partner With Our Community */}
+      <Section className="py-16 md:py-20 bg-gradient-to-br from-teal-700 to-teal-900">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Partner With Our Community
+              </h2>
+              <p className="text-lg text-gray-100 mb-5 leading-relaxed">
+                We warmly invite organisations, diaspora groups, individuals, and faith communities
+                to join us in our community work. There is room for everyone at the table —
+                whether you want to fund a programme, volunteer your skills, donate supplies, or
+                simply raise awareness.
+              </p>
+              <p className="text-lg text-gray-100 mb-8 leading-relaxed">
+                When communities come together, extraordinary things happen.
+              </p>
+              <blockquote className="border-l-4 border-teal-300 pl-6">
+                <p className="text-xl text-white font-medium italic leading-relaxed">
+                  "Many drops make an ocean. Whatever you are able to give, it matters — and
+                  together, we build something lasting."
+                </p>
+                <footer className="mt-3 text-teal-200 text-sm">
+                  — Founding conviction of JOOF
+                </footer>
+              </blockquote>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -268,209 +328,13 @@ const Community = () => {
             >
               <div className="aspect-[4/3] rounded-card overflow-hidden shadow-2xl">
                 <img
-                  src="/images/programs/food-security.jpg"
-                  alt="Food distribution and agricultural support"
+                  src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80"
+                  alt="Volunteers and community partners working together"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-card opacity-20 -z-10" />
             </motion.div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Infrastructure Projects - Full Width Section */}
-      <Section className="py-16 md:py-20 bg-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img
-            src="/images/programs/infrastructure-bg.jpg"
-            alt="Community infrastructure development"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/95 to-teal-800/90" />
-        <div className="container-custom relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center text-white mb-12"
-          >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-lg flex items-center justify-center text-2xl">
-                🏗️
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold">Infrastructure Development</h3>
-            </div>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Building the foundations for thriving communities through essential infrastructure projects
-              that improve quality of life and create opportunities for growth.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/10 backdrop-blur-sm rounded-card p-8 border border-white/20"
-            >
-              <div className="aspect-video rounded-lg overflow-hidden mb-6 shadow-lg">
-                <img
-                  src="/images/programs/water-project.jpg"
-                  alt="Water well construction project"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="text-4xl mb-4">💧</div>
-              <h4 className="text-xl font-bold text-white mb-3">Clean Water Access</h4>
-              <p className="text-gray-200">
-                Building wells and water systems to provide clean, safe drinking water to communities
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/10 backdrop-blur-sm rounded-card p-8 border border-white/20"
-            >
-              <div className="aspect-video rounded-lg overflow-hidden mb-6 shadow-lg">
-                <img
-                  src="/images/programs/community-center.jpg"
-                  alt="Community center construction"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="text-4xl mb-4">🏘️</div>
-              <h4 className="text-xl font-bold text-white mb-3">Community Centers</h4>
-              <p className="text-gray-200">
-                Creating gathering spaces for education, training, and community activities
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white/10 backdrop-blur-sm rounded-card p-8 border border-white/20"
-            >
-              <div className="aspect-video rounded-lg overflow-hidden mb-6 shadow-lg">
-                <img
-                  src="/images/programs/sanitation-project.jpg"
-                  alt="Sanitation facility improvement"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="text-4xl mb-4">🚿</div>
-              <h4 className="text-xl font-bold text-white mb-3">Sanitation Facilities</h4>
-              <p className="text-gray-200">
-                Improving hygiene and health through proper sanitation infrastructure
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Community Testimonial */}
-      <Section className="py-16 md:py-20 bg-gradient-to-br from-teal-600 to-teal-800">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto"
-          >
-            <div className="text-center mb-8">
-              <div className="text-6xl mb-4">🌟</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Community Voice
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div className="aspect-[3/4] rounded-card overflow-hidden shadow-2xl">
-                <img
-                  src="/images/testimonials/samuel.jpg"
-                  alt="Elder Samuel Okafor - Community Leader"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-card p-8 md:p-10 border border-white/20">
-                <blockquote className="text-xl md:text-2xl text-white mb-6 italic leading-relaxed">
-                  "The community outreach programs brought hope and practical support to our village. JOOF Foundation truly cares about making a difference."
-                </blockquote>
-                <div className="border-t border-white/20 pt-6">
-                  <p className="font-bold text-white text-xl mb-1">Elder Samuel Okafor</p>
-                  <p className="text-gray-200 mb-4">Community Leader • Village Elder</p>
-                  <div className="flex items-center gap-2 text-yellow-400">
-                    <span>🤝</span>
-                    <span className="text-sm font-medium">Partnership since 2018</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* Impact Statement */}
-      <Section className="py-16 md:py-20">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="text-6xl mb-6">🌍</div>
-            <blockquote className="text-2xl md:text-3xl font-medium text-gray-800 mb-8">
-              {program.impact}
-            </blockquote>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* Photo Gallery */}
-      <Section className="py-16 md:py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Our Work in Action
-            </h2>
-            <p className="text-lg text-gray-600">
-              See the impact of our community programs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {program.gallery.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="aspect-video rounded-card overflow-hidden shadow-card hover:shadow-card-hover transition-shadow"
-              >
-                <img
-                  src={image}
-                  alt={`Community program ${index + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-              </motion.div>
-            ))}
           </div>
         </div>
       </Section>

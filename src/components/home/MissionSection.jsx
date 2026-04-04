@@ -19,40 +19,16 @@ const MissionSection = () => {
             Building Healthier, Educated Communities
           </h2>
           <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-            The John Oyediran Olabisi Foundation is dedicated to transforming
-            lives through comprehensive healthcare services and quality
-            education programs. We believe that access to healthcare and
-            education are fundamental rights that pave the way for sustainable
-            community development.
+          To honour the legacy of Dr. John Oyediran Olabisi by expanding access to quality
+          healthcare, education, and community development for underserved families in Iwajowa
+          Local Government Area and across Nigeria.
           </p>
-          <p className="text-gray-700 text-lg leading-relaxed">
+          {/* <p className="text-gray-700 text-lg leading-relaxed">
             Through our targeted interventions, we work tirelessly to create
             lasting positive change, empowering individuals and communities to
             reach their full potential and build a brighter future for
             generations to come.
-          </p>
-
-          {/* Feature highlights */}
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            <div className="flex items-start space-x-3">
-              <div className="flex-shrink-0 w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
-                <span className="text-teal-600 text-lg">✓</span>
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">Healthcare Access</p>
-                <p className="text-sm text-gray-600">Free medical services</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3">
-              <div className="flex-shrink-0 w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
-                <span className="text-teal-600 text-lg">✓</span>
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">Education Support</p>
-                <p className="text-sm text-gray-600">Scholarships & mentoring</p>
-              </div>
-            </div>
-          </div>
+          </p> */}
         </motion.div>
 
         {/* Image */}

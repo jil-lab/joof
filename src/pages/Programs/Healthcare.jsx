@@ -1,74 +1,56 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import ProgramHero from '../../components/programs/ProgramHero';
 import Section from '../../components/common/Section/Section';
-import Button from '../../components/common/Button/Button';
-import { PROGRAMS } from '../../utils/constants';
-import { useProgramsByType } from '../../hooks/useApi';
-import { getStrapiImageUrl } from '../../utils/formatters';
+import CallToAction from '../../components/common/CallToAction/CallToAction';
+
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80';
+const LEGACY_IMAGE = 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80';
+const HOSPITAL_IMAGE = 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=900&q=80';
+const PARTNERSHIP_IMAGE = 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=900&q=80';
+const WHY_BG_IMAGE = 'https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1600&q=80';
+
+const SURGICAL_SERVICES = [
+  'Ear, Nose and Throat (ENT)',
+  'Orthopedics',
+  'Urology',
+  'Gynaecology',
+];
+
+const MEDICAL_SERVICES = [
+  'Cardiology',
+  'Gastroenterology',
+  'Dermatology',
+  'Referral and Emergency Care',
+];
 
 const Healthcare = () => {
-  const { data: strapiData, isLoading } = useProgramsByType('healthcare');
-
-  // Get program from Strapi or fallback to constants
-  const defaultProgram = PROGRAMS.find(p => p.slug === 'healthcare');
-  const strapiProgram = strapiData?.data?.[0];
-
-  const program = strapiProgram
-    ? {
-        ...defaultProgram, // Keep structure from constants
-        title: strapiProgram.title,
-        description: strapiProgram.description,
-        shortDescription: strapiProgram.shortDescription,
-        image: strapiProgram.images?.[0] ? getStrapiImageUrl(strapiProgram.images[0]) : defaultProgram.image,
-      }
-    : defaultProgram;
-
-  if (!program) return null;
-
   return (
     <div>
-      {/* Hero Section */}
-      <ProgramHero
-        title={program.title}
-        description={program.description}
-        image={program.image}
-        icon={program.icon}
-      />
-
-      {/* Impact Stats */}
-      <Section className="py-16 md:py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Our Healthcare Impact
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Real numbers, real lives changed
+      {/* Hero */}
+      <div className="relative h-[400px] md:h-[500px] overflow-hidden bg-gradient-to-br from-teal-700 to-teal-900">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 to-teal-700/80" />
+        <div className="relative h-full container-custom flex flex-col justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Healthcare
+            </h1>
+            <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
+              Continuing a lifetime of service, bringing specialist medical care to the communities
+              Dr. John Oyediran Olabisi devoted his life to serving.
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {program.stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-card p-8 text-center shadow-card hover:shadow-card-hover transition-shadow"
-              >
-                <div className="text-5xl mb-4">{stat.icon}</div>
-                <div className="text-4xl md:text-5xl font-bold text-teal-600 mb-2">
-                  {stat.number.toLocaleString()}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
+          </motion.div>
         </div>
-      </Section>
+      </div>
 
-      {/* Medical Outreach - Image + Text */}
+      {/* A Legacy of Mercy */}
       <Section className="py-16 md:py-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -78,35 +60,23 @@ const Healthcare = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-2xl">
-                  🩺
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900">Medical Outreach</h3>
-              </div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Our medical outreach programs bring essential healthcare directly to underserved communities.
-                Through regular health camps, we provide free medical consultations, basic diagnostics, and
-                distribute essential medications to those who need them most.
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                A Legacy of Mercy
+              </h2>
+              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
+                Healthcare was not merely a profession for Dr. John Oyediran Olabisi, it was his
+                calling, his ministry, and his life's most consistent act of love. For over four
+                decades, he served patients across Oyo State, often without payment, often going the
+                extra mile to ensure that no one who walked through his door left without care.
               </p>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Free medical consultations with qualified doctors</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Basic health screenings and diagnostics</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Distribution of essential medications</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-600 text-xl">✓</span>
-                  <span>Health education and disease prevention awareness</span>
-                </li>
-              </ul>
+              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
+                His hospital was called <span className="italic font-medium text-gray-800">Ile aanu</span>, the house of mercy, and that name tells you everything.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                The John Oyediran Olabisi Foundation continues that mission through its flagship
+                healthcare project: the operational launch and ongoing support of the Oba Olabisi
+                Alabi Memorial Baptist Specialist Hospital in Iganna, Oyo State.
+              </p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -117,8 +87,8 @@ const Healthcare = () => {
             >
               <div className="aspect-[4/3] rounded-card overflow-hidden shadow-2xl">
                 <img
-                  src="/images/programs/healthcare-outreach.jpg"
-                  alt="Medical outreach team providing healthcare"
+                  src={LEGACY_IMAGE}
+                  alt="Doctor providing care to a patient"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -129,7 +99,7 @@ const Healthcare = () => {
         </div>
       </Section>
 
-      {/* Maternal & Child Health - Image + Text (Reversed) */}
+      {/* The Hospital */}
       <Section className="py-16 md:py-20 bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -142,13 +112,13 @@ const Healthcare = () => {
             >
               <div className="aspect-[4/3] rounded-card overflow-hidden shadow-2xl">
                 <img
-                  src="/images/programs/maternal-health.jpg"
-                  alt="Maternal and child healthcare services"
+                  src={HOSPITAL_IMAGE}
+                  alt="Oba Olabisi Alabi Memorial Baptist Specialist Hospital"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-card opacity-20 -z-10" />
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-teal-400 to-teal-600 rounded-card opacity-20 -z-10" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -157,37 +127,89 @@ const Healthcare = () => {
               transition={{ duration: 0.6 }}
               className="lg:order-2"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-2xl">
-                  👶
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900">Maternal & Child Health</h3>
-              </div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                We are committed to ensuring safe pregnancies and healthy childhoods. Our comprehensive
-                maternal and child health program provides prenatal care, supports safe deliveries, and
-                continues with postnatal care and child immunization programs.
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                The <span className="bg-yellow-200 text-gray-900 px-1 rounded">Oba Olabisi Alabi</span> Memorial Baptist Specialist Hospital
+              </h2>
+              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
+                Dedicated by Dr. Olabisi on his 70th birthday in January 2020, the hospital stands as
+                a monument to his love for his people and his hometown. Located in Iganna, Iwajowa
+                Local Government Area, it was designed to function as a secondary referral health
+                centre for surrounding communities.
               </p>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <div className="text-3xl font-bold text-teal-600 mb-1">29</div>
-                  <div className="text-sm text-gray-600">Safe Deliveries</div>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <div className="text-3xl font-bold text-teal-600 mb-1">100+</div>
-                  <div className="text-sm text-gray-600">Prenatal Visits</div>
-                </div>
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                <p className="text-sm font-semibold text-teal-700 uppercase tracking-wide mb-2">
+                  Catchment Population
+                </p>
+                <p className="text-4xl font-bold text-gray-900 mb-1">150,000+</p>
+                <p className="text-gray-600">
+                  individuals across Iwajowa Local Government Area and surrounding communities stand
+                  to benefit directly from this hospital.
+                </p>
               </div>
-              <p className="text-gray-700 italic">
-                "Every mother deserves quality healthcare, and every child deserves a healthy start to life."
-              </p>
             </motion.div>
           </div>
         </div>
       </Section>
 
-      {/* Surgical Interventions - Image + Text */}
+      {/* Planned Specialist Services */}
       <Section className="py-16 md:py-20">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Planned Specialist Services
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Once fully operational, the hospital will provide a comprehensive range of surgical
+              and medical specialty services.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-card p-8 shadow-card border-t-4 border-teal-500"
+            >
+              <h3 className="text-xl font-bold text-gray-900 mb-5">Surgical Services</h3>
+              <ul className="space-y-3">
+                {SURGICAL_SERVICES.map((service) => (
+                  <li key={service} className="flex items-start gap-3 text-gray-700">
+                    <span className="mt-1 w-4 h-4 rounded-full bg-teal-100 border-2 border-teal-500 flex-shrink-0" />
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-card p-8 shadow-card border-t-4 border-teal-500"
+            >
+              <h3 className="text-xl font-bold text-gray-900 mb-5">Medical Specialty Services</h3>
+              <ul className="space-y-3">
+                {MEDICAL_SERVICES.map((service) => (
+                  <li key={service} className="flex items-start gap-3 text-gray-700">
+                    <span className="mt-1 w-4 h-4 rounded-full bg-teal-100 border-2 border-teal-500 flex-shrink-0" />
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Partnership with the NBC */}
+      <Section className="py-16 md:py-20 bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -196,190 +218,106 @@ const Healthcare = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center text-2xl">
-                  ⚕️
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900">Surgical Interventions</h3>
+              <div className="flex items-center gap-4 mb-6">
+                <img
+                  src="/images/partners/nbc-logo.png"
+                  alt="Nigerian Baptist Convention logo"
+                  className="w-40 h-40 object-contain flex-shrink-0"
+                  loading="lazy"
+                />
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                  Our Partnership with the <span className="bg-yellow-200 text-gray-900 px-1 rounded">Nigerian Baptist Convention</span>
+                </h2>
               </div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                For many in underserved communities, access to surgical care is beyond reach. We bridge
-                this gap by sponsoring critical surgical procedures that save lives and restore hope. From
-                emergency operations to life-improving surgeries, we ensure no one is left behind.
+              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
+                To ensure the highest standards of operation, JOOF is collaborating with the{' '}
+                Nigerian Baptist Convention (NBC) to manage the hospital's day-to-day operations.
               </p>
-              <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-lg mb-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl">💝</span>
-                  <h4 className="font-bold text-gray-900">15 Lives Transformed</h4>
-                </div>
-                <p className="text-gray-700">
-                  We've successfully sponsored 15 life-changing surgical procedures, giving individuals
-                  a second chance at life and the ability to provide for their families.
-                </p>
-              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                The NBC brings a proven track record of successfully running hospitals across Nigeria, 
+                making this partnership a strong foundation for sustainable, quality healthcare
+                delivery in Iganna.
+              </p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="flex flex-col items-center gap-8"
             >
-              <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-square rounded-card overflow-hidden shadow-lg">
-                  <img
-                    src="/images/programs/surgery-1.jpg"
-                    alt="Surgical intervention program"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="aspect-square rounded-card overflow-hidden shadow-lg">
-                  <img
-                    src="/images/programs/surgery-2.jpg"
-                    alt="Post-surgery patient care"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
+              <div className="aspect-[4/3] w-full rounded-card overflow-hidden shadow-2xl">
+                <img
+                  src={PARTNERSHIP_IMAGE}
+                  alt="Medical professionals collaborating"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </motion.div>
           </div>
         </div>
       </Section>
 
-      {/* Health Education - Full Width Image Section */}
+      {/* Why This Matters */}
       <Section className="py-16 md:py-20 bg-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-25">
           <img
-            src="/images/programs/health-education-bg.jpg"
-            alt="Health education session"
+            src={WHY_BG_IMAGE}
+            alt="Rural community in Nigeria"
             className="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 to-teal-800/90" />
         <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto text-center text-white"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Why This Matters
+            </h2>
+            <p className="text-xl leading-relaxed mb-6 text-gray-100">
+              In many parts of rural Oyo State, accessing specialist healthcare means travelling
+              hours and spending money many families do not have. The consequences are devastating
+             , treatable conditions go untreated, preventable deaths occur, and communities suffer.
+            </p>
+            <p className="text-xl leading-relaxed text-gray-100">
+              The Oba Olabisi Alabi Memorial Baptist Specialist Hospital is our answer to that
+              suffering. By making this hospital fully operational, JOOF will help bring
+              world-class specialist care to the doorstep of one of Nigeria's underserved
+              communities, fulfilling the final dream of a man who spent his life making
+              medicine accessible to all.
+            </p>
+            <br />
+            <p className="text-xl leading-relaxed text-gray-100">
+            Every contribution brings us closer to opening these doors and delivering the care our
+            communities desperately need. Whether through financial donations, medical equipment,
+            professional volunteering, or partnership, your support is the difference between a
+            building and a living, breathing hospital. Join us in completing Dr. Olabisi's dream.
+            </p>
+          </motion.div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+            <a
+              href="/donate"
+              className="inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              <div className="text-6xl mb-6">📚</div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-6">
-                Health Education & Prevention
-              </h3>
-              <p className="text-xl leading-relaxed mb-8">
-                Prevention is better than cure. We conduct comprehensive health education programs
-                covering hygiene practices, nutrition, disease prevention, and healthy living.
-                Empowering communities with knowledge creates lasting impact.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <div className="text-3xl mb-3">🧼</div>
-                  <h4 className="font-bold mb-2">Hygiene Practices</h4>
-                  <p className="text-sm text-gray-200">Teaching proper sanitation and hygiene to prevent diseases</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <div className="text-3xl mb-3">🥗</div>
-                  <h4 className="font-bold mb-2">Nutrition Education</h4>
-                  <p className="text-sm text-gray-200">Promoting balanced diets and proper nutrition</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <div className="text-3xl mb-3">🛡️</div>
-                  <h4 className="font-bold mb-2">Disease Prevention</h4>
-                  <p className="text-sm text-gray-200">Awareness on preventable diseases and early detection</p>
-                </div>
-              </div>
-            </motion.div>
+              Donate Now
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Get Involved
+            </a>
           </div>
         </div>
       </Section>
 
-      {/* Photo Gallery */}
-      <Section className="py-16 md:py-20">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Our Work in Action
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Witness the transformation and impact of our healthcare programs through the lives we touch
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {program.gallery.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="aspect-[4/3] rounded-card overflow-hidden shadow-card hover:shadow-card-hover transition-all group"
-              >
-                <img
-                  src={image}
-                  alt={`Healthcare program impact ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Impact Statement */}
-      <Section className="py-16 md:py-20 bg-gradient-to-br from-teal-600 to-teal-800">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="text-6xl mb-6">💚</div>
-            <blockquote className="text-2xl md:text-3xl font-medium text-white mb-8 italic leading-relaxed">
-              "{program.impact}"
-            </blockquote>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* Call to Action */}
-      <Section className="py-16 md:py-20 bg-gray-50">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-              Help Us Save Lives
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Your donation directly supports our healthcare programs, providing medical care,
-              surgical interventions, and maternal health services to those who need it most.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/donate">
-                <Button variant="primary" size="lg">
-                  Donate Now
-                </Button>
-              </Link>
-              <Link to="/programs">
-                <Button variant="outline" size="lg">
-                  View All Programs
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </Section>
     </div>
   );
 };

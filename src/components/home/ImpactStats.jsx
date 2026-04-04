@@ -4,6 +4,7 @@ import {
   FaBaby,
   FaHospital,
   FaHandsHelping,
+  FaPeopleArrows,
 } from 'react-icons/fa';
 import Section from '../common/Section';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
@@ -38,23 +39,23 @@ const ImpactStats = () => {
   const stats = [
     {
       icon: FaUserMd,
-      number: 1651,
+      number: 4000,
       label: 'Medical Care Recipients',
     },
     {
-      icon: FaBaby,
-      number: 29,
-      label: 'Deliveries',
-    },
-    {
       icon: FaHospital,
-      number: 15,
-      label: 'Surgical Interventions',
+      number: 569,
+      label: 'Surgeries Performed',
     },
     {
       icon: FaHandsHelping,
-      number: 3,
-      label: 'Outreach Programs',
+      number: 11,
+      label: 'Hearing Aids Donated',
+    },
+    {
+      icon: FaPeopleArrows,
+      number: 20,
+      label: 'Outreaches Conducted',
     },
   ];
 
@@ -86,9 +87,11 @@ const ImpactStats = () => {
         className="text-center mt-12"
       >
         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-          These numbers represent real lives transformed through our dedicated
-          programs. Every statistic tells a story of hope, healing, and
-          empowerment in communities we serve.
+        Since its establishment, the John Oyediran Olabisi Foundation has touched thousands of
+        lives through consistent, compassionate action. These numbers represent real people —
+        mothers, fathers, children, and elders — who received care, support, and hope because
+        of the generosity of our donors, volunteers, and partners. They are a testament to what
+        is possible when a community unites around a shared purpose
         </p>
       </motion.div>
     </Section>

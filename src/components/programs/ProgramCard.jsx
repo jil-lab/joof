@@ -20,7 +20,6 @@ const ProgramCard = ({ program, index = 0 }) => {
             loading="lazy"
           />
           <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-            <div className="text-5xl mb-3">{program.icon}</div>
             <h3 className="text-2xl font-bold text-white mb-2">
               {program.title}
             </h3>

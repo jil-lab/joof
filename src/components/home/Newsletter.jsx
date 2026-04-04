@@ -55,7 +55,7 @@ const Newsletter = () => {
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Stay Updated with Our Work
+              Stay Updated with Our Programs
             </h2>
             <p className="text-lg text-teal-100 mb-8">
               Subscribe to our newsletter to receive updates on our programs,
