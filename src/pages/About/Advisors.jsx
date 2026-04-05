@@ -57,7 +57,7 @@ His conversion experience began in 1991 as an undergraduate, and he answered the
 
 Dr. Adeleke's ministry spans administrative roles, music direction, and leadership development. He has ministered both locally and internationally, combining a strong academic background with practical pastoral work. He has authored books and scholarly articles, including What Happens To My Prayers in Heaven? and Building and Leading a Dynamic Worship Team.
 
-He is a recipient of numerous academic and ministerial awards for excellence and integrity, including the James Christopher Pool Award and the Joseph Akinlabi Ojewole Award for Ministerial Ethics.
+He is a recipient of numerous academic and ministerial awards for excellence and integrity, including the James Christopher Pool Award and the Joseph Akinlabi Ojewole Award for Ministerial Ethics. His passion for continuous learning has led him through various leadership and spiritual development courses. Beyond ministry, he is a gifted writer, teacher, and musician.
 
 Rev. Adeleke is married to Mrs. Abosede Abiodun Adeleke, a French educator and Ph.D. candidate, and their union is blessed with two children. With over two decades of impactful ministry, Rev. Dr. Adeleke remains a model of faithful service, spiritual discipline, and leadership within the Nigerian Baptist Convention and the wider Christian community.`,
   },
