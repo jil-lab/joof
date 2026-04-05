@@ -23,7 +23,7 @@ const Programs = () => {
               Our Programs
             </h1>
             <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
-              {MISSION_VISION.tagline} - Through comprehensive healthcare, quality education,
+              Through comprehensive healthcare, quality education,
               and community empowerment, we create lasting positive change in underserved communities.
             </p>
           </motion.div>

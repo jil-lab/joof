@@ -3,8 +3,8 @@ import Section from '../../components/common/Section/Section';
 import CallToAction from '../../components/common/CallToAction/CallToAction';
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80';
-const LEGACY_IMAGE = 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80';
-const HOSPITAL_IMAGE = 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=900&q=80';
+const LEGACY_IMAGE = '/images/programs/care.jpg';
+const HOSPITAL_IMAGE = '/images/programs/hospital.jpg';
 const PARTNERSHIP_IMAGE = 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=900&q=80';
 const WHY_BG_IMAGE = 'https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1600&q=80';
 
@@ -61,7 +61,7 @@ const Healthcare = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                A Legacy of Mercy
+                A Mission Rooted in Service
               </h2>
               <p className="text-lg text-gray-600 mb-5 leading-relaxed">
                 Healthcare was not merely a profession for Dr. John Oyediran Olabisi, it was his
