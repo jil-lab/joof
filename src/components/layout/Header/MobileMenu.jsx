@@ -17,6 +17,7 @@ const MobileMenu = () => {
       children: [
         { label: 'About Us', path: '/about' },
         { label: 'Our Team', path: '/about/team' },
+        { label: 'Board of Advisors', path: '/about/advisors' },
         { label: 'Reports', path: '/about/reports' },
       ],
     },

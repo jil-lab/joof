@@ -6,6 +6,7 @@ import Home from './pages/Home';
 // Lazy load other pages for better performance
 const About = lazy(() => import('./pages/About/About'));
 const Team = lazy(() => import('./pages/About/Team'));
+const Advisors = lazy(() => import('./pages/About/Advisors'));
 const Reports = lazy(() => import('./pages/About/Reports'));
 const Programs = lazy(() => import('./pages/Programs/Programs'));
 const Healthcare = lazy(() => import('./pages/Programs/Healthcare'));
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
           {
             path: 'team',
             element: withSuspense(Team),
+          },
+          {
+            path: 'advisors',
+            element: withSuspense(Advisors),
           },
           {
             path: 'reports',
