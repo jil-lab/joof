@@ -202,7 +202,7 @@ const Advisors = () => {
 
       {/* Advisors */}
       <Section className="py-16 md:py-20">
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-14 md:space-y-20">
           {ADVISORS.map((advisor, index) => (
             <AdvisorCard key={advisor.id} advisor={advisor} index={index} />
           ))}
