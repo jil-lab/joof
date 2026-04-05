@@ -5,7 +5,6 @@ import CallToAction from '../../components/common/CallToAction/CallToAction';
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80';
 const LEGACY_IMAGE = '/images/programs/care.jpg';
 const HOSPITAL_IMAGE = '/images/programs/hospital.jpg';
-const PARTNERSHIP_IMAGE = 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=900&q=80';
 const WHY_BG_IMAGE = 'https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1600&q=80';
 
 const SURGICAL_SERVICES = [
@@ -219,12 +218,6 @@ const Healthcare = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="/images/partners/nbc-logo.png"
-                  alt="Nigerian Baptist Convention logo"
-                  className="w-40 h-40 object-contain flex-shrink-0"
-                  loading="lazy"
-                />
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                   Our Partnership with the <span className="bg-yellow-200 text-gray-900 px-1 rounded">Nigerian Baptist Convention</span>
                 </h2>
@@ -246,11 +239,11 @@ const Healthcare = () => {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center gap-8"
             >
-              <div className="aspect-[4/3] w-full rounded-card overflow-hidden shadow-2xl">
+              <div className="w-full flex items-center justify-center py-12">
                 <img
-                  src={PARTNERSHIP_IMAGE}
-                  alt="Medical professionals collaborating"
-                  className="w-full h-full object-cover"
+                  src="/images/partners/nbc-logo.png"
+                  alt="Nigerian Baptist Convention"
+                  className="w-72 h-72 object-contain rounded-full shadow-[0_18px_44px_rgba(0,0,0,0.15)] mix-blend-multiply"
                   loading="lazy"
                 />
               </div>

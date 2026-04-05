@@ -86,7 +86,7 @@ const About = () => {
                   width="800"
                   height="600"
                   onError={(e) => {
-                    e.target.src = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop&auto=format&q=75';
+                    e.target.src = '/images/programs/hospital2.jpg';
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-900/50 to-transparent" />
