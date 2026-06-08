@@ -30,26 +30,30 @@ She retired voluntarily as the pioneer Principal of Oritamefa Baptist Model Scho
     name: 'Dr. Mrs. Taiwo Olufunmilola Agbaje',
     role: 'Medical Director & Trustee',
     image: '/images/team/member2.png',
-    bio: `Taiwo Oluwafunmilola Agbaje (nee Olabisi) works as a medical practitioner offering clinical and public health services to government and private establishments. She also serves as the Medical Director (Admin) of Highland Specialist Hospital, Ibadan.
-
-Dr. Agbaje obtained a MPH (Management & Leadership) from the University of Sheffield, UK and a medical degree (MBBS) from LAUTECH Ogbomoso, Nigeria. She is married with children.`,
+    bio: `Taiwo Oluwafunmilola Agbaje (nee Olabisi) works as a medical practitioner offering clinical and
+public health services to government and private establishments. Dr Agbaje obtained an MPH
+(Management & Leadership) from the University of Sheffield, UK and a medical degree (MBBS)
+from LAUTECH Ogbomoso, Nigeria. She is married with children.`,
   },
   {
     id: 3,
     name: 'Mrs. Adetola Grace Amure',
     role: 'Leadership Coach & Trustee',
     image: '/images/team/member4.png',
-    bio: `Detola Amure is a dynamic leader who combines over 20 years of corporate and business experience with her expertise in leadership, productivity, and emotional well-being to drive transformative results.
+    bio: `Mrs Detola Amure is a portfolio entrepreneur and productivity coach with over 20 years of
+corporate and business experience. As CEO of The Productivity Company, she helps
+high-achieving professionals, leaders, and organisations overcome hidden productivity barriers,
+build confidence, and lead with impact.
+She is an international speaker and author of four books. 
 
-As the CEO of The Productivity Company, she helps teams and organisations unlock productivity, confidence, and leadership by overcoming hidden emotional and mindset barriers. She is also the Founder of Super Working Mum (SWM), a faith-based organization that equips working mothers with the tools to maximize their time and achieve their biggest dreams.
-
-A Certified Maxwell Leadership Coach, Speaker & Trainer, and Certified Maxwell DISC Behavioral Consultant, Detola is passionate about fostering thriving cultures and impactful leadership. She also serves as a Certified Grief Specialist, offering invaluable support to individuals navigating the complexities of grief.
-
-Detola is an international speaker, co-host of the When Life Stops podcast, and the author of four books. She is the compassionate Founder and Director of the My Little Warrior Child Foundation, which provides support to bereaved parents. She lives in the UK with her husband and children.`,
+Detola also serves as a boardmember of the John Oyediran Olabisi Foundation, supporting access to healthcare and
+education in rural communities.She is the Founder and Director of My Little Warrior Child CIC, a not-for-profit supporting
+bereaved parents through grief education and healing spaces. Detola holds a BSc in Computer Science from the University of Botswana and a Master’s in
+Operational Research from Lancaster University, UK. She is married with children.`,
   },
   {
     id: 4,
-    name: 'Dr. Johnson Oladiran Olabisi',
+    name:   'Dr. Johnson Oladiran Olabisi',
     role: 'Physician & CEO, Highland Specialist Hospital',
     image: '/images/team/member3.png',
     bio: `Dr. Johnson Oladiran Olabisi works as a physician offering clinical and occupational health services to government and private establishments. He also serves as the CEO of Highland Specialist Hospital, Ibadan.
