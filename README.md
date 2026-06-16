@@ -14,12 +14,12 @@ Official website for the John Oyediran Olabisi Foundation (JOOF) - dedicated to 
 
 ```
 Joof/
-├── joof-cms/                    # Strapi CMS Backend
+├── backend/                     # Strapi CMS Backend (formerly joof-cms)
 │   ├── config/                  # Strapi configuration
 │   ├── src/api/                 # API routes and controllers
 │   └── public/                  # Uploaded media files
 │
-├── joof-website/                # React Frontend
+├── frontend/                    # React Frontend (formerly joof-website)
 │   ├── public/                  # Static assets
 │   ├── src/
 │   │   ├── api/                 # API client and services
@@ -74,7 +74,7 @@ Joof/
 
 2. **Setup Backend (Strapi):**
    ```bash
-   cd joof-cms
+   cd backend
    npm install
    npm run develop
    ```
@@ -83,10 +83,31 @@ Joof/
 
 3. **Setup Frontend:**
    ```bash
-   cd joof-website
+   cd frontend
    npm install
    npm run dev
    ```
+
+### 📦 Workspace Commands (Root Level)
+
+Since this project is a monorepo, you can run commands from the root directory without changing directories:
+
+```bash
+# Install all dependencies across the monorepo
+npm install
+
+# Run frontend and backend concurrently
+npm run dev
+
+# Run frontend dev server only
+npm run dev:frontend
+
+# Run backend dev server only
+npm run dev:backend
+
+# Build both applications
+npm run build
+```
    - Website: `http://localhost:5175`
 
 ## 📄 Available Pages
@@ -179,7 +200,7 @@ function TeamPage() {
 
 ## 🌐 Environment Variables
 
-Create a `.env` file in `joof-website/`:
+Create a `.env` file in `frontend/`:
 
 ```env
 VITE_STRAPI_URL=http://localhost:1337

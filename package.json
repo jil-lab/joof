@@ -13,5 +13,18 @@
     "build:backend": "npm run build -w backend",
     "build": "npm run build --workspaces --if-present",
     "guidance": "npx -y modern-web-guidance@latest"
+  },
+  "overrides": {
+    "@strapi/admin": "5.35.0",
+    "@strapi/content-manager": "5.35.0",
+    "@strapi/content-releases": "5.35.0",
+    "@strapi/content-type-builder": "5.35.0",
+    "@strapi/core": "5.35.0",
+    "@strapi/email": "5.35.0",
+    "@strapi/i18n": "5.35.0",
+    "@strapi/review-workflows": "5.35.0",
+    "@strapi/upload": "5.35.0",
+    "@strapi/utils": "5.35.0",
+    "@strapi/database": "5.35.0"
   }
 }

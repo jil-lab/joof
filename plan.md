@@ -30,7 +30,7 @@ This implementation follows an MVP-first approach, prioritizing core pages and e
 ## Project Structure
 
 ```
-joof-website/
+frontend/
 ├── public/
 │   └── images/              # Static assets (logo, placeholder images)
 ├── src/
@@ -124,7 +124,7 @@ joof-website/
 
 1. Initialize Vite React project:
    ```bash
-   npm create vite@latest joof-website -- --template react
+   npm create vite@latest frontend -- --template react
    ```
 
 2. Install core dependencies:
@@ -394,7 +394,7 @@ joof-website/
 
 **Strapi Installation:**
 ```bash
-npx create-strapi-app@latest joof-cms --quickstart
+npx create-strapi-app@latest backend --quickstart
 ```
 
 **Create Content Types:**

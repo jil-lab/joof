@@ -2,6 +2,14 @@
 
 Get the JOOF Foundation website running in minutes!
 
+> [!TIP]
+> **Monorepo Workspace usage:**
+> Since this project is structured as a monorepo, you can run both the frontend and backend concurrently from the root directory:
+> ```bash
+> npm run dev
+> ```
+> Alternatively, you can run `npm run dev:frontend` or `npm run dev:backend` from the root, or use the traditional directory-specific commands listed below.
+
 ## Prerequisites
 
 - Node.js 18+ installed
@@ -10,7 +18,7 @@ Get the JOOF Foundation website running in minutes!
 ## Step 1: Start Strapi CMS (Terminal 1)
 
 ```bash
-cd joof-cms
+cd backend
 npm run develop
 ```
 
@@ -44,7 +52,7 @@ npm run develop
 ## Step 3: Start Frontend (Terminal 2)
 
 ```bash
-cd joof-website
+cd frontend
 npm run dev
 ```
 
@@ -80,10 +88,10 @@ Visit these pages:
 
 ```
 Joof/
-├── joof-cms/              # Strapi CMS backend
+├── backend/               # Strapi CMS backend (formerly joof-cms)
 │   └── Run: npm run develop
 │
-├── joof-website/          # React frontend
+├── frontend/              # React frontend (formerly joof-website)
 │   └── Run: npm run dev
 │
 ├── STRAPI_SETUP.md        # Detailed Strapi setup

@@ -18,7 +18,7 @@ This guide will walk you through setting up Strapi CMS for the John Oyediran Ola
 
 - Node.js 18.x or higher
 - npm or yarn package manager
-- Strapi has been installed in the `joof-cms` directory
+- Strapi has been installed in the `backend` directory
 
 ## Starting Strapi
 
@@ -26,7 +26,7 @@ This guide will walk you through setting up Strapi CMS for the John Oyediran Ola
 
 1. **Navigate to the Strapi directory:**
    ```bash
-   cd joof-cms
+   cd backend
    ```
 
 2. **Start Strapi in development mode:**
@@ -320,7 +320,7 @@ Navigate to these pages and verify data is loading:
 
 The frontend connects to Strapi using environment variables:
 
-**File:** `joof-website/.env`
+**File:** `frontend/.env`
 
 ```env
 VITE_STRAPI_URL=http://localhost:1337
@@ -335,7 +335,7 @@ For production deployment, change this to your production Strapi URL.
 ### Issue: Cannot connect to Strapi
 
 **Solution:**
-- Verify Strapi is running: `cd joof-cms && npm run develop`
+- Verify Strapi is running: `cd backend && npm run develop`
 - Check console for error messages
 - Verify `.env` file has correct `VITE_STRAPI_URL`
 - Restart the frontend dev server after changing `.env`
@@ -366,7 +366,7 @@ For production deployment, change this to your production Strapi URL.
 **Solution:**
 Strapi should be configured for CORS by default in development. If you see CORS issues:
 
-1. Go to `joof-cms/config/middlewares.js`
+1. Go to `backend/config/middlewares.js`
 2. Ensure the `strapi::cors` middleware is enabled
 3. Restart Strapi
 
