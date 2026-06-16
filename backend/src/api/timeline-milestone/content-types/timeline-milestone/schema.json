@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "timeline_milestones",
+  "info": {
+    "singularName": "timeline-milestone",
+    "pluralName": "timeline-milestones",
+    "displayName": "Timeline Milestone"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "year": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

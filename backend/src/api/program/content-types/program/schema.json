@@ -40,6 +40,18 @@
         "images"
       ]
     },
+    "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "features": {
+      "type": "json"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
     "impactStats": {
       "type": "json"
     },

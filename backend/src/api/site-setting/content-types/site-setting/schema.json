@@ -1,0 +1,68 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Setting",
+    "description": "Global site content: hero, mission, contact info, social links"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroHeadline": {
+      "type": "string"
+    },
+    "heroSubtext": {
+      "type": "text"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "missionTitle": {
+      "type": "string"
+    },
+    "missionBody": {
+      "type": "text"
+    },
+    "missionImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "visionStatement": {
+      "type": "text"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "contactAddress": {
+      "type": "text"
+    },
+    "officeHours": {
+      "type": "string"
+    },
+    "facebookUrl": {
+      "type": "string"
+    },
+    "twitterUrl": {
+      "type": "string"
+    },
+    "instagramUrl": {
+      "type": "string"
+    },
+    "linkedinUrl": {
+      "type": "string"
+    },
+    "youtubeUrl": {
+      "type": "string"
+    }
+  }
+}

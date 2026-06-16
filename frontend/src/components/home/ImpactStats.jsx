@@ -9,6 +9,10 @@ import {
 import Section from '../common/Section';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import useCountUp from '../../hooks/useCountUp';
+import { useImpactStats } from '../../hooks/useApi';
+import { IMPACT_STATS } from '../../utils/constants';
+
+const ICON_MAP = [FaUserMd, FaHospital, FaHandsHelping, FaPeopleArrows, FaBaby];
 
 const StatCard = ({ icon: Icon, number, label, delay = 0 }) => {
   const { ref, hasIntersected } = useIntersectionObserver({ threshold: 0.3 });
@@ -36,28 +40,19 @@ const StatCard = ({ icon: Icon, number, label, delay = 0 }) => {
 };
 
 const ImpactStats = () => {
-  const stats = [
-    {
-      icon: FaUserMd,
-      number: 4000,
-      label: 'Medical Care Recipients',
-    },
-    {
-      icon: FaHospital,
-      number: 569,
-      label: 'Surgeries Performed',
-    },
-    {
-      icon: FaHandsHelping,
-      number: 11,
-      label: 'Hearing Aids Donated',
-    },
-    {
-      icon: FaPeopleArrows,
-      number: 20,
-      label: 'Outreaches Conducted',
-    },
-  ];
+  const { data: statsData } = useImpactStats();
+
+  const stats = statsData?.data?.length
+    ? statsData.data.map((stat, i) => ({
+        icon: ICON_MAP[i % ICON_MAP.length],
+        number: stat.number,
+        label: stat.label,
+      }))
+    : IMPACT_STATS.map((stat, i) => ({
+        icon: ICON_MAP[i % ICON_MAP.length],
+        number: stat.number,
+        label: stat.label,
+      }));
 
   return (
     <Section
@@ -78,7 +73,6 @@ const ImpactStats = () => {
         ))}
       </div>
 
-      {/* Additional Context */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -87,11 +81,10 @@ const ImpactStats = () => {
         className="text-center mt-12"
       >
         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-        Since its establishment, the John Oyediran Olabisi Foundation has touched thousands of
-        lives through consistent, compassionate action. These numbers represent real people —
-        mothers, fathers, children, and elders — who received care, support, and hope because
-        of the generosity of our donors, volunteers, and partners. They are a testament to what
-        is possible when a community unites around a shared purpose
+          Since its establishment, the John Oyediran Olabisi Foundation has touched thousands of
+          lives through consistent, compassionate action. These numbers represent real people —
+          mothers, fathers, children, and elders — who received care, support, and hope because
+          of the generosity of our donors, volunteers, and partners.
         </p>
       </motion.div>
     </Section>

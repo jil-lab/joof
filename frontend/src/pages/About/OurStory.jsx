@@ -2,8 +2,16 @@ import { motion } from 'framer-motion';
 import Section from '../../components/common/Section/Section';
 import Timeline from '../../components/about/Timeline';
 import { TIMELINE_MILESTONES, MISSION_VISION } from '../../utils/constants';
+import { useTimelineMilestones, useSiteSettings } from '../../hooks/useApi';
 
 const OurStory = () => {
+  const { data: milestonesData } = useTimelineMilestones();
+  const { data: settingsData } = useSiteSettings();
+
+  const milestones =
+    milestonesData?.data?.length > 0 ? milestonesData.data : TIMELINE_MILESTONES;
+  const mission = settingsData?.data?.missionBody || MISSION_VISION.mission;
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -119,7 +127,7 @@ const OurStory = () => {
             Our Driving Mission
           </h3>
           <p className="text-xl text-teal-50 leading-relaxed italic">
-            {MISSION_VISION.mission}
+            {mission}
           </p>
         </motion.div>
       </Section>
@@ -144,7 +152,7 @@ const OurStory = () => {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <Timeline milestones={TIMELINE_MILESTONES} />
+          <Timeline milestones={milestones} />
         </div>
       </Section>
 
