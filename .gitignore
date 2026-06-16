@@ -1,0 +1,47 @@
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node / Build
+node_modules/
+dist/
+dist-ssr/
+build/
+.tsbuildinfo
+.eslintcache
+
+# Databases / Temp files
+.tmp/
+*.sql
+*.sqlite
+*.sqlite3
+
+# Environments
+.env
+.env.local
+.env.*.local
+.env.production.local
+.env.development.local
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
