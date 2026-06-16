@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaHeartbeat, FaGraduationCap, FaUsers } from 'react-icons/fa';
+import { FaHeartbeat, FaGraduationCap } from 'react-icons/fa';
 import Section from '../common/Section';
 
 const DualFocus = () => {
@@ -37,22 +37,6 @@ const DualFocus = () => {
       image: '/images/programs/education-hero.jpg',
       fallback: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop',
     },
-    {
-      title: 'Community',
-      icon: FaUsers,
-      description:
-        'We never forget where we come from. Just as Dr. Olabisi remained rooted in Iganna long after his greatest achievements, we pour back into the communities that shaped us, strengthening the social bonds that allow healthcare, education, and human dignity to truly take root.',
-      stats: [
-        'Community Health Outreach',
-        'Youth Development',
-        'Infrastructure and Environment',
-      ],
-      link: '/programs/community',
-      color: 'blue',
-      gradient: 'from-blue-500 via-blue-600 to-blue-700',
-      image: '/images/programs/community-hero.jpg',
-      fallback: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop',
-    },
   ];
 
   return (
@@ -62,19 +46,20 @@ const DualFocus = () => {
       backgroundColor="gray"
       padding="normal"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
         {focuses.map((focus, index) => {
           const Icon = focus.icon;
           return (
             <motion.div
               key={focus.title}
+              className="h-full"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <Link to={focus.link} className="block group">
-                <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full transform group-hover:-translate-y-2">
+              <Link to={focus.link} className="block group h-full">
+                <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full transform group-hover:-translate-y-2 flex flex-col">
                   {/* Image Header with Icon Overlay */}
                   <div className="relative h-64 overflow-hidden">
                     <img
@@ -97,7 +82,7 @@ const DualFocus = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-8">
+                  <div className="p-8 flex flex-col flex-1">
                     <p className="text-gray-700 mb-6 leading-relaxed">
                       {focus.description}
                     </p>
@@ -126,7 +111,7 @@ const DualFocus = () => {
                     </div>
 
                     {/* Learn More Link */}
-                    <div className="flex items-center text-teal-500 font-semibold group-hover:text-teal-600 transition-colors">
+                    <div className="mt-auto flex items-center text-teal-500 font-semibold group-hover:text-teal-600 transition-colors">
                       <span>Learn More</span>
                       <svg
                         className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"

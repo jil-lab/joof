@@ -41,7 +41,7 @@ const MissionSection = () => {
         >
           <div className="relative rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="/images/mission/community-gathering.jpg"
+              src="/images/mission/home_mission_2.jpg"
               alt="Community members gathering at JOOF Foundation event"
               className="w-full h-full object-cover aspect-[4/3]"
               loading="lazy"

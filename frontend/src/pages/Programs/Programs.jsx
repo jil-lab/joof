@@ -23,8 +23,7 @@ const Programs = () => {
               Our Programs
             </h1>
             <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
-              Through comprehensive healthcare, quality education,
-              and community empowerment, we create lasting positive change in underserved communities.
+              Through comprehensive healthcare and quality education, we create lasting positive change in underserved communities.
             </p>
           </motion.div>
         </div>
@@ -49,7 +48,7 @@ const Programs = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {PROGRAMS.map((program, index) => (
               <ProgramCard key={program.id} program={program} index={index} />
             ))}

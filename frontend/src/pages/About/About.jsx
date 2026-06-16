@@ -108,12 +108,12 @@ const About = () => {
                 <img
                   src="/images/about/community-impact.jpg"
                   alt="Communities benefiting from JOOF Foundation programs"
-                  className="w-full h-full object-cover aspect-[4/3]"
+                  className="w-full h-full object-cover object-top aspect-[4/3]"
                   loading="lazy"
                   width="800"
                   height="600"
                   onError={(e) => {
-                    e.target.src = 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&auto=format&q=75';
+                    e.target.src = '/images/about/story2.jpg';
                   }}
                 />
               </div>
@@ -253,16 +253,31 @@ const About = () => {
           <motion.div
             variants={fadeUp} initial="hidden" whileInView="visible"
             viewport={viewportOpts}
-            className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
           >
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="aspect-[4/3] rounded-card bg-teal-100 overflow-hidden shadow-card flex items-center justify-center"
-              >
-                <span className="text-teal-300 text-5xl">📷</span>
-              </div>
-            ))}
+            <div className="aspect-[4/3] rounded-card overflow-hidden shadow-card bg-teal-50">
+              <img
+                src="/images/about/story3.jpg"
+                alt="Dr. John Oyediran Olabisi in traditional attire"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: 'center 20%' }}
+                loading="lazy"
+                onError={(e) => {
+                  e.target.src = '/images/about/story3.jpg';
+                }}
+              />
+            </div>
+            <div className="aspect-[4/3] rounded-card overflow-hidden shadow-card bg-teal-50">
+              <img
+                src="/images/about/story1.jpg"
+                alt="Dr. John Oyediran Olabisi"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.src = '/images/about/story2.jpg';
+                }}
+              />
+            </div>
           </motion.div>
 
           <motion.div

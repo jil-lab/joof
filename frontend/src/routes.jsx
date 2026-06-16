@@ -11,7 +11,6 @@ const Reports = lazy(() => import('./pages/About/Reports'));
 const Programs = lazy(() => import('./pages/Programs/Programs'));
 const Healthcare = lazy(() => import('./pages/Programs/Healthcare'));
 const Education = lazy(() => import('./pages/Programs/Education'));
-const Community = lazy(() => import('./pages/Programs/Community'));
 const Donate = lazy(() => import('./pages/Donate'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NewsList = lazy(() => import('./pages/News/NewsList'));
@@ -80,10 +79,6 @@ const router = createBrowserRouter([
           {
             path: 'healthcare',
             element: withSuspense(Healthcare),
-          },
-          {
-            path: 'community',
-            element: withSuspense(Community),
           },
         ],
       },

@@ -28,7 +28,6 @@ const MobileMenu = () => {
         { label: 'All Programs', path: '/programs' },
         { label: 'Healthcare', path: '/programs/healthcare' },
         { label: 'Education', path: '/programs/education' },
-        { label: 'Community', path: '/programs/community' },
       ],
     },
     { label: 'News', path: '/news' },

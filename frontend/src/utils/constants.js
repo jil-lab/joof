@@ -251,7 +251,7 @@ export const PROGRAMS = [
     title: 'Healthcare Programs',
     shortDescription: 'Providing accessible medical care, maternal health services, surgical interventions, and preventative care to underserved communities.',
     description: 'Our healthcare programs are designed to bridge the gap in medical access for underserved communities across Nigeria. We provide comprehensive medical care including routine check-ups, maternal and child health services, surgical interventions, and preventative care education.',
-    image: '/images/programs/healthcare.jpg',
+    image: '/images/programs/care.jpg',
     icon: '🏥',
     stats: [
       { number: 1651, label: 'Medical Care Services Provided', icon: '🏥' },
@@ -303,7 +303,7 @@ export const PROGRAMS = [
     title: 'Education Programs',
     shortDescription: 'Empowering young minds through scholarships, learning resources, mentorship programs, and school infrastructure support.',
     description: 'Education is the foundation for breaking the cycle of poverty. Our education programs provide scholarships, learning materials, mentorship, and infrastructure support to ensure every child has the opportunity to learn and thrive.',
-    image: '/images/programs/education.jpg',
+    image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80',
     icon: '📚',
     stats: [
       { number: 150, label: 'Students Supported', icon: '🎓' },
@@ -349,61 +349,6 @@ export const PROGRAMS = [
       schoolInfrastructure: '/images/programs/school-infrastructure.jpg',
     },
   },
-  {
-    id: 3,
-    slug: 'community',
-    title: 'Community Programs',
-    shortDescription: 'Building stronger communities through outreach initiatives, skill development, and sustainable local impact projects.',
-    description: 'Our community programs focus on sustainable development and empowerment. We work directly with local communities to identify needs and implement solutions that create lasting positive change.',
-    image: '/images/programs/community.jpg',
-    icon: '🤲',
-    stats: [
-      { number: 3, label: 'Active Outreach Programs', icon: '🤲' },
-      { number: 500, label: 'Community Members Reached', icon: '👥' },
-      { number: 8, label: 'Communities Served', icon: '🌍' },
-    ],
-    features: [
-      {
-        title: 'Community Outreach',
-        description: 'Regular visits to rural and underserved communities, providing essential services and support.',
-        icon: '🤝',
-      },
-      {
-        title: 'Skills Development',
-        description: 'Vocational training programs equipping community members with marketable skills for economic empowerment.',
-        icon: '🛠️',
-      },
-      {
-        title: 'Food Security',
-        description: 'Emergency food distribution and agricultural support programs to combat hunger and promote self-sufficiency.',
-        icon: '🌾',
-      },
-      {
-        title: 'Infrastructure Projects',
-        description: 'Building wells, community centers, and other essential facilities to improve quality of life.',
-        icon: '🏗️',
-      },
-    ],
-    impact: 'Through community-centered approaches, we have empowered over 500 individuals and strengthened 8 communities across Nigeria.',
-    gallery: [
-      '/images/programs/community-1.jpg',
-      '/images/programs/community-2.jpg',
-      '/images/programs/community-3.jpg',
-      '/images/programs/community-4.jpg',
-      '/images/programs/community-5.jpg',
-      '/images/programs/community-6.jpg',
-    ],
-    additionalImages: {
-      communityOutreach: '/images/programs/community-outreach.jpg',
-      skillsTraining1: '/images/programs/skills-training-1.jpg',
-      skillsTraining2: '/images/programs/skills-training-2.jpg',
-      foodSecurity: '/images/programs/food-security.jpg',
-      infrastructureBg: '/images/programs/infrastructure-bg.jpg',
-      waterProject: '/images/programs/water-project.jpg',
-      communityCenter: '/images/programs/community-center.jpg',
-      sanitationProject: '/images/programs/sanitation-project.jpg',
-    },
-  },
 ];
 
 // Navigation Links
@@ -424,7 +369,6 @@ export const NAV_LINKS = {
         { path: '/programs', label: 'All Programs' },
         { path: '/programs/healthcare', label: 'Healthcare' },
         { path: '/programs/education', label: 'Education' },
-        { path: '/programs/community', label: 'Community' },
       ],
     },
     { path: '/donate', label: 'Donate' },

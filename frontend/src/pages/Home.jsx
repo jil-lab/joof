@@ -5,6 +5,7 @@ import ImpactStats from '../components/home/ImpactStats';
 import ImpactGallery from '../components/home/ImpactGallery';
 import TestimonialsCarousel from '../components/home/TestimonialsCarousel';
 import Newsletter from '../components/home/Newsletter';
+import CallToAction from '../components/common/CallToAction/CallToAction';
 
 const Home = () => {
   return (
@@ -15,7 +16,8 @@ const Home = () => {
       <ImpactStats />
       {/* <ImpactGallery /> */}
       {/* <TestimonialsCarousel /> */}
-      <Newsletter />
+      {/* <Newsletter /> */}
+      <CallToAction />
     </div>
   );
 };

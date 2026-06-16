@@ -35,11 +35,11 @@ const Footer = () => {
                   Our Team
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/news" className="text-gray-400 hover:text-teal-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">
                   News
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -52,17 +52,7 @@ const Footer = () => {
                   Donate
                 </Link>
               </li>
-              <li>
-                <Link to="/support" className="text-gray-400 hover:text-teal-400 transition-colors text-sm">
-                  Volunteer
-                </Link>
-              </li>
-              <li>
-                <Link to="/support/partner" className="text-gray-400 hover:text-teal-400 transition-colors text-sm">
-                  Partner With Us
-                </Link>
-              </li>
-              <li>
+<li>
                 <Link to="/contact" className="text-gray-400 hover:text-teal-400 transition-colors text-sm">
                   Contact
                 </Link>
