@@ -1,54 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaFilePdf, FaDownload, FaChevronDown } from 'react-icons/fa';
 import Section from '../../components/common/Section/Section';
+import { useReports } from '../../hooks/useApi';
 
-const REPORTS_DATA = [
-  {
-    year: 2025,
-    reports: [
-      { month: 'January', file: '/reports/2025/joof-report-jan-2025.pdf' },
-      { month: 'February', file: '/reports/2025/joof-report-feb-2025.pdf' },
-      { month: 'March', file: '/reports/2025/joof-report-mar-2025.pdf' },
-      { month: 'April', file: '/reports/2025/joof-report-apr-2025.pdf' },
-      { month: 'May', file: '/reports/2025/joof-report-may-2025.pdf' },
-      { month: 'June', file: '/reports/2025/joof-report-jun-2025.pdf' },
-    ],
-  },
-  {
-    year: 2024,
-    reports: [
-      { month: 'January', file: '/reports/2024/joof-report-jan-2024.pdf' },
-      { month: 'February', file: '/reports/2024/joof-report-feb-2024.pdf' },
-      { month: 'March', file: '/reports/2024/joof-report-mar-2024.pdf' },
-      { month: 'April', file: '/reports/2024/joof-report-apr-2024.pdf' },
-      { month: 'May', file: '/reports/2024/joof-report-may-2024.pdf' },
-      { month: 'June', file: '/reports/2024/joof-report-jun-2024.pdf' },
-      { month: 'July', file: '/reports/2024/joof-report-jul-2024.pdf' },
-      { month: 'August', file: '/reports/2024/joof-report-aug-2024.pdf' },
-      { month: 'September', file: '/reports/2024/joof-report-sep-2024.pdf' },
-      { month: 'October', file: '/reports/2024/joof-report-oct-2024.pdf' },
-      { month: 'November', file: '/reports/2024/joof-report-nov-2024.pdf' },
-      { month: 'December', file: '/reports/2024/joof-report-dec-2024.pdf' },
-    ],
-  },
-  {
-    year: 2023,
-    reports: [
-      { month: 'July', file: '/reports/2023/joof-report-jul-2023.pdf' },
-      { month: 'August', file: '/reports/2023/joof-report-aug-2023.pdf' },
-      { month: 'September', file: '/reports/2023/joof-report-sep-2023.pdf' },
-      { month: 'October', file: '/reports/2023/joof-report-oct-2023.pdf' },
-      { month: 'November', file: '/reports/2023/joof-report-nov-2023.pdf' },
-      { month: 'December', file: '/reports/2023/joof-report-dec-2023.pdf' },
-    ],
-  },
-];
+const groupReportsByYear = (items) => {
+  const map = new Map();
+  for (const { year, title, file } of items) {
+    if (!map.has(year)) map.set(year, []);
+    map.get(year).push({ title, file: file?.url ?? null });
+  }
+  return Array.from(map.entries()).map(([year, reports]) => ({ year, reports }));
+};
 
 const YearAccordion = ({ yearData, isOpen, onToggle }) => {
   return (
     <div className="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-      {/* Year Header */}
       <button
         onClick={onToggle}
         className={`w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200 ${
@@ -72,7 +39,6 @@ const YearAccordion = ({ yearData, isOpen, onToggle }) => {
         </motion.span>
       </button>
 
-      {/* Reports Grid */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -86,7 +52,7 @@ const YearAccordion = ({ yearData, isOpen, onToggle }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {yearData.reports.map((report, index) => (
                   <motion.a
-                    key={report.month}
+                    key={index}
                     href={report.file}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -99,8 +65,8 @@ const YearAccordion = ({ yearData, isOpen, onToggle }) => {
                       <FaFilePdf className="w-5 h-5 text-teal-500" />
                     </div>
                     <div className="text-center">
-                      <p className="font-semibold text-gray-900 text-sm">{report.month}</p>
-                      <p className="text-xs text-gray-500">{yearData.year}</p>
+                      <p className="font-semibold text-gray-900 text-sm">{report.title}</p>
+                      <p className="text-xs text-gray-400">{yearData.year}</p>
                     </div>
                     <span className="flex items-center gap-1.5 text-xs font-medium text-teal-600 group-hover:text-teal-700">
                       <FaDownload className="w-3 h-3" />
@@ -118,7 +84,18 @@ const YearAccordion = ({ yearData, isOpen, onToggle }) => {
 };
 
 const Reports = () => {
-  const [openYear, setOpenYear] = useState(REPORTS_DATA[0].year);
+  const { data: reportsData, isLoading } = useReports();
+  const [openYear, setOpenYear] = useState(null);
+
+  const groupedReports = useMemo(() =>
+    reportsData?.data?.length ? groupReportsByYear(reportsData.data) : [],
+  [reportsData]);
+
+  useEffect(() => {
+    if (groupedReports.length > 0 && openYear === null) {
+      setOpenYear(groupedReports[0].year);
+    }
+  }, [groupedReports]);
 
   const toggleYear = (year) => {
     setOpenYear(openYear === year ? null : year);
@@ -141,7 +118,7 @@ const Reports = () => {
             Our Reports
           </h1>
           <p className="text-xl text-teal-50 leading-relaxed max-w-2xl mx-auto">
-            Access our monthly activity and impact reports. We are committed to full
+            Access our activity and impact reports. We are committed to full
             transparency with our donors, partners, and the communities we serve.
           </p>
         </motion.div>
@@ -149,42 +126,72 @@ const Reports = () => {
 
       {/* Reports Section */}
       <Section className="py-16 md:py-20 bg-white">
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Monthly Reports
-          </h2>
-          <div className="w-24 h-1 bg-teal-500 mx-auto mb-6"></div>
-          <p className="text-gray-600 leading-relaxed text-lg">
-            Browse our reports by year. Click on a year to view and download the
-            available monthly reports in PDF format.
-          </p>
-        </motion.div>
+        {!isLoading && groupedReports.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Reports
+            </h2>
+            <div className="w-24 h-1 bg-teal-500 mx-auto mb-6"></div>
+            <p className="text-gray-600 leading-relaxed text-lg">
+              Browse our reports by year. Click on a year to view and download the
+              available reports in PDF format.
+            </p>
+          </motion.div>
+        )}
+
+        {/* Loading skeleton */}
+        {isLoading && (
+          <div className="max-w-4xl mx-auto space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-16 bg-gray-100 rounded-xl animate-pulse" />
+            ))}
+          </div>
+        )}
+
+        {/* Empty state */}
+        {!isLoading && groupedReports.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="max-w-4xl mx-auto text-center py-16"
+          >
+            <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-6">
+              <FaFilePdf className="w-8 h-8 text-gray-300" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">No Reports Available Yet</h3>
+            <p className="text-gray-500 max-w-sm mx-auto">
+              Reports will appear here once they have been published. Check back soon.
+            </p>
+          </motion.div>
+        )}
 
         {/* Accordion */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {REPORTS_DATA.map((yearData, index) => (
-            <motion.div
-              key={yearData.year}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
-              <YearAccordion
-                yearData={yearData}
-                isOpen={openYear === yearData.year}
-                onToggle={() => toggleYear(yearData.year)}
-              />
-            </motion.div>
-          ))}
-        </div>
+        {!isLoading && groupedReports.length > 0 && (
+          <div className="max-w-4xl mx-auto space-y-4">
+            {groupedReports.map((yearData, index) => (
+              <motion.div
+                key={yearData.year}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <YearAccordion
+                  yearData={yearData}
+                  isOpen={openYear === yearData.year}
+                  onToggle={() => toggleYear(yearData.year)}
+                />
+              </motion.div>
+            ))}
+          </div>
+        )}
       </Section>
 
       {/* CTA Section */}

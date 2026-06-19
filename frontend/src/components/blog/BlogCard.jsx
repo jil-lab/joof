@@ -5,7 +5,7 @@ import { formatStrapiDate, getStrapiImageUrl } from '../../utils/formatters';
 const BlogCard = ({ post, index = 0 }) => {
   const imageUrl = post.featuredImage
     ? getStrapiImageUrl(post.featuredImage)
-    : '/images/blog/default-blog.jpg';
+    : (post.imageUrl || '/images/blog/default-blog.jpg');
 
   // Category colors mapping
   const categoryColors = {

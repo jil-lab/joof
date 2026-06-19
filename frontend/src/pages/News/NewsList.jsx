@@ -26,6 +26,7 @@ const NewsList = () => {
     publishedAt: post?.publishedAt,
     readTime: post?.readTime,
     featuredImage: post?.featuredImage,
+    imageUrl: post?.imageUrl,
     category: post?.category,
   })) || [];
 

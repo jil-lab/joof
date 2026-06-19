@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import Section from '../../components/common/Section/Section';
-import { MISSION_VISION } from '../../utils/constants';
+import { useAboutPage } from '../../hooks/useApi';
+import { useCoreValues } from '../../hooks/useApi';
 
-// Shared animation variant — simple fade-up, no horizontal shifts
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
   visible: (delay = 0) => ({
@@ -14,15 +14,13 @@ const fadeUp = {
 
 const viewportOpts = { once: true, margin: '-60px' };
 
-const CORE_VALUES = [
-  { title: 'Compassion', desc: 'Treating every individual with dignity, empathy, and care' },
-  { title: 'Service',    desc: 'Placing the needs of others above our own' },
-  { title: 'Excellence', desc: 'Pursuing the highest standard in all we do' },
-  { title: 'Inclusion',  desc: 'Reaching the most vulnerable without discrimination' },
-  { title: 'Integrity',  desc: 'Operating with transparency and accountability in all stewardship' },
-];
-
 const About = () => {
+  const { data: aboutData } = useAboutPage();
+  const { data: coreValuesData } = useCoreValues();
+
+  const about = aboutData?.data;
+  const coreValues = coreValuesData?.data ?? [];
+
   return (
     <div className="min-h-screen">
 
@@ -30,11 +28,8 @@ const About = () => {
       <Section className="bg-gradient-teal text-white py-20 md:py-24">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            About JOOF Foundation
+            {about?.heroTitle ?? 'About JOOF Foundation'}
           </h1>
-          {/* <p className="text-xl md:text-2xl text-teal-50 leading-relaxed">
-            {MISSION_VISION.tagline}
-          </p> */}
         </div>
       </Section>
 
@@ -47,7 +42,9 @@ const About = () => {
             viewport={viewportOpts}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Foundation</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              {about?.foundationSectionTitle ?? 'Our Foundation'}
+            </h2>
             <div className="w-24 h-1 bg-teal-500 mx-auto"></div>
           </motion.div>
 
@@ -58,18 +55,10 @@ const About = () => {
               className="prose prose-lg max-w-none"
             >
               <p className="text-gray-700 leading-relaxed mb-6">
-                The John Oyediran Olabisi Foundation (JOOF) is a non-profit organization established in
-                honor of the life and legacy of Deacon Dr. John Oyediran Olabisi — surgeon,
-                philanthropist, servant-leader, and devoted son of Iganna land. Founded with a singular
-                purpose, JOOF exists to carry forward the values that defined Dr. Olabisi's seven decades
-                on earth: compassionate healthcare, access to quality education, and the upliftment of
-                underserved communities.
+                {about?.foundationParagraph1 ?? 'The John Oyediran Olabisi Foundation (JOOF) is a non-profit organization established in honor of the life and legacy of Deacon Dr. John Oyediran Olabisi.'}
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">
-                Born on 2 January 1950 as a prince of the ancient Iganna kingdom in Iwajowa Local
-                Government Area of Oyo State, Nigeria, Dr. Olabisi rose from humble beginnings —
-                supported by relations and well-wishers — to become one of Nigeria's most distinguished
-                Ear, Nose and Throat (ENT) surgeons.
+                {about?.foundationParagraph2 ?? 'Born on 2 January 1950 as a prince of the ancient Iganna kingdom in Iwajowa Local Government Area of Oyo State, Nigeria.'}
               </p>
             </motion.div>
 
@@ -85,14 +74,12 @@ const About = () => {
                   loading="eager"
                   width="800"
                   height="600"
-                  onError={(e) => {
-                    e.target.src = '/images/programs/hospital2.jpg';
-                  }}
+                  onError={(e) => { e.target.src = '/images/programs/hospital2.jpg'; }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-900/50 to-transparent" />
                 <div className="absolute bottom-6 left-6 text-white">
-                  <p className="text-sm font-medium">Established 2015</p>
-                  <p className="text-2xl font-bold">10 Years of Service</p>
+                  <p className="text-sm font-medium">{about?.foundationBadgeYear ?? 'Established 2015'}</p>
+                  <p className="text-2xl font-bold">{about?.foundationBadgeLabel ?? '10 Years of Service'}</p>
                 </div>
               </div>
             </motion.div>
@@ -112,9 +99,7 @@ const About = () => {
                   loading="lazy"
                   width="800"
                   height="600"
-                  onError={(e) => {
-                    e.target.src = '/images/about/story2.jpg';
-                  }}
+                  onError={(e) => { e.target.src = '/images/about/story2.jpg'; }}
                 />
               </div>
             </motion.div>
@@ -125,17 +110,10 @@ const About = () => {
               className="prose prose-lg max-w-none order-1 lg:order-2"
             >
               <p className="text-gray-700 leading-relaxed mb-6">
-                He trained at the University of Ibadan and went on to obtain his fellowship at the Royal
-                College of Surgeons in Glasgow, Scotland. His career spanned distinguished public service
-                as Chief Medical Officer in the Oyo State Ministry of Health, the founding of Highland
-                Specialist Hospital in Ibadan, and a lifetime of treating patients regardless of their
-                ability to pay. His private hospital was known in the community simply as <em>ile aanu</em> — the house of mercy.
+                {about?.foundationParagraph3 ?? 'He trained at the University of Ibadan and went on to obtain his fellowship at the Royal College of Surgeons in Glasgow, Scotland.'}
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">
-                Dr. Olabisi passed to glory on 13 January 2021. In his memory, his family, friends, and
-                all who were touched by his generosity came together to establish the Foundation —
-                ensuring that his spirit of service would live on, reaching thousands more lives across
-                Nigeria and beyond.
+                {about?.foundationParagraph4 ?? 'Dr. Olabisi passed to glory on 13 January 2021. In his memory, his family, friends, and all who were touched by his generosity came together to establish the Foundation.'}
               </p>
             </motion.div>
           </div>
@@ -150,41 +128,46 @@ const About = () => {
             viewport={viewportOpts}
             className="bg-teal-50 rounded-card p-8 md:p-10 border-l-4 border-teal-500"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {about?.missionSectionTitle ?? 'Our Mission'}
+            </h2>
             <p className="text-gray-700 leading-relaxed text-lg">
-              {MISSION_VISION.mission}
+              {about?.missionBody ?? 'To honour the legacy of Dr. John Oyediran Olabisi by expanding access to quality healthcare, education, and community development for underserved families.'}
             </p>
           </motion.div>
         </div>
       </Section>
 
       {/* Core Values */}
-      <Section className="py-16 md:py-20 bg-teal-50">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={fadeUp} initial="hidden" whileInView="visible"
-            viewport={viewportOpts}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Core Values</h2>
-            <div className="w-24 h-1 bg-teal-500 mx-auto"></div>
-          </motion.div>
+      {coreValues.length > 0 && (
+        <Section className="py-16 md:py-20 bg-teal-50">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              variants={fadeUp} initial="hidden" whileInView="visible"
+              viewport={viewportOpts}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Core Values</h2>
+              <div className="w-24 h-1 bg-teal-500 mx-auto"></div>
+            </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CORE_VALUES.map((value, i) => (
-              <motion.div
-                key={value.title}
-                variants={fadeUp} initial="hidden" whileInView="visible" custom={i * 0.07}
-                viewport={viewportOpts}
-                className="bg-white rounded-card p-6 shadow-card border-t-4 border-teal-500 flex flex-col gap-3"
-              >
-                <h3 className="text-lg font-bold text-gray-900">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.desc}</p>
-              </motion.div>
-            ))}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {coreValues.map((value, i) => (
+                <motion.div
+                  key={value.id}
+                  variants={fadeUp} initial="hidden" whileInView="visible" custom={i * 0.07}
+                  viewport={viewportOpts}
+                  className="bg-white rounded-card p-6 shadow-card border-t-4 border-teal-500 flex flex-col gap-3"
+                >
+                  {value.icon && <span className="text-3xl">{value.icon}</span>}
+                  <h3 className="text-lg font-bold text-gray-900">{value.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       {/* Founder's Vision */}
       <Section className="py-16 md:py-20 bg-white">
@@ -194,7 +177,9 @@ const About = () => {
             viewport={viewportOpts}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">The Founder's Vision</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              {about?.founderVisionSectionTitle ?? "The Founder's Vision"}
+            </h2>
             <div className="w-24 h-1 bg-teal-500 mx-auto"></div>
           </motion.div>
 
@@ -225,13 +210,11 @@ const About = () => {
               <div className="bg-teal-50 rounded-card p-8 border-l-4 border-teal-500">
                 <span className="text-6xl font-serif text-teal-400 leading-none block mb-4">"</span>
                 <p className="text-gray-700 leading-relaxed text-xl italic mb-6">
-                  A Nigeria where no family is turned away from a hospital because of poverty, no child
-                  denied an education because of circumstance, and no community left behind because of
-                  geography.
+                  {about?.founderVisionQuote ?? 'A Nigeria where no family is turned away from a hospital because of poverty, no child denied an education because of circumstance, and no community left behind because of geography.'}
                 </p>
                 <span className="text-6xl font-serif text-teal-400 leading-none block text-right mb-6">"</span>
-                <p className="text-gray-900 font-semibold text-lg">— John Oyediran Olabisi</p>
-                <p className="text-teal-600 font-medium">Founder &amp; Director</p>
+                <p className="text-gray-900 font-semibold text-lg">— {about?.founderVisionName ?? 'John Oyediran Olabisi'}</p>
+                <p className="text-teal-600 font-medium">{about?.founderVisionRole ?? 'Founder & Director'}</p>
               </div>
             </motion.div>
           </div>
@@ -246,7 +229,9 @@ const About = () => {
             viewport={viewportOpts}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              {about?.ourStorySectionTitle ?? 'Our Story'}
+            </h2>
             <div className="w-24 h-1 bg-teal-500 mx-auto"></div>
           </motion.div>
 
@@ -262,9 +247,7 @@ const About = () => {
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center 20%' }}
                 loading="lazy"
-                onError={(e) => {
-                  e.target.src = '/images/about/story3.jpg';
-                }}
+                onError={(e) => { e.target.src = '/images/about/story3.jpg'; }}
               />
             </div>
             <div className="aspect-[4/3] rounded-card overflow-hidden shadow-card bg-teal-50">
@@ -273,9 +256,7 @@ const About = () => {
                 alt="Dr. John Oyediran Olabisi"
                 className="w-full h-full object-cover"
                 loading="lazy"
-                onError={(e) => {
-                  e.target.src = '/images/about/story2.jpg';
-                }}
+                onError={(e) => { e.target.src = '/images/about/story2.jpg'; }}
               />
             </div>
           </motion.div>
@@ -285,33 +266,51 @@ const About = () => {
             viewport={viewportOpts}
             className="bg-white rounded-card p-8 md:p-10 shadow-card border-l-4 border-yellow-400"
           >
-            <p className="text-gray-700 leading-relaxed text-lg">
-              On his 70th birthday in January 2020, Dr. Olabisi dedicated a newly completed hospital
-              building in his hometown of Iganna — the{' '}
-              <span className="font-semibold text-gray-900">
-                Oba Olabisi Alabi Memorial Baptist Specialist Hospital
-              </span>{' '}
-              — as a gift to over 150,000 people in the catchment area who lacked access to specialist
-              medical care. That act of generosity, his last great project, became the seed from which
-              the Foundation grew. JOOF was born from the conviction that one person's dream,
-              faithfully carried forward by a community, can transform countless lives.
-            </p>
+            {about?.ourStoryBody ? (
+              <p className="text-gray-700 leading-relaxed text-lg">
+                {about.ourStoryHighlightedName
+                  ? (() => {
+                      const parts = about.ourStoryBody.split(about.ourStoryHighlightedName);
+                      return parts.map((part, i) =>
+                        i < parts.length - 1 ? (
+                          <span key={i}>
+                            {part}
+                            <span className="font-semibold text-gray-900">{about.ourStoryHighlightedName}</span>
+                          </span>
+                        ) : part
+                      );
+                    })()
+                  : about.ourStoryBody}
+              </p>
+            ) : (
+              <p className="text-gray-700 leading-relaxed text-lg">
+                On his 70th birthday in January 2020, Dr. Olabisi dedicated a newly completed hospital
+                building in his hometown of Iganna — the{' '}
+                <span className="font-semibold text-gray-900">
+                  Oba Olabisi Alabi Memorial Baptist Specialist Hospital
+                </span>{' '}
+                — as a gift to over 150,000 people in the catchment area who lacked access to specialist
+                medical care. That act of generosity, his last great project, became the seed from which
+                the Foundation grew. JOOF was born from the conviction that one person's dream,
+                faithfully carried forward by a community, can transform countless lives.
+              </p>
+            )}
           </motion.div>
         </div>
 
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <a
-            href="/programs"
+            href={about?.ctaPrimaryUrl ?? '/programs'}
             className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white font-medium rounded-lg hover:bg-teal-600 transition-colors duration-300 shadow-md hover:shadow-lg"
           >
-            Explore Our Programs
+            {about?.ctaPrimaryLabel ?? 'Explore Our Programs'}
           </a>
           <a
-            href="/donate"
+            href={about?.ctaSecondaryUrl ?? '/donate'}
             className="inline-flex items-center justify-center px-6 py-3 bg-yellow-400 text-gray-900 font-medium rounded-lg hover:bg-yellow-500 transition-colors duration-300 shadow-md hover:shadow-lg"
           >
-            Support Our Mission
+            {about?.ctaSecondaryLabel ?? 'Support Our Mission'}
           </a>
         </div>
       </Section>

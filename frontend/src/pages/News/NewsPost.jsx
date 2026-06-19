@@ -8,9 +8,12 @@ import { formatStrapiDate, getStrapiImageUrl } from '../../utils/formatters';
 
 const NewsPost = () => {
   const { slug } = useParams();
-  const { data: postData, isLoading, error } = useBlogPostBySlug(slug);
+  const { data: responseData, isLoading, error } = useBlogPostBySlug(slug);
 
-  // Extract post data (Strapi v5 format - data is not nested under attributes)
+  // getBlogPostBySlug returns StrapiSingleResponse<BlogPost> — the post is at .data
+  const postData = responseData?.data;
+
+  // Extract post data (Strapi v5 format - flat, no nested attributes)
   const post = postData ? {
     id: postData?.id,
     title: postData?.title,
@@ -22,6 +25,7 @@ const NewsPost = () => {
     readTime: postData?.readTime,
     tags: postData?.tags,
     featuredImage: postData?.featuredImage,
+    imageUrl: postData?.imageUrl,
     category: postData?.category,
   } : null;
 
@@ -41,6 +45,7 @@ const NewsPost = () => {
     publishedAt: p?.publishedAt,
     readTime: p?.readTime,
     featuredImage: p?.featuredImage,
+    imageUrl: p?.imageUrl,
     category: p?.category,
   })) || [];
 
@@ -76,7 +81,7 @@ const NewsPost = () => {
 
   const imageUrl = post.featuredImage
     ? getStrapiImageUrl(post.featuredImage)
-    : null;
+    : (post.imageUrl || null);
 
   return (
     <div>
