@@ -12,6 +12,8 @@ import { getTimelineMilestones } from '../api/services/timeline.service';
 import { getAdvisors, getAdvisor } from '../api/services/advisors.service';
 import { getPartners } from '../api/services/partners.service';
 import { getCoreValues } from '../api/services/core-values.service';
+import { getReports } from '../api/services/reports.service';
+import { getAboutPage } from '../api/services/about-page.service';
 import type { ContactFormData, NewsletterData } from '../api/services/contact.service';
 
 const STATIC_STALE = 60 * 60 * 1000; // 1 hour — rarely changes
@@ -200,6 +202,26 @@ export const useCoreValues = () =>
   useQuery({
     queryKey: queryKeys.coreValues.all,
     queryFn: getCoreValues,
+    staleTime: STATIC_STALE,
+    retry: 1,
+  });
+
+// ── Reports ───────────────────────────────────────────────────────────────────
+
+export const useReports = () =>
+  useQuery({
+    queryKey: queryKeys.reports.all,
+    queryFn: getReports,
+    staleTime: STATIC_STALE,
+    retry: 1,
+  });
+
+// ── About Page ────────────────────────────────────────────────────────────────
+
+export const useAboutPage = () =>
+  useQuery({
+    queryKey: queryKeys.aboutPage.all,
+    queryFn: getAboutPage,
     staleTime: STATIC_STALE,
     retry: 1,
   });

@@ -166,9 +166,44 @@ export interface BlogPost {
   excerpt?: string;
   content?: unknown;
   featuredImage?: StrapiMedia;
+  imageUrl?: string;
   author?: string;
   readTime?: number;
   tags?: string[];
   order: number;
+  publishedAt?: string;
+}
+
+export interface Report {
+  id: number;
+  title: string;
+  year: number;
+  file?: StrapiMedia;
+  publishedAt?: string;
+}
+
+export interface AboutPage {
+  id: number;
+  heroTitle: string;
+  foundationSectionTitle?: string;
+  foundationParagraph1: string;
+  foundationParagraph2: string;
+  foundationBadgeYear?: string;
+  foundationBadgeLabel?: string;
+  foundationParagraph3: string;
+  foundationParagraph4: string;
+  missionSectionTitle?: string;
+  missionBody: string;
+  founderVisionSectionTitle?: string;
+  founderVisionQuote: string;
+  founderVisionName?: string;
+  founderVisionRole?: string;
+  ourStorySectionTitle?: string;
+  ourStoryBody: string;
+  ourStoryHighlightedName?: string;
+  ctaPrimaryLabel?: string;
+  ctaPrimaryUrl?: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryUrl?: string;
   publishedAt?: string;
 }

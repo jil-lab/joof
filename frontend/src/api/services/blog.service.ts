@@ -7,13 +7,18 @@ interface BlogPostFilters {
   category?: string | null;
 }
 
+const POPULATE_PARAMS = {
+  'populate[0]': 'featuredImage',
+  'populate[1]': 'category',
+};
+
 export const getBlogPosts = async ({
   page = 1,
   pageSize = 6,
   category = null,
 }: BlogPostFilters = {}): Promise<StrapiCollectionResponse<BlogPost>> => {
   const params: Record<string, unknown> = {
-    populate: 'featuredImage,category',
+    ...POPULATE_PARAMS,
     sort: 'publishedAt:desc',
     'pagination[page]': page,
     'pagination[pageSize]': pageSize,
@@ -27,7 +32,7 @@ export const getBlogPosts = async ({
 export const getBlogPostBySlug = async (slug: string): Promise<StrapiSingleResponse<BlogPost>> => {
   const response = await apiClient.get<StrapiCollectionResponse<BlogPost>>('/api/blog-posts', {
     params: {
-      populate: 'featuredImage,category',
+      ...POPULATE_PARAMS,
       'filters[slug][$eq]': slug,
     },
   });
@@ -42,7 +47,7 @@ export const getRelatedBlogPosts = async (
 ): Promise<StrapiCollectionResponse<BlogPost>> => {
   const response = await apiClient.get<StrapiCollectionResponse<BlogPost>>('/api/blog-posts', {
     params: {
-      populate: 'featuredImage,category',
+      ...POPULATE_PARAMS,
       'filters[category][id][$eq]': categoryId,
       'filters[id][$ne]': excludeId,
       'pagination[pageSize]': limit,

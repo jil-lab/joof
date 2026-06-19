@@ -57,4 +57,10 @@ export const queryKeys = {
   coreValues: {
     all: ['coreValues'] as const,
   },
+  reports: {
+    all: ['reports'] as const,
+  },
+  aboutPage: {
+    all: ['aboutPage'] as const,
+  },
 };
