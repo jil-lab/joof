@@ -430,6 +430,55 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
+  collectionName: 'about_pages';
+  info: {
+    description: "All editable content for the About page \u2014 hero, foundation history, mission, founder's vision, our story, and CTAs";
+    displayName: 'About Page';
+    pluralName: 'about-pages';
+    singularName: 'about-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctaPrimaryLabel: Schema.Attribute.String;
+    ctaPrimaryUrl: Schema.Attribute.String;
+    ctaSecondaryLabel: Schema.Attribute.String;
+    ctaSecondaryUrl: Schema.Attribute.String;
+    foundationBadgeLabel: Schema.Attribute.String;
+    foundationBadgeYear: Schema.Attribute.String;
+    foundationParagraph1: Schema.Attribute.Text & Schema.Attribute.Required;
+    foundationParagraph2: Schema.Attribute.Text & Schema.Attribute.Required;
+    foundationParagraph3: Schema.Attribute.Text & Schema.Attribute.Required;
+    foundationParagraph4: Schema.Attribute.Text & Schema.Attribute.Required;
+    foundationSectionTitle: Schema.Attribute.String;
+    founderVisionName: Schema.Attribute.String;
+    founderVisionQuote: Schema.Attribute.Text & Schema.Attribute.Required;
+    founderVisionRole: Schema.Attribute.String;
+    founderVisionSectionTitle: Schema.Attribute.String;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-page.about-page'
+    > &
+      Schema.Attribute.Private;
+    missionBody: Schema.Attribute.Text & Schema.Attribute.Required;
+    missionSectionTitle: Schema.Attribute.String;
+    ourStoryBody: Schema.Attribute.Text & Schema.Attribute.Required;
+    ourStoryHighlightedName: Schema.Attribute.String;
+    ourStorySectionTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAdvisorAdvisor extends Struct.CollectionTypeSchema {
   collectionName: 'advisors';
   info: {
@@ -488,6 +537,7 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
         maxLength: 300;
       }>;
     featuredImage: Schema.Attribute.Media<'images' | 'files'>;
+    imageUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -558,7 +608,7 @@ export interface ApiContactSubmissionContactSubmission
     singularName: 'contact-submission';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -653,7 +703,7 @@ export interface ApiNewsletterSubscriptionNewsletterSubscription
     singularName: 'newsletter-subscription';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -746,6 +796,44 @@ export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiReportReport extends Struct.CollectionTypeSchema {
+  collectionName: 'reports';
+  info: {
+    displayName: 'Report';
+    pluralName: 'reports';
+    singularName: 'report';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    file: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::report.report'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2100;
+          min: 2000;
+        },
+        number
+      >;
   };
 }
 
@@ -1401,6 +1489,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::advisor.advisor': ApiAdvisorAdvisor;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::category.category': ApiCategoryCategory;
@@ -1410,6 +1499,7 @@ declare module '@strapi/strapi' {
       'api::newsletter-subscription.newsletter-subscription': ApiNewsletterSubscriptionNewsletterSubscription;
       'api::partner.partner': ApiPartnerPartner;
       'api::program.program': ApiProgramProgram;
+      'api::report.report': ApiReportReport;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;

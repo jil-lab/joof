@@ -1,6 +1,7 @@
 import type { Core } from '@strapi/strapi';
 import {
   siteSettingData,
+  aboutPageData,
   timelineMilestonesData,
   advisorsData,
   teamMembersData,
@@ -16,12 +17,16 @@ type UID = Parameters<Core.Strapi['documents']>[0];
 
 // ── Content seeding ───────────────────────────────────────────────────────────
 
-async function seedSiteSetting(strapi: Core.Strapi) {
-  const uid = 'api::site-setting.site-setting' as UID;
-  const existing = await strapi.documents(uid).findFirst({});
+async function seedSingleType(
+  strapi: Core.Strapi,
+  uid: string,
+  data: object,
+  label: string,
+) {
+  const existing = await strapi.documents(uid as UID).findFirst({});
   if (existing) return;
-  await strapi.documents(uid).create({ data: siteSettingData as any, status: 'published' });
-  strapi.log.info('[seed] Site setting created');
+  await strapi.documents(uid as UID).create({ data: data as any, status: 'published' });
+  strapi.log.info(`[seed] ${label} created`);
 }
 
 async function seedCollection<T extends object>(
@@ -55,7 +60,7 @@ async function seedCategories(strapi: Core.Strapi) {
 async function seedBlogPosts(strapi: Core.Strapi) {
   // Fetch category document IDs by slug for linking
   const catCache: Record<string, string> = {};
-  for (const slug of ['healthcare', 'education', 'news']) {
+  for (const slug of ['healthcare', 'education', 'news', 'community']) {
     const c = await strapi.db
       .query('api::category.category')
       .findOne({ where: { slug } });
@@ -70,15 +75,18 @@ async function seedBlogPosts(strapi: Core.Strapi) {
 
   let created = 0;
   for (let i = 0; i < blogPostsData.length; i++) {
-    const post = blogPostsData[i];
+    const post = blogPostsData[i] as any;
     const existing = await strapi.db
       .query('api::blog-post.blog-post')
       .findOne({ where: { slug: post.slug } });
     if (!existing) {
-      const catDocId = catByIndex[i];
+      // Use explicit categorySlug on post if present, otherwise fall back to index-based mapping
+      const catSlug = post.categorySlug;
+      const catDocId = catSlug ? catCache[catSlug] : catByIndex[i];
+      const { categorySlug, ...postData } = post;
       await strapi.documents('api::blog-post.blog-post' as UID).create({
         data: {
-          ...post,
+          ...postData,
           ...(catDocId ? { category: catDocId } : {}),
         } as any,
         status: 'published',
@@ -120,21 +128,44 @@ async function setPublicPermissions(strapi: Core.Strapi) {
     'api::testimonial.testimonial.findOne',
     'api::timeline-milestone.timeline-milestone.find',
     'api::timeline-milestone.timeline-milestone.findOne',
+    'api::report.report.find',
+    'api::report.report.findOne',
+    'api::about-page.about-page.find',
   ];
 
-  const permissions = await strapi.db
-    .query('plugin::users-permissions.permission')
-    .findMany({ where: { action: { $in: actionsToEnable }, role: { id: publicRole.id } } });
+  // Strapi v5 uses a join table (up_permissions_role_lnk) — query it directly
+  const linked = await (strapi.db as any).connection
+    .select('p.action')
+    .from('up_permissions as p')
+    .join('up_permissions_role_lnk as lnk', 'lnk.permission_id', 'p.id')
+    .where('lnk.role_id', publicRole.id)
+    .whereIn('p.action', actionsToEnable);
 
-  for (const perm of permissions) {
-    if (!perm.enabled) {
-      await strapi.db
+  const linkedActions = new Set(linked.map((r: any) => r.action));
+
+  let count = 0;
+  for (const action of actionsToEnable) {
+    if (linkedActions.has(action)) continue;
+
+    let perm = await strapi.db
+      .query('plugin::users-permissions.permission')
+      .findOne({ where: { action } });
+
+    if (!perm) {
+      perm = await strapi.db
         .query('plugin::users-permissions.permission')
-        .update({ where: { id: perm.id }, data: { enabled: true } });
+        .create({ data: { action } });
     }
+
+    await (strapi.db as any).connection('up_permissions_role_lnk').insert({
+      permission_id: perm.id,
+      role_id: publicRole.id,
+    });
+
+    count++;
   }
 
-  strapi.log.info(`[seed] Public permissions: ${permissions.length} routes enabled`);
+  strapi.log.info(`[seed] Public permissions: ${count} routes enabled`);
 }
 
 // ── Entry point ───────────────────────────────────────────────────────────────
@@ -142,7 +173,8 @@ async function setPublicPermissions(strapi: Core.Strapi) {
 export async function runSeed(strapi: Core.Strapi) {
   strapi.log.info('[seed] Starting database seed…');
 
-  await seedSiteSetting(strapi);
+  await seedSingleType(strapi, 'api::site-setting.site-setting', siteSettingData, 'Site setting');
+  await seedSingleType(strapi, 'api::about-page.about-page', aboutPageData, 'About page');
   await seedCollection(strapi, 'api::timeline-milestone.timeline-milestone', timelineMilestonesData, 'Timeline milestones');
   await seedCollection(strapi, 'api::advisor.advisor', advisorsData, 'Advisors');
   await seedCollection(strapi, 'api::team-member.team-member', teamMembersData, 'Team members');

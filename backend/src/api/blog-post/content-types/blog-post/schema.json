@@ -57,6 +57,9 @@
     "order": {
       "type": "integer",
       "default": 0
+    },
+    "imageUrl": {
+      "type": "string"
     }
   }
 }

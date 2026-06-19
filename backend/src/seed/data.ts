@@ -82,6 +82,72 @@ export const blogPostsData = [
     ],
     order: 3,
   },
+  {
+    title: 'Mobile Clinics Bring Healthcare to Remote African Villages',
+    slug: 'mobile-clinics-remote-african-villages',
+    excerpt:
+      'Across rural sub-Saharan Africa, mobile health clinics are closing the gap between communities and essential medical care — one village visit at a time.',
+    author: 'JOOF Foundation',
+    readTime: 5,
+    tags: ['healthcare', 'africa', 'outreach', 'mobile clinics'],
+    categorySlug: 'healthcare',
+    imageUrl: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&auto=format&fit=crop&q=80',
+    content: [
+      p('In communities where the nearest hospital can be several hours away, a mobile clinic pulling into the village square is often the most significant healthcare event of the year. These rolling health centers — staffed by volunteer doctors, nurses, and community health workers — are transforming access to essential medical services across rural sub-Saharan Africa.'),
+      h2('What Mobile Clinics Provide'),
+      p('At a typical mobile clinic visit, residents can receive basic health screenings, maternal care consultations, immunizations, and treatment for common conditions like malaria, hypertension, and respiratory infections. Some mobile units are equipped with diagnostic tools including portable ultrasound machines, enabling healthcare workers to conduct prenatal scans in the field.'),
+      h2('Reaching the Unreachable'),
+      p('The impact of mobile clinic programs is felt most keenly in communities where geography and poverty have long made healthcare inaccessible. Villages in remote inland areas, isolated by poor road infrastructure, often go months without seeing a qualified medical professional. Mobile clinics change this reality.'),
+      h2('Community Trust as the Foundation'),
+      p('Experienced health workers emphasize that community trust is the bedrock of successful outreach programs. By returning to the same communities consistently and engaging local leaders and traditional healers, mobile clinic teams build the relationships that encourage residents to seek care earlier and follow through on treatment plans.'),
+      p('The JOOF Foundation is proud to be part of this growing movement to bring quality healthcare to every corner of Africa. We believe that geography should never be a barrier to healing.'),
+    ],
+    order: 4,
+  },
+  {
+    title: 'Maternal Health Outreach: Saving Mothers and Babies Across Nigeria',
+    slug: 'maternal-health-outreach-saving-mothers-babies-nigeria',
+    excerpt:
+      'Skilled birth attendance and antenatal care remain out of reach for millions of Nigerian women. Community health visits are changing that — one mother at a time.',
+    author: 'JOOF Foundation',
+    readTime: 6,
+    tags: ['healthcare', 'maternal health', 'nigeria', 'africa'],
+    categorySlug: 'healthcare',
+    imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
+    content: [
+      p('Nigeria accounts for one of the highest maternal mortality rates in the world. Yet the tragedy is largely preventable. The leading causes — postpartum hemorrhage, eclampsia, and obstructed labour — are all conditions that skilled birth attendants and timely antenatal care can detect and manage. The challenge is getting that care to the women who need it most.'),
+      h2('The Power of the Health Visit'),
+      p('Community health visits — where trained midwives and nurses travel to homes and villages to provide antenatal screening, health education, and delivery support — have proven to be one of the most effective interventions available. These visits meet women where they are, removing transportation costs and cultural barriers that often prevent them from seeking care at formal clinics.'),
+      h2('What We See in the Field'),
+      p('Through the JOOF Foundation\'s maternal health programs, our healthcare workers have conducted hundreds of antenatal consultations in communities across Iwajowa LGA. In many cases, these visits have identified high-risk pregnancies that were previously undetected, allowing us to refer mothers for specialist care before complications developed. We have supported 29 safe deliveries to date — each one a life that might otherwise have been at grave risk.'),
+      h2('Empowering Families with Knowledge'),
+      p('Beyond clinical care, our health visits include educational sessions for families on danger signs in pregnancy, the importance of exclusive breastfeeding, and newborn care. When families understand what to look for, they become active participants in maternal health — a shift that makes entire communities safer for mothers and babies.'),
+      p('We remain committed to expanding our maternal health reach, because every mother deserves a safe pregnancy and every child deserves a healthy start to life.'),
+    ],
+    order: 5,
+  },
+  {
+    title: 'Free Eye Care Camps Restore Sight to Hundreds in West Africa',
+    slug: 'eye-care-camps-restore-sight-west-africa',
+    excerpt:
+      'From cataracts to refractive errors, preventable blindness is robbing thousands of people across West Africa of their independence. Volunteer eye care missions are turning the tide.',
+    author: 'JOOF Foundation',
+    readTime: 4,
+    tags: ['healthcare', 'africa', 'eye care', 'outreach'],
+    categorySlug: 'healthcare',
+    imageUrl: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&auto=format&fit=crop&q=80',
+    content: [
+      p('Across West Africa, an estimated 80% of blindness cases are avoidable or treatable. Cataracts — which can be cured with a simple 20-minute surgical procedure — remain the leading cause of blindness in the region, largely because patients lack access to surgery. Free eye care camps, run by volunteer ophthalmologists and supported by community organizations, are changing this statistic one patient at a time.'),
+      h2('A Day at the Eye Camp'),
+      p('A typical community eye camp begins before sunrise, with patients often traveling several hours by foot, motorbike, or shared transport to reach the venue. Volunteer surgeons, nurses, and optometrists work in shifts to screen and treat hundreds of patients over two to three days. By the end of the camp, dozens of patients who arrived unable to see clearly are able to read, recognize faces, and reclaim their independence.'),
+      h2('Beyond Surgery: Glasses and Follow-Up Care'),
+      p('Not every vision problem requires surgery. Refractive errors — nearsightedness, farsightedness, and astigmatism — can often be corrected with the right pair of glasses. Eye care camps typically include a refraction station where patients receive free eyeglass prescriptions and, when available, donated spectacles. The impact on school-age children in particular is profound: a child who could not read the classroom blackboard becomes an engaged learner overnight.'),
+      h2('Partnership Is Key'),
+      p('Successful eye care camps require coordination between international volunteer organizations, local NGOs, community health workers, and government health authorities. The JOOF Foundation believes in this model of partnership, bringing together resources and expertise to deliver impact that no single organization could achieve alone.'),
+      p('Every person who leaves an eye camp with restored sight is a reminder of what is possible when communities commit to health as a human right.'),
+    ],
+    order: 6,
+  },
 ];
 
 
@@ -456,3 +522,39 @@ export const programsData = [
     order: 2,
   },
 ];
+
+export const aboutPageData = {
+  heroTitle: 'About JOOF Foundation',
+
+  foundationSectionTitle: 'Our Foundation',
+  foundationParagraph1:
+    'The John Oyediran Olabisi Foundation (JOOF) is a non-profit organization established in honor of the life and legacy of Deacon Dr. John Oyediran Olabisi — surgeon, philanthropist, servant-leader, and devoted son of Iganna land. Founded with a singular purpose, JOOF exists to carry forward the values that defined Dr. Olabisi\'s seven decades on earth: compassionate healthcare, access to quality education, and the upliftment of underserved communities.',
+  foundationParagraph2:
+    'Born on 2 January 1950 as a prince of the ancient Iganna kingdom in Iwajowa Local Government Area of Oyo State, Nigeria, Dr. Olabisi rose from humble beginnings — supported by relations and well-wishers — to become one of Nigeria\'s most distinguished Ear, Nose and Throat (ENT) surgeons.',
+  foundationBadgeYear: 'Established 2015',
+  foundationBadgeLabel: '10 Years of Service',
+  foundationParagraph3:
+    'He trained at the University of Ibadan and went on to obtain his fellowship at the Royal College of Surgeons in Glasgow, Scotland. His career spanned distinguished public service as Chief Medical Officer in the Oyo State Ministry of Health, the founding of Highland Specialist Hospital in Ibadan, and a lifetime of treating patients regardless of their ability to pay. His private hospital was known in the community simply as ile aanu — the house of mercy.',
+  foundationParagraph4:
+    'Dr. Olabisi passed to glory on 13 January 2021. In his memory, his family, friends, and all who were touched by his generosity came together to establish the Foundation — ensuring that his spirit of service would live on, reaching thousands more lives across Nigeria and beyond.',
+
+  missionSectionTitle: 'Our Mission',
+  missionBody:
+    'To honour the legacy of Dr. John Oyediran Olabisi by expanding access to quality healthcare, education, and community development for underserved families in Iwajowa Local Government Area and across Nigeria.',
+
+  founderVisionSectionTitle: "The Founder's Vision",
+  founderVisionQuote:
+    'A Nigeria where no family is turned away from a hospital because of poverty, no child denied an education because of circumstance, and no community left behind because of geography.',
+  founderVisionName: 'John Oyediran Olabisi',
+  founderVisionRole: 'Founder & Director',
+
+  ourStorySectionTitle: 'Our Story',
+  ourStoryBody:
+    'On his 70th birthday in January 2020, Dr. Olabisi dedicated a newly completed hospital building in his hometown of Iganna — the Oba Olabisi Alabi Memorial Baptist Specialist Hospital — as a gift to over 150,000 people in the catchment area who lacked access to specialist medical care. That act of generosity, his last great project, became the seed from which the Foundation grew. JOOF was born from the conviction that one person\'s dream, faithfully carried forward by a community, can transform countless lives.',
+  ourStoryHighlightedName: 'Oba Olabisi Alabi Memorial Baptist Specialist Hospital',
+
+  ctaPrimaryLabel: 'Explore Our Programs',
+  ctaPrimaryUrl: '/programs',
+  ctaSecondaryLabel: 'Support Our Mission',
+  ctaSecondaryUrl: '/donate',
+};
