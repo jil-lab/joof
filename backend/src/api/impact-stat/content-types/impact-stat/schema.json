@@ -4,7 +4,7 @@
   "info": {
     "singularName": "impact-stat",
     "pluralName": "impact-stats",
-    "displayName": "impact stat"
+    "displayName": "Impact Stat"
   },
   "options": {
     "draftAndPublish": true

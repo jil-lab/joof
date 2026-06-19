@@ -1,6 +1,90 @@
 // All seed data derived from the existing hardcoded frontend content.
 // Images are intentionally omitted — upload them via the Strapi admin panel.
 
+const p = (text: string) => ({
+  type: 'paragraph',
+  children: [{ type: 'text', text }],
+});
+
+const h2 = (text: string) => ({
+  type: 'heading',
+  level: 2,
+  children: [{ type: 'text', text }],
+});
+
+export const categoriesData = [
+  { name: 'Healthcare', slug: 'healthcare', color: '#14b8a6', icon: '🏥', order: 1 },
+  { name: 'Education', slug: 'education', color: '#3b82f6', icon: '🎓', order: 2 },
+  { name: 'Community', slug: 'community', color: '#f59e0b', icon: '🤝', order: 3 },
+  { name: 'News', slug: 'news', color: '#6b7280', icon: '📰', order: 4 },
+];
+
+export const blogPostsData = [
+  {
+    title: 'Reaching 1,651 Patients: Our Healthcare Milestone',
+    slug: 'reaching-1651-patients-healthcare-milestone',
+    excerpt:
+      'This year, the JOOF Foundation reached a historic milestone — providing medical care to 1,651 individuals across Iwajowa LGA and surrounding communities.',
+    author: 'JOOF Foundation',
+    readTime: 5,
+    tags: ['healthcare', 'milestone', 'medical outreach'],
+    content: [
+      p('This year, the JOOF Foundation reached a historic milestone — providing medical care to 1,651 individuals across Iwajowa LGA and surrounding communities. This achievement represents not just a number, but 1,651 lives touched, families strengthened, and a community uplifted.'),
+      h2('The Journey to 1,651'),
+      p('Since our first medical outreach in 2016, we have grown from serving 200 community members at a single event to running multiple outreach programs across the year. Our team of volunteer doctors, nurses, and healthcare workers have dedicated countless hours to making quality care accessible to those who need it most.'),
+      h2('What the Numbers Mean'),
+      p('Behind every statistic is a human story. Among the 1,651 patients served this year, we supported 29 safe deliveries for mothers who would otherwise have given birth without skilled medical assistance. We also facilitated 15 life-changing surgical procedures for individuals who could not afford these operations on their own.'),
+      h2('Looking Ahead'),
+      p('As we celebrate this milestone, we remain focused on the road ahead. Our goal for the coming year is to expand our reach to additional communities and deepen our impact in the areas we already serve. With the support of our donors, partners, and volunteers, we believe this is possible.'),
+      p('Thank you to everyone who has made this journey possible. Together, we are building a healthier, more equitable Nigeria.'),
+    ],
+    order: 1,
+  },
+  {
+    title: 'Scholarships Transform Lives in Iwajowa',
+    slug: 'scholarships-transform-lives-iwajowa',
+    excerpt:
+      'Through our education scholarship program, 25 students from underserved backgrounds have received full support to pursue their academic dreams — many becoming the first in their families to attend university.',
+    author: 'JOOF Foundation',
+    readTime: 4,
+    tags: ['education', 'scholarships', 'youth'],
+    content: [
+      p('Education is the most powerful tool we can give a child. At the JOOF Foundation, we believe that no young person should be denied an education simply because of the circumstances of their birth. That belief drives our scholarship program, which this year supported 25 students from some of the most underserved communities in Iwajowa Local Government Area.'),
+      h2('Stories of Transformation'),
+      p('Among this year\'s scholars is Chioma Adeyemi, who grew up in a household where her parents worked as subsistence farmers. Without a scholarship, university would have been an impossible dream. Today, she is studying nursing — a choice she says was inspired by the JOOF Foundation\'s medical outreach programs she witnessed growing up.'),
+      h2('More Than Tuition'),
+      p('Our scholarship program covers more than just tuition fees. We also provide books, school supplies, and access to our mentorship network — connecting students with professionals in their fields of study. This holistic approach ensures that scholars have every resource they need to thrive.'),
+      h2('Partnering with Schools'),
+      p('We currently partner with five schools in the region to identify students who demonstrate both academic promise and financial need. Our selection process is rigorous and transparent, ensuring that support reaches those who need it most.'),
+      p('To every donor who makes these scholarships possible: you are investing not just in students, but in the future of an entire community. Thank you.'),
+    ],
+    order: 2,
+  },
+  {
+    title: 'JOOF Foundation Annual Report: A Year of Impact',
+    slug: 'joof-foundation-annual-report-year-of-impact',
+    excerpt:
+      'Our annual review covers the highlights of another remarkable year — from medical outreach across Iwajowa LGA to new education partnerships and the growth of our volunteer network.',
+    author: 'JOOF Foundation',
+    readTime: 6,
+    tags: ['annual report', 'impact', 'community'],
+    content: [
+      p('As we reflect on the past year at the JOOF Foundation, we are filled with gratitude — for our donors, our volunteers, our partners, and above all, the communities who trust us to serve them. This annual review captures the highlights of a year that exceeded our expectations in almost every measure.'),
+      h2('Healthcare Impact'),
+      p('Our healthcare programs served 1,651 individuals this year through medical outreach camps, maternal health services, and surgical sponsorships. We recorded 29 safe deliveries and completed 15 surgical procedures. Our health education workshops reached hundreds more, empowering communities with knowledge about disease prevention and healthy living.'),
+      h2('Education Impact'),
+      p('The education arm of our work supported 25 scholars with full scholarships, provided learning materials to five partner schools, and launched a new mentorship program connecting 40 students with professional mentors. We also renovated two school libraries, creating better learning environments for hundreds of children.'),
+      h2('Community Development'),
+      p('Our community outreach programs addressed some of the deepest needs in Iwajowa LGA — from clean water access education to economic empowerment workshops for women and youth. We ran three major community programs this year, directly impacting over 300 households.'),
+      h2('Financial Transparency'),
+      p('We are committed to transparency in all aspects of our operations. Our full audited financial statements are available on request. Every donation made to the JOOF Foundation is directed to our programs, with minimal administrative overhead.'),
+      p('We thank all who have partnered with us this year. As we look to the year ahead, our resolve to serve is stronger than ever. Together, we are building a brighter future.'),
+    ],
+    order: 3,
+  },
+];
+
+
 export const siteSettingData = {
   heroHeadline: 'FOR A BRIGHTER FUTURE',
   heroSubtext:
@@ -26,7 +110,6 @@ export const timelineMilestonesData = [
     description:
       'John Oyediran Olabisi founded the JOOF Foundation with a vision to transform lives through healthcare and education.',
     order: 1,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2016',
@@ -34,7 +117,6 @@ export const timelineMilestonesData = [
     description:
       'Conducted our first medical outreach program, providing free healthcare services to over 200 community members.',
     order: 2,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2017',
@@ -42,7 +124,6 @@ export const timelineMilestonesData = [
     description:
       'Launched our education scholarship program, supporting 25 students from underprivileged backgrounds.',
     order: 3,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2018',
@@ -50,7 +131,6 @@ export const timelineMilestonesData = [
     description:
       'Expanded healthcare services to include maternal care, resulting in 15 safe deliveries in the first year.',
     order: 4,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2019',
@@ -58,7 +138,6 @@ export const timelineMilestonesData = [
     description:
       'Opened our first community learning center, providing resources and mentorship to local youth.',
     order: 5,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2020',
@@ -66,7 +145,6 @@ export const timelineMilestonesData = [
     description:
       'Pivoted to provide critical pandemic support, distributing PPE and conducting health awareness campaigns.',
     order: 6,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2021',
@@ -74,7 +152,6 @@ export const timelineMilestonesData = [
     description:
       'Launched our surgical intervention program, completing 15 life-changing procedures for those in need.',
     order: 7,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2022',
@@ -82,7 +159,6 @@ export const timelineMilestonesData = [
     description:
       'Achieved official registered charity status, strengthening our capacity to serve more communities.',
     order: 8,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2023',
@@ -90,7 +166,6 @@ export const timelineMilestonesData = [
     description:
       'Reached over 1,500 individuals through our combined healthcare and education programs.',
     order: 9,
-    publishedAt: new Date().toISOString(),
   },
   {
     year: '2024',
@@ -98,7 +173,6 @@ export const timelineMilestonesData = [
     description:
       'Continued expanding our reach with 29 safe deliveries, 1,651 medical care services, and ongoing education support.',
     order: 10,
-    publishedAt: new Date().toISOString(),
   },
 ];
 
@@ -116,7 +190,6 @@ He is an active member of several professional bodies, including AMDO, NMA, and 
 
 A devout Christian, Dr. Adeyanju has been a committed member of Oritamefa Baptist Church since 1985. He is happily married to Dorcas Oluwafunmilayo and is blessed with four children.`,
     order: 1,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Dr. Mrs. Sarah Alade',
@@ -133,7 +206,6 @@ Dr. Alade was Chairman of Financial Market Dealers Quotations (FMDQ) and Chairma
 
 Dr. Alade is Chairman of Council, Nigeria Baptist Theological Seminary, Ogbomosho. Dr. Alade is blessed with children.`,
     order: 2,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Rev. Dr. Adediran Adeleke',
@@ -146,7 +218,6 @@ Dr. Adeleke's ministry spans administrative roles, music direction, and leadersh
 
 He is a recipient of numerous academic and ministerial awards for excellence and integrity. Rev. Adeleke is married to Mrs. Abosede Abiodun Adeleke, a French educator and Ph.D. candidate, and their union is blessed with two children.`,
     order: 3,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Prof. Segun Segun-Busari',
@@ -159,7 +230,6 @@ Prof. Segun-Busari is a member of many learned and professional societies includ
 
 Segun-Busari is happily married to Olufunke Segun-Busari and they are blessed with 3 children.`,
     order: 4,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Mrs. Felicia Ikeoluwa Abiola-Ige',
@@ -172,7 +242,6 @@ A devoted Christian, she has served the Nigerian Baptist Convention in various r
 
 Honored for her contributions with several awards, Felicia remains a beacon of service, humility, and transformation. Married to Baale Olusegun Abiola-Ige, she is a mother to both biological and spiritual children and continues to inspire lives through her faith, philanthropy, and unwavering dedication to the betterment of others.`,
     order: 5,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Mr. Olufemi Tinuoye',
@@ -185,7 +254,6 @@ Femi's commitment to giving back to the community is evident in his involvement 
 
 With his impressive track record and dedication to community service, Femi Tinuoye is an inspiration to many.`,
     order: 6,
-    publishedAt: new Date().toISOString(),
   },
 ];
 
@@ -199,14 +267,12 @@ She obtained her B.Sc. Education and M.Sc Adult Education degrees from the Unive
 
 She retired voluntarily as the pioneer Principal of Oritamefa Baptist Model School, Ibadan in 2007. She is currently the Administrator of Highland Specialist Hospital, Yemetu Ibadan.`,
     order: 1,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Dr. Mrs. Taiwo Olufunmilola Agbaje',
     role: 'Medical Director & Trustee',
     bio: `Taiwo Oluwafunmilola Agbaje (nee Olabisi) works as a medical practitioner offering clinical and public health services to government and private establishments. Dr Agbaje obtained an MPH (Management & Leadership) from the University of Sheffield, UK and a medical degree (MBBS) from LAUTECH Ogbomoso, Nigeria. She is married with children.`,
     order: 2,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Mrs. Adetola Grace Amure',
@@ -217,7 +283,6 @@ She is an international speaker and author of four books. Detola also serves as 
 
 She is the Founder and Director of My Little Warrior Child CIC, a not-for-profit supporting bereaved parents through grief education and healing spaces. Detola holds a BSc in Computer Science from the University of Botswana and a Master's in Operational Research from Lancaster University, UK. She is married with children.`,
     order: 3,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Dr. Johnson Oladiran Olabisi',
@@ -226,7 +291,6 @@ She is the Founder and Director of My Little Warrior Child CIC, a not-for-profit
 
 Dr. Olabisi obtained a fellowship in Community Medicine with the West African College of Physicians, a MPH (Health Economics) from the London School of Hygiene and Tropical Medicine (LSHTM), a MSc in Epidemiology & Medical Statistics, and a medical degree (MBBS) — both from the University of Ibadan, Nigeria. He is married with children.`,
     order: 4,
-    publishedAt: new Date().toISOString(),
   },
   {
     name: 'Dr. Mrs. Oyebola Okunogbe',
@@ -235,7 +299,6 @@ Dr. Olabisi obtained a fellowship in Community Medicine with the West African Co
 
 Oyebola obtained her PhD in Public Policy and MPA in International Development from Harvard University, and her B.A. in Economics from Dartmouth College. She is married with children.`,
     order: 5,
-    publishedAt: new Date().toISOString(),
   },
 ];
 
@@ -246,7 +309,6 @@ export const coreValuesData = [
       'We approach every individual with empathy, dignity, and respect, understanding their unique needs and circumstances.',
     icon: '❤️',
     order: 1,
-    publishedAt: new Date().toISOString(),
   },
   {
     title: 'Excellence',
@@ -254,7 +316,6 @@ export const coreValuesData = [
       'We are committed to delivering high-quality programs and services that create meaningful and lasting impact.',
     icon: '⭐',
     order: 2,
-    publishedAt: new Date().toISOString(),
   },
   {
     title: 'Integrity',
@@ -262,7 +323,6 @@ export const coreValuesData = [
       'We operate with transparency, accountability, and honesty in all our relationships and activities.',
     icon: '🤝',
     order: 3,
-    publishedAt: new Date().toISOString(),
   },
   {
     title: 'Community',
@@ -270,7 +330,6 @@ export const coreValuesData = [
       'We believe in the power of community and work collaboratively to uplift and empower those we serve.',
     icon: '🌟',
     order: 4,
-    publishedAt: new Date().toISOString(),
   },
   {
     title: 'Innovation',
@@ -278,7 +337,6 @@ export const coreValuesData = [
       'We embrace creative solutions and adapt our approaches to meet the evolving needs of our communities.',
     icon: '💡',
     order: 5,
-    publishedAt: new Date().toISOString(),
   },
   {
     title: 'Sustainability',
@@ -286,7 +344,6 @@ export const coreValuesData = [
       'We focus on creating long-term, sustainable change that empowers individuals and strengthens communities.',
     icon: '🌱',
     order: 6,
-    publishedAt: new Date().toISOString(),
   },
 ];
 
@@ -304,7 +361,6 @@ export const testimonialsData = [
     author: 'Omoboye Family',
     location: 'Lagos, Nigeria',
     order: 1,
-    publishedAt: new Date().toISOString(),
   },
   {
     quote:
@@ -312,7 +368,6 @@ export const testimonialsData = [
     author: 'Chioma Adeyemi',
     location: 'Student Beneficiary',
     order: 2,
-    publishedAt: new Date().toISOString(),
   },
   {
     quote:
@@ -320,7 +375,6 @@ export const testimonialsData = [
     author: 'Elder Samuel Okafor',
     location: 'Community Leader',
     order: 3,
-    publishedAt: new Date().toISOString(),
   },
 ];
 
@@ -362,7 +416,6 @@ export const programsData = [
       { number: 15, label: 'Life-Changing Surgeries', icon: '⚕️' },
     ],
     order: 1,
-    publishedAt: new Date().toISOString(),
   },
   {
     title: 'Education Programs',
@@ -401,6 +454,5 @@ export const programsData = [
       { number: 5, label: 'Schools Partnered With', icon: '🏫' },
     ],
     order: 2,
-    publishedAt: new Date().toISOString(),
   },
 ];
