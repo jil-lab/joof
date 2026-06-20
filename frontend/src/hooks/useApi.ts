@@ -16,7 +16,7 @@ import { getReports } from '../api/services/reports.service';
 import { getAboutPage } from '../api/services/about-page.service';
 import type { ContactFormData, NewsletterData } from '../api/services/contact.service';
 
-const STATIC_STALE = 60 * 60 * 1000; // 1 hour — rarely changes
+const STATIC_STALE = Infinity; // never refetch — only changes via deliberate Strapi publish
 
 // ── Team ─────────────────────────────────────────────────────────────────────
 
@@ -83,7 +83,7 @@ export const useImpactStats = () =>
   useQuery({
     queryKey: queryKeys.impactStats.all,
     queryFn: getImpactStats,
-    staleTime: 10 * 60 * 1000,
+    staleTime: 90 * 24 * 60 * 60 * 1000, // 3 months
   });
 
 // ── Blog ─────────────────────────────────────────────────────────────────────
@@ -96,7 +96,7 @@ export const useBlogPosts = ({
   useQuery({
     queryKey: queryKeys.blogPosts.list({ page, pageSize, category }),
     queryFn: () => getBlogPosts({ page, pageSize, category }),
-    staleTime: 5 * 60 * 1000,
+    staleTime: 2 * 60 * 1000,
   });
 
 export const useBlogPostBySlug = (slug: string) =>
@@ -104,7 +104,7 @@ export const useBlogPostBySlug = (slug: string) =>
     queryKey: queryKeys.blogPosts.detail(slug),
     queryFn: () => getBlogPostBySlug(slug),
     enabled: !!slug,
-    staleTime: 5 * 60 * 1000,
+    staleTime: 2 * 60 * 1000,
   });
 
 export const useRelatedBlogPosts = (
@@ -116,7 +116,7 @@ export const useRelatedBlogPosts = (
     queryKey: queryKeys.blogPosts.related(categoryId, excludeId, limit),
     queryFn: () => getRelatedBlogPosts(categoryId, excludeId, limit),
     enabled: !!(categoryId && excludeId),
-    staleTime: 5 * 60 * 1000,
+    staleTime: 2 * 60 * 1000,
   });
 
 // ── Categories ────────────────────────────────────────────────────────────────
