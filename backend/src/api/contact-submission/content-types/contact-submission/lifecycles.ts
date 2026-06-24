@@ -40,8 +40,8 @@ export default {
         submittedAt,
       });
 
-      // Send email using Strapi email plugin
-      await strapi.plugins['email'].services.email.send({
+      // Send email using Strapi email plugin (v5 API)
+      await strapi.plugin('email').service('email').send({
         to: adminEmail,
         from: process.env.EMAIL_DEFAULT_FROM,
         replyTo: result.email, // Admin can reply directly to the submitter
@@ -54,17 +54,8 @@ export default {
         `✓ Contact form notification email sent to ${adminEmail} for submission from ${result.email}`
       );
     } catch (error) {
-      // Log error but don't fail the submission
-      // This ensures contact forms are saved even if email delivery fails
-      strapi.log.error(
-        'Failed to send contact form notification email:',
-        error.message || error
-      );
-
-      // Log additional details for debugging
-      if (error.response) {
-        strapi.log.error('Email error response:', error.response);
-      }
+      const details = `type=${typeof error} | value=${JSON.stringify(error)} | message=${error?.message} | code=${error?.code} | stack=${error?.stack}`;
+      strapi.log.error(`Contact form email failed — ${details}`);
     }
   },
 };

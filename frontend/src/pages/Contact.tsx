@@ -1,6 +1,11 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
 import { FaInstagram } from 'react-icons/fa';
 import { IconType } from 'react-icons';
+import { submitContactForm } from '../api/services/contact.service';
 
 interface Social {
   name: string;
@@ -12,7 +17,40 @@ const socials: Social[] = [
   { name: 'Instagram', icon: FaInstagram, url: 'https://instagram.com/joolabisifoundation' },
 ];
 
+const schema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email address'),
+  subject: z.string().min(3, 'Subject must be at least 3 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
+
+type FormData = z.infer<typeof schema>;
+
+const inputClass = 'w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition';
+const errorClass = 'mt-1 text-sm text-red-600';
+
 const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
+
+  const onSubmit = async (data: FormData) => {
+    setServerError('');
+    try {
+      await submitContactForm(data);
+      setSubmitted(true);
+      reset();
+    } catch {
+      setServerError('Something went wrong. Please try again or email us directly.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -101,63 +139,81 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <form
-                action="mailto:joofoundationhub@gmail.com"
-                method="post"
-                encType="text/plain"
-                className="space-y-5"
-              >
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your full name"
-                    required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
-                  />
+              {submitted ? (
+                <div className="flex flex-col items-center justify-center h-full py-16 text-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-teal-50 flex items-center justify-center">
+                    <svg className="w-7 h-7 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Message Sent</h3>
+                  <p className="text-gray-500 max-w-sm">Thank you for reaching out. We'll get back to you as soon as possible.</p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="mt-2 text-sm text-teal-600 hover:text-teal-800 font-medium transition-colors"
+                  >
+                    Send another message
+                  </button>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Name</label>
+                    <input
+                      type="text"
+                      placeholder="Your full name"
+                      {...register('name')}
+                      className={inputClass}
+                    />
+                    {errors.name && <p className={errorClass}>{errors.name.message}</p>}
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="your.email@example.com"
-                    required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
-                  />
-                </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
+                    <input
+                      type="email"
+                      placeholder="your.email@example.com"
+                      {...register('email')}
+                      className={inputClass}
+                    />
+                    {errors.email && <p className={errorClass}>{errors.email.message}</p>}
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Subject</label>
-                  <input
-                    type="text"
-                    name="subject"
-                    placeholder="What is this regarding?"
-                    required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
-                  />
-                </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Subject</label>
+                    <input
+                      type="text"
+                      placeholder="What is this regarding?"
+                      {...register('subject')}
+                      className={inputClass}
+                    />
+                    {errors.subject && <p className={errorClass}>{errors.subject.message}</p>}
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
-                  <textarea
-                    name="message"
-                    rows={5}
-                    placeholder="Tell us how we can help..."
-                    required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition resize-none"
-                  />
-                </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">Message</label>
+                    <textarea
+                      rows={5}
+                      placeholder="Tell us how we can help..."
+                      {...register('message')}
+                      className={`${inputClass} resize-none`}
+                    />
+                    {errors.message && <p className={errorClass}>{errors.message.message}</p>}
+                  </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-3 bg-teal-700 text-white font-semibold rounded-lg hover:bg-teal-800 transition-colors duration-200"
-                >
-                  Send Message
-                </button>
-              </form>
+                  {serverError && (
+                    <p className="text-sm text-red-600">{serverError}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3 bg-teal-700 text-white font-semibold rounded-lg hover:bg-teal-800 transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Sending…' : 'Send Message'}
+                  </button>
+                </form>
+              )}
             </motion.div>
           </div>
         </div>
