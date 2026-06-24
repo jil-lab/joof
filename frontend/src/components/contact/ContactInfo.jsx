@@ -13,14 +13,14 @@ const ContactInfo = () => {
     {
       icon: FaPhone,
       label: 'Phone',
-      value: '+234 XXX XXX XXXX',
-      link: 'tel:+234XXXXXXXXXX',
+      value: '+234 911 526 8054',
+      link: 'tel:+2349115268054',
       color: 'text-teal-600',
     },
     {
       icon: FaMapMarkerAlt,
       label: 'Address',
-      value: 'Lagos, Nigeria',
+      value: '12, Adeagbo Odeniyi Avenue, Idi-Ape, Ibadan',
       link: null,
       color: 'text-teal-600',
     },

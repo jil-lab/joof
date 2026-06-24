@@ -46,34 +46,50 @@ const Donate = () => {
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold text-gray-900 mb-3">How to Donate</h2>
               <p className="text-gray-500">
-                We currently accept donations via bank transfer. Simply use the details below to make your contribution.
+                We are grateful for your willingness to give. To make your donation, please use the bank transfer details listed below.
               </p>
             </div>
 
-            <div className="bg-teal-50 rounded-2xl p-8 border border-teal-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center tracking-wide uppercase text-sm">
-                Bank Account Details
-              </h3>
-
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-teal-200">
-                  <span className="font-semibold text-gray-700">Bank Name:</span>
-                  <span className="text-gray-900 font-medium">[Bank Name]</span>
+            <div className="space-y-6">
+              {/* Account 1 */}
+              <div className="bg-teal-50 rounded-2xl p-8 border border-teal-100">
+                <h3 className="text-sm font-semibold text-gray-900 mb-6 text-center tracking-wide uppercase">
+                  Naira Account
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center py-3 border-b border-teal-200">
+                    <span className="font-semibold text-gray-700">Bank Name:</span>
+                    <span className="text-gray-900 font-medium">Zenith Bank</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-teal-200">
+                    <span className="font-semibold text-gray-700">Account Name:</span>
+                    <span className="text-gray-900 font-medium">JOO Foundation</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3">
+                    <span className="font-semibold text-gray-700">Account Number:</span>
+                    <span className="text-gray-900 font-medium text-lg">1223812375</span>
+                  </div>
                 </div>
+              </div>
 
-                <div className="flex justify-between items-center py-3 border-b border-teal-200">
-                  <span className="font-semibold text-gray-700">Account Name:</span>
-                  <span className="text-gray-900 font-medium">John Oyediran Olabisi Foundation</span>
-                </div>
-
-                <div className="flex justify-between items-center py-3 border-b border-teal-200">
-                  <span className="font-semibold text-gray-700">Account Number:</span>
-                  <span className="text-gray-900 font-medium text-lg">XXXXXXXXXX</span>
-                </div>
-
-                <div className="flex justify-between items-center py-3">
-                  <span className="font-semibold text-gray-700">Account Type:</span>
-                  <span className="text-gray-900 font-medium">Savings</span>
+              {/* Account 2 */}
+              <div className="bg-teal-50 rounded-2xl p-8 border border-teal-100">
+                <h3 className="text-sm font-semibold text-gray-900 mb-6 text-center tracking-wide uppercase">
+                  Domiciliary Account
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center py-3 border-b border-teal-200">
+                    <span className="font-semibold text-gray-700">Bank Name:</span>
+                    <span className="text-gray-900 font-medium">Zenith Bank</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-teal-200">
+                    <span className="font-semibold text-gray-700">Account Name:</span>
+                    <span className="text-gray-900 font-medium">JOO Foundation</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3">
+                    <span className="font-semibold text-gray-700">Account Number:</span>
+                    <span className="text-gray-900 font-medium text-lg">5072576039</span>
+                  </div>
                 </div>
               </div>
             </div>

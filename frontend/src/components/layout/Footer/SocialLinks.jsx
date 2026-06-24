@@ -2,26 +2,26 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 const SocialLinks = () => {
   const socialLinks = [
-    {
-      name: 'Facebook',
-      icon: FaFacebook,
-      url: 'https://facebook.com/jooffoundation', // Replace with actual URL
-    },
+    // {
+    //   name: 'Facebook',
+    //   icon: FaFacebook,
+    //   url: 'https://facebook.com/jooffoundation', // Replace with actual URL
+    // },
     {
       name: 'Instagram',
       icon: FaInstagram,
-      url: 'https://instagram.com/jooffoundation', // Replace with actual URL
+      url: 'https://instagram.com/joolabisifoundation',
     },
-    {
-      name: 'LinkedIn',
-      icon: FaLinkedin,
-      url: 'https://linkedin.com/company/jooffoundation', // Replace with actual URL
-    },
-    {
-      name: 'YouTube',
-      icon: FaYoutube,
-      url: 'https://youtube.com/@jooffoundation', // Replace with actual URL
-    },
+    // {
+    //   name: 'LinkedIn',
+    //   icon: FaLinkedin,
+    //   url: 'https://linkedin.com/company/jooffoundation', // Replace with actual URL
+    // },
+    // {
+    //   name: 'YouTube',
+    //   icon: FaYoutube,
+    //   url: 'https://youtube.com/@jooffoundation', // Replace with actual URL
+    // },
   ];
 
   return (

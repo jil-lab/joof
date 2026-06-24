@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 const socials = [
-  { name: 'Facebook', icon: FaFacebook, url: 'https://facebook.com/jooffoundation' },
+  // { name: 'Facebook', icon: FaFacebook, url: 'https://facebook.com/jooffoundation' },
   { name: 'Instagram', icon: FaInstagram, url: 'https://instagram.com/jooffoundation' },
-  { name: 'LinkedIn', icon: FaLinkedin, url: 'https://linkedin.com/company/jooffoundation' },
-  { name: 'YouTube', icon: FaYoutube, url: 'https://youtube.com/@jooffoundation' },
+  // { name: 'LinkedIn', icon: FaLinkedin, url: 'https://linkedin.com/company/jooffoundation' },
+  // { name: 'YouTube', icon: FaYoutube, url: 'https://youtube.com/@jooffoundation' },
 ];
 
 const Contact = () => {
@@ -53,16 +53,16 @@ const Contact = () => {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-1">Phone</p>
                   <a
-                    href="tel:+234XXXXXXXXXX"
+                    href="tel:+2349115268054"
                     className="text-lg text-gray-900 hover:text-teal-700 transition-colors font-medium"
                   >
-                    +234 XXX XXX XXXX
+                    +234 911 526 8054
                   </a>
                 </div>
 
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-1">Address</p>
-                  <p className="text-lg text-gray-900 font-medium">Lagos, Nigeria</p>
+                  <p className="text-lg text-gray-900 font-medium">12, Adeagbo Odeniyi Avenue, Idi-Ape, Ibadan</p>
                 </div>
 
                 <div>

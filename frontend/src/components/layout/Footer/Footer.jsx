@@ -69,7 +69,11 @@ const Footer = () => {
                   joofoundationhub@gmail.com
                 </a>
               </li>
-              <li>Phone: +234 XXX XXX XXXX</li>
+              <li>
+                <a href="tel:+2349115268054" className="hover:text-teal-400 transition-colors">
+                  +234 911 526 8054
+                </a>
+              </li>
             </ul>
             <div className="mt-4">
               <SocialLinks />
