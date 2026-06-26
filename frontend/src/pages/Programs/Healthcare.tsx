@@ -4,7 +4,7 @@ import CallToAction from '../../components/common/CallToAction/CallToAction';
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80';
 const LEGACY_IMAGE = '/images/programs/care.jpg';
-const HOSPITAL_IMAGE = '/images/programs/hospital.jpg';
+const HOSPITAL_IMAGE = '/images/programs/hospital_2.jpg';
 const WHY_BG_IMAGE = 'https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1600&q=80';
 
 const SURGICAL_SERVICES: string[] = [
@@ -65,7 +65,7 @@ const Healthcare = () => {
               <p className="text-lg text-gray-600 mb-5 leading-relaxed">
                 Healthcare was not merely a profession for Dr. John Oyediran Olabisi, it was his
                 calling, his ministry, and his life's most consistent act of love. For over four
-                decades, he served patients across Oyo State, often without payment, often going the
+                decades, he served patients across Oyo State, often going the
                 extra mile to ensure that no one who walked through his door left without care.
               </p>
               <p className="text-lg text-gray-600 mb-5 leading-relaxed">

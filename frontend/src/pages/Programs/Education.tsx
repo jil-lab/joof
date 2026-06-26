@@ -13,7 +13,7 @@ const WHAT_WE_DO: WhatWeDoItem[] = [
   {
     title: 'Scholarship Support',
     description:
-      'Financial assistance to academically deserving students from indigent families at the secondary and tertiary level.',
+      'Financial assistance to academically deserving students from indigent families at the Primary, Secondary, and Tertiary level.',
   },
   {
     title: 'Bursary Grants',
@@ -193,7 +193,7 @@ const Education = () => {
                 One Scholarship at a Time
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Through JOOF's education programs, we aim to interrupt the cycle of
+                Through JOOF's education programmes, we aim to interrupt the cycle of
                 disadvantage, one scholarship, one student, one family at a time.
               </p>
             </motion.div>

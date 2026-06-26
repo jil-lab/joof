@@ -3,9 +3,9 @@ import PageHero from '../components/common/PageHero/PageHero';
 
 const Donate = () => {
   const stats = [
-    { value: '100%', label: 'of donations go directly to programs' },
-    { value: '4,000+', label: 'individuals provided with healthcare' },
-    { value: '20', label: 'outreaches conducted' },
+    { value: '100%', label: 'of donations go directly to programmes' },
+    { value: '1,651+', label: 'medical care services delivered' },
+    { value: '3', label: 'community outreach programmes' },
   ];
 
   return (
@@ -46,8 +46,29 @@ const Donate = () => {
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold text-gray-900 mb-3">How to Donate</h2>
               <p className="text-gray-500">
-                We are grateful for your willingness to give. To make your donation, please use the bank transfer details listed below.
+                We are grateful for your willingness to give. Choose how you'd like to make your donation below.
               </p>
+            </div>
+
+            {/* Online Giving */}
+            <div className="bg-teal-700 rounded-2xl p-8 text-center mb-4">
+              <h3 className="text-lg font-bold text-white mb-2">Make Online Donations</h3>
+              <p className="text-teal-100 text-sm mb-6">
+                Give securely online using your card or bank account via Paystack.
+              </p>
+              <a
+                href="#"
+                className="inline-flex items-center justify-center px-8 py-3 bg-white text-teal-700 font-semibold rounded-lg hover:bg-teal-50 transition-colors duration-200"
+              >
+                Donate Online via Paystack
+              </a>
+            </div>
+
+            {/* Divider */}
+            <div className="flex items-center gap-4 my-8">
+              <div className="flex-1 border-t border-gray-200" />
+              <span className="text-gray-400 text-sm font-medium">or make a bank transfer</span>
+              <div className="flex-1 border-t border-gray-200" />
             </div>
 
             <div className="space-y-6">
@@ -75,7 +96,7 @@ const Donate = () => {
               {/* Account 2 */}
               <div className="bg-teal-50 rounded-2xl p-8 border border-teal-100">
                 <h3 className="text-sm font-semibold text-gray-900 mb-6 text-center tracking-wide uppercase">
-                  Domiciliary Account
+                  US Dollar Account
                 </h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-3 border-b border-teal-200">

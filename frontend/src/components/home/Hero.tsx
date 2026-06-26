@@ -101,7 +101,7 @@ const Hero = () => {
           >
             <Link to="/programs">
               <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-                Discover Our Programs
+                Discover Our Programmes
               </Button>
             </Link>
             <Link to="/donate">

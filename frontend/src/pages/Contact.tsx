@@ -243,7 +243,7 @@ const Contact = () => {
                 href="/programs"
                 className="inline-flex items-center justify-center px-8 py-3 border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white font-semibold rounded-lg transition-colors duration-200"
               >
-                View Our Programs
+                View Our Programmes
               </a>
             </div>
           </motion.div>

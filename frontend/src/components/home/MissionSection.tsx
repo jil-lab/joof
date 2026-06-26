@@ -58,7 +58,7 @@ const MissionSection = () => {
               }}
             />
             <div className="absolute top-6 left-6 bg-white rounded-lg shadow-lg p-4">
-              <p className="text-3xl font-bold text-teal-600">10+</p>
+              <p className="text-3xl font-bold text-teal-600">5+</p>
               <p className="text-sm text-gray-600">Years of Impact</p>
             </div>
           </div>

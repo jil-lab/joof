@@ -13,7 +13,7 @@ interface CallToActionProps {
 const CallToAction = ({
   title = 'Join Us in Making a Difference',
   description = 'Your support enables us to expand our reach and deepen our impact. Together, we can create brighter futures for more communities.',
-  primaryLabel = 'Support Our Programs',
+  primaryLabel = 'Support Our Programmes',
   primaryHref = '/donate',
   secondaryLabel = 'Get Involved',
   secondaryHref = '/contact',

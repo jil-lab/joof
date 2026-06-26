@@ -27,7 +27,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/programs" className="text-gray-400 hover:text-teal-400 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">
-                  Programs
+                  Programmes
                 </Link>
               </li>
               <li>

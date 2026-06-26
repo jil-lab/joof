@@ -39,7 +39,7 @@ export const IMPACT_STATS = [
   { id: 1, number: 1651, label: 'Medical Care Services', icon: '🏥' },
   { id: 2, number: 29, label: 'Safe Deliveries', icon: '👶' },
   { id: 3, number: 15, label: 'Surgical Procedures', icon: '⚕️' },
-  { id: 4, number: 3, label: 'Community Outreach Programs', icon: '🤲' },
+  { id: 4, number: 3, label: 'Community Outreach Programmes', icon: '🤲' },
 ];
 
 // Mission & Vision
@@ -69,9 +69,9 @@ export const PROGRAMS: ProgramData[] = [
   {
     id: 1,
     slug: 'healthcare',
-    title: 'Healthcare Programs',
+    title: 'Healthcare Programmes',
     shortDescription: 'Providing accessible medical care, maternal health services, surgical interventions, and preventative care to underserved communities.',
-    description: 'Our healthcare programs are designed to bridge the gap in medical access for underserved communities across Nigeria.',
+    description: 'Our healthcare programmes are designed to bridge the gap in medical access for underserved communities across Nigeria.',
     image: '/images/programs/care.jpg',
     icon: '🏥',
     stats: [
@@ -83,9 +83,9 @@ export const PROGRAMS: ProgramData[] = [
       { title: 'Medical Outreach', description: 'Regular community health camps providing free medical consultations.', icon: '🩺' },
       { title: 'Maternal & Child Health', description: 'Comprehensive prenatal care, safe delivery services.', icon: '👶' },
       { title: 'Surgical Interventions', description: 'Sponsoring critical surgical procedures.', icon: '⚕️' },
-      { title: 'Health Education', description: 'Community awareness programs on hygiene, nutrition.', icon: '📚' },
+      { title: 'Health Education', description: 'Community awareness programmes on hygiene, nutrition.', icon: '📚' },
     ],
-    impact: 'Through our healthcare programs, we have touched over 1,600 lives.',
+    impact: 'Through our healthcare programmes, we have touched over 1,600 lives.',
     gallery: [
       '/images/programs/healthcare-1.jpg',
       '/images/programs/healthcare-2.jpg',
@@ -99,8 +99,8 @@ export const PROGRAMS: ProgramData[] = [
   {
     id: 2,
     slug: 'education',
-    title: 'Education Programs',
-    shortDescription: 'Empowering young minds through scholarships, learning resources, mentorship programs, and school infrastructure support.',
+    title: 'Education Programmes',
+    shortDescription: 'Empowering young minds through scholarships, learning resources, mentorship programmes, and school infrastructure support.',
     description: 'Education is the foundation for breaking the cycle of poverty.',
     image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80',
     icon: '📚',
@@ -112,7 +112,7 @@ export const PROGRAMS: ProgramData[] = [
     features: [
       { title: 'Scholarship Program', description: 'Merit and need-based scholarships.', icon: '🎓' },
       { title: 'Learning Resources', description: 'Providing textbooks and digital learning tools.', icon: '📖' },
-      { title: 'Mentorship Program', description: 'Connecting students with professional mentors.', icon: '👥' },
+      { title: 'Mentorship Programme', description: 'Connecting students with professional mentors.', icon: '👥' },
       { title: 'School Support', description: 'Renovating classrooms and improving school infrastructure.', icon: '🏫' },
     ],
     impact: 'Our education initiatives have helped over 150 students continue their education.',

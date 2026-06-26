@@ -78,7 +78,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-900/50 to-transparent" />
                 <div className="absolute bottom-6 left-6 text-white">
                   <p className="text-sm font-medium">{about?.foundationBadgeYear ?? 'Established 2015'}</p>
-                  <p className="text-2xl font-bold">{about?.foundationBadgeLabel ?? '10 Years of Service'}</p>
+                  <p className="text-2xl font-bold">{about?.foundationBadgeLabel ?? '5 Years of Service'}</p>
                 </div>
               </div>
             </motion.div>
@@ -93,7 +93,7 @@ const About = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img
                   src="/images/about/community-impact.jpg"
-                  alt="Communities benefiting from JOOF Foundation programs"
+                  alt="Communities benefiting from JOOF Foundation programmes"
                   className="w-full h-full object-cover object-top aspect-[4/3]"
                   loading="lazy"
                   width="800"
@@ -269,16 +269,16 @@ const About = () => {
               <p className="text-gray-700 leading-relaxed text-lg">
                 {about.ourStoryHighlightedName
                   ? (() => {
-                      const parts = about.ourStoryBody.split(about.ourStoryHighlightedName);
-                      return parts.map((part: string, i: number) =>
-                        i < parts.length - 1 ? (
-                          <span key={i}>
-                            {part}
-                            <span className="font-semibold text-gray-900">{about.ourStoryHighlightedName}</span>
-                          </span>
-                        ) : part
-                      );
-                    })()
+                    const parts = about.ourStoryBody.split(about.ourStoryHighlightedName);
+                    return parts.map((part: string, i: number) =>
+                      i < parts.length - 1 ? (
+                        <span key={i}>
+                          {part}
+                          <span className="font-semibold text-gray-900">{about.ourStoryHighlightedName}</span>
+                        </span>
+                      ) : part
+                    );
+                  })()
                   : about.ourStoryBody}
               </p>
             ) : (
@@ -301,7 +301,7 @@ const About = () => {
             href={about?.ctaPrimaryUrl ?? '/programs'}
             className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white font-medium rounded-lg hover:bg-teal-600 transition-colors duration-300 shadow-md hover:shadow-lg"
           >
-            {about?.ctaPrimaryLabel ?? 'Explore Our Programs'}
+            {about?.ctaPrimaryLabel ?? 'Explore Our Programmes'}
           </a>
           <a
             href={about?.ctaSecondaryUrl ?? '/donate'}

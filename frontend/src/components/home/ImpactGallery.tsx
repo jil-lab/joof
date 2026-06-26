@@ -21,7 +21,7 @@ const ImpactGallery = () => {
     {
       id: 2,
       image: '/images/gallery/education-program.jpg',
-      title: 'Education Programs',
+      title: 'Education Programmes',
       description: 'Empowering students through scholarships and mentorship',
       fallback: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop',
     },
@@ -127,7 +127,7 @@ const ImpactGallery = () => {
           href="/programs"
           className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white font-medium rounded-lg hover:bg-teal-600 transition-colors duration-300 shadow-md hover:shadow-lg"
         >
-          Explore All Our Programs
+          Explore All Our Programmes
           <svg
             className="w-5 h-5 ml-2"
             fill="none"

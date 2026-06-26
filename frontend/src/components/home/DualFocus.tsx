@@ -40,9 +40,9 @@ const DualFocus = () => {
       description:
         'Every child deserves the chance to learn, grow, and become. We open doors for young people across Oyo State, providing scholarships, emergency grants, and mentorship so that financial hardship never has the final say over a bright future.',
       stats: [
-        'Scholarship Support for secondary & tertiary students',
-        'Bursary Grants for students at risk of dropping out',
-        'Mentorship Programmes with accomplished professionals',
+        'Scholarship support for Primary, Secondary & Tertiary students',
+        'Bursary grants for students at risk of dropping out',
+        'Mentorship programmes with accomplished professionals',
       ],
       link: '/programs/education',
       color: 'yellow',
@@ -159,7 +159,7 @@ const DualFocus = () => {
           href="/programs"
           className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white font-medium rounded-lg hover:bg-teal-600 transition-colors duration-300 shadow-md hover:shadow-lg"
         >
-          Explore All Our Programs
+          Explore All Our Programmes
           <svg
             className="w-5 h-5 ml-2"
             fill="none"

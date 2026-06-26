@@ -28,10 +28,10 @@ const menuItems: NavItem[] = [
     ],
   },
   {
-    label: 'Programs',
+    label: 'Programmes',
     path: '/programs',
     children: [
-      { label: 'All Programs', path: '/programs' },
+      { label: 'All Programmes', path: '/programs' },
       { label: 'Healthcare', path: '/programs/healthcare' },
       { label: 'Education', path: '/programs/education' },
     ],
