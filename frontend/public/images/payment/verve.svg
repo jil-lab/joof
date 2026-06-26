@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <rect width="200" height="80" rx="8" fill="#007C3D"/>
+  <text x="100" y="52" text-anchor="middle" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="900" letter-spacing="4">VERVE</text>
+  <rect x="18" y="58" width="164" height="5" rx="2" fill="#FFC107"/>
+</svg>

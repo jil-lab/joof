@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { FaLock } from 'react-icons/fa';
 import PageHero from '../components/common/PageHero/PageHero';
 
 const PAYSTACK_LINK = import.meta.env.VITE_PAYSTACK_LINK;
@@ -53,31 +54,63 @@ const Donate = () => {
             </div>
 
             {/* Online Giving */}
-            <div className="bg-teal-700 rounded-2xl p-8 text-center mb-4">
-              <h3 className="text-lg font-bold text-white mb-2">Make Online Donations</h3>
-              <p className="text-teal-100 text-sm mb-6">
-                Give securely online using your card or bank account via Paystack.
-              </p>
-              {PAYSTACK_LINK ? (
-                <a
-                  href={PAYSTACK_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-teal-700 font-semibold rounded-lg hover:bg-teal-50 transition-colors duration-200"
-                >
-                  Donate Online via Paystack
-                </a>
-              ) : (
-                <div>
-                  <button
-                    disabled
-                    className="inline-flex items-center justify-center px-8 py-3 bg-white/40 text-white/70 font-semibold rounded-lg cursor-not-allowed"
-                  >
-                    Coming Soon
-                  </button>
-                  <p className="text-teal-200 text-xs mt-3">Online giving will be available shortly.</p>
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-4">
+              {/* Header bar */}
+              <div className="bg-teal-700 px-8 py-4 flex items-center justify-between">
+                <span className="text-white font-bold text-base tracking-wide">Make Online Donations</span>
+                <span className="flex items-center gap-1.5 text-teal-200 text-xs font-medium">
+                  <FaLock className="w-3 h-3" />
+                  Secured by Paystack
+                </span>
+              </div>
+
+              <div className="px-8 py-7 text-center">
+                <p className="text-gray-500 text-sm mb-6">
+                  Give securely using your debit/credit card or bank transfer. All transactions are encrypted and processed by Paystack.
+                </p>
+
+                {/* Accepted payment methods */}
+                <div className="flex items-center justify-center gap-2 mb-7 flex-wrap">
+                  <span className="flex items-center gap-1.5 px-2.5 py-1 border border-gray-200 rounded bg-gray-50">
+                    <img src="/images/payment/visa.svg" alt="Visa" className="h-5 w-auto" />
+                    <span className="text-[11px] font-bold text-blue-700 tracking-widest">VISA</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 px-2.5 py-1 border border-gray-200 rounded bg-gray-50">
+                    <img src="/images/payment/mastercard.svg" alt="Mastercard" className="h-5 w-auto" />
+                    <span className="text-[11px] font-bold text-red-600 tracking-wide">Mastercard</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 px-2.5 py-1 border border-gray-200 rounded bg-gray-50">
+                    <img src="/images/payment/verve.svg" alt="Verve" className="h-5 w-auto" />
+                    <span className="text-[11px] font-bold text-green-700 tracking-wide">Verve</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 px-2.5 py-1 border border-gray-200 rounded bg-gray-50">
+                    <img src="/images/payment/bank-transfer.svg" alt="Bank Transfer" className="h-5 w-auto" />
+                    <span className="text-[11px] font-bold text-gray-600 tracking-wide">Bank Transfer</span>
+                  </span>
                 </div>
-              )}
+
+                {PAYSTACK_LINK ? (
+                  <a
+                    href={PAYSTACK_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full px-8 py-3.5 bg-teal-700 text-white font-semibold rounded-lg hover:bg-teal-800 transition-colors duration-200"
+                  >
+                    <FaLock className="w-3.5 h-3.5" />
+                    Donate Securely via Paystack
+                  </a>
+                ) : (
+                  <div>
+                    <button
+                      disabled
+                      className="inline-flex items-center justify-center w-full px-8 py-3.5 bg-gray-100 text-gray-400 font-semibold rounded-lg cursor-not-allowed"
+                    >
+                      Coming Soon
+                    </button>
+                    <p className="text-gray-400 text-xs mt-3">Online giving will be available shortly.</p>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Divider */}
