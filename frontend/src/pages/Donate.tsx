@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import PageHero from '../components/common/PageHero/PageHero';
 
+const PAYSTACK_LINK = import.meta.env.VITE_PAYSTACK_LINK;
+
 const Donate = () => {
   const stats = [
     { value: '100%', label: 'of donations go directly to programmes' },
@@ -56,12 +58,26 @@ const Donate = () => {
               <p className="text-teal-100 text-sm mb-6">
                 Give securely online using your card or bank account via Paystack.
               </p>
-              <a
-                href="#"
-                className="inline-flex items-center justify-center px-8 py-3 bg-white text-teal-700 font-semibold rounded-lg hover:bg-teal-50 transition-colors duration-200"
-              >
-                Donate Online via Paystack
-              </a>
+              {PAYSTACK_LINK ? (
+                <a
+                  href={PAYSTACK_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-teal-700 font-semibold rounded-lg hover:bg-teal-50 transition-colors duration-200"
+                >
+                  Donate Online via Paystack
+                </a>
+              ) : (
+                <div>
+                  <button
+                    disabled
+                    className="inline-flex items-center justify-center px-8 py-3 bg-white/40 text-white/70 font-semibold rounded-lg cursor-not-allowed"
+                  >
+                    Coming Soon
+                  </button>
+                  <p className="text-teal-200 text-xs mt-3">Online giving will be available shortly.</p>
+                </div>
+              )}
             </div>
 
             {/* Divider */}
