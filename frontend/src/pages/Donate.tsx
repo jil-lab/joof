@@ -7,8 +7,8 @@ const PAYSTACK_LINK = import.meta.env.VITE_PAYSTACK_LINK;
 const Donate = () => {
   const stats = [
     { value: '100%', label: 'of donations go directly to programmes' },
-    { value: '1,651+', label: 'medical care services delivered' },
-    { value: '3', label: 'community outreach programmes' },
+    { value: '4,000+', label: 'medical care services delivered' },
+    { value: '21', label: 'community outreach programmes' },
   ];
 
   return (
