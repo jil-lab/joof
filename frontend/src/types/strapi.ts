@@ -116,8 +116,12 @@ export interface TeamMember {
 
 export interface ImpactStat {
   id: number;
+  /** Stable slug (e.g. 'medical-care') used to pick an icon and to look the stat up by name. */
+  key?: string;
   label: string;
   number: number;
+  /** Rendered directly after the number, e.g. '+' for "4,000+". */
+  suffix?: string;
   icon?: string;
   order: number;
 }

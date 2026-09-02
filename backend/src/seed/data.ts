@@ -162,7 +162,7 @@ export const siteSettingData = {
     'A Nigeria where every individual, regardless of their background, has access to quality healthcare and education, enabling them to thrive and contribute meaningfully to society.',
   contactEmail: 'joofoundationhub@gmail.com',
   contactPhone: '+234 XXX XXX XXXX',
-  contactAddress: 'Lagos, Nigeria',
+  contactAddress: 'No. 88, Adeoyo Maternity Way, Yemetu, Ibadan',
   instagramUrl: 'https://instagram.com/joofoundation',
   facebookUrl: 'https://facebook.com/joofoundation',
   youtubeUrl: 'https://youtube.com/@joofoundation',
@@ -414,10 +414,13 @@ export const coreValuesData = [
 ];
 
 export const impactStatsData = [
-  { label: 'Medical Care Services', number: 1651, icon: '🏥', order: 1 },
-  { label: 'Safe Deliveries', number: 29, icon: '👶', order: 2 },
-  { label: 'Surgical Procedures', number: 15, icon: '⚕️', order: 3 },
-  { label: 'Community Outreach Programs', number: 3, icon: '🤲', order: 4 },
+  { key: 'audiology', label: 'Audiology', number: 149, suffix: '', icon: '👂', order: 1 },
+  { key: 'hearing-aids', label: 'Hearing Aids Donated', number: 11, suffix: '', icon: '🦻', order: 2 },
+  { key: 'minor-surgeries', label: 'Minor Surgeries', number: 473, suffix: '', icon: '⚕️', order: 3 },
+  { key: 'major-surgeries', label: 'Major Surgeries', number: 133, suffix: '', icon: '🏥', order: 4 },
+  { key: 'medical-care', label: 'Medical Care Recipients', number: 4000, suffix: '+', icon: '🩺', order: 5 },
+  { key: 'safe-deliveries', label: 'Safe Deliveries', number: 29, suffix: '', icon: '👶', order: 6 },
+  { key: 'outreach-programs', label: 'Outreach Programs', number: 21, suffix: '', icon: '🤲', order: 7 },
 ];
 
 export const testimonialsData = [

@@ -25,7 +25,7 @@ export const COLORS = {
 export const CONTACT_INFO = {
   email: 'joofoundationhub@gmail.com',
   phone: '+234 XXX XXX XXXX',
-  address: 'Lagos, Nigeria',
+  address: 'No. 88, Adeoyo Maternity Way, Yemetu, Ibadan.',
   social: {
     instagram: 'https://instagram.com/joofoundation',
     facebook: 'https://facebook.com/joofoundation',
@@ -35,11 +35,16 @@ export const CONTACT_INFO = {
 };
 
 // Impact Statistics
+// Offline fallback, used when the Strapi `impact-stat` collection is empty or
+// unreachable. Keep in lockstep with `impactStatsData` in backend/src/seed/data.ts.
 export const IMPACT_STATS = [
-  { id: 1, number: 1651, label: 'Medical Care Services', icon: '🏥' },
-  { id: 2, number: 29, label: 'Safe Deliveries', icon: '👶' },
-  { id: 3, number: 15, label: 'Surgical Procedures', icon: '⚕️' },
-  { id: 4, number: 3, label: 'Community Outreach Programmes', icon: '🤲' },
+  { id: 1, key: 'audiology', number: 149, label: 'Audiology', suffix: '', icon: '👂' },
+  { id: 2, key: 'hearing-aids', number: 11, label: 'Hearing Aids Donated', suffix: '', icon: '🦻' },
+  { id: 3, key: 'minor-surgeries', number: 473, label: 'Minor Surgeries', suffix: '', icon: '⚕️' },
+  { id: 4, key: 'major-surgeries', number: 133, label: 'Major Surgeries', suffix: '', icon: '🏥' },
+  { id: 5, key: 'medical-care', number: 4000, label: 'Medical Care Recipients', suffix: '+', icon: '🩺' },
+  { id: 6, key: 'safe-deliveries', number: 29, label: 'Safe Deliveries', suffix: '', icon: '👶' },
+  { id: 7, key: 'outreach-programs', number: 21, label: 'Outreach Programs', suffix: '', icon: '🤲' },
 ];
 
 // Mission & Vision

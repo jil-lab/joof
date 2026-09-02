@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { FaInstagram } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 import { submitContactForm } from '../api/services/contact.service';
+import { useSiteSettings } from '../hooks/useApi';
+import { CONTACT_INFO } from '../utils/constants';
 
 interface Social {
   name: string;
@@ -32,6 +34,11 @@ const errorClass = 'mt-1 text-sm text-red-600';
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState('');
+
+  // Editable in Strapi (Site Setting → Contact Address); falls back to the
+  // bundled constant when the CMS is empty or unreachable.
+  const { data: siteSettings } = useSiteSettings();
+  const address = siteSettings?.data?.contactAddress || CONTACT_INFO.address;
 
   const {
     register,
@@ -104,7 +111,7 @@ const Contact = () => {
 
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-1">Address</p>
-                  <p className="text-lg text-gray-900 font-medium">12, Adeagbo Odeniyi Avenue, Idi-Ape, Ibadan</p>
+                  <p className="text-lg text-gray-900 font-medium">{address}</p>
                 </div>
 
                 <div>

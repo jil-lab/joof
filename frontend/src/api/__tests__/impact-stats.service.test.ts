@@ -23,14 +23,15 @@ describe('getImpactStats', () => {
 
   it('returns impact stats with correct shape', async () => {
     const stats = [
-      { id: 1, label: 'Medical Care Services', number: 1651, order: 1 },
-      { id: 2, label: 'Safe Deliveries', number: 29, order: 2 },
+      { id: 1, key: 'medical-care', label: 'Medical Care Recipients', number: 4000, suffix: '+', order: 5 },
+      { id: 2, key: 'safe-deliveries', label: 'Safe Deliveries', number: 29, suffix: '', order: 6 },
     ];
     mockGet.mockResolvedValueOnce({ data: { data: stats, meta: {} } } as never);
 
     const result = await getImpactStats();
 
-    expect(result.data[0].number).toBe(1651);
+    expect(result.data[0].number).toBe(4000);
+    expect(result.data[0].suffix).toBe('+');
     expect(result.data[1].label).toBe('Safe Deliveries');
   });
 });

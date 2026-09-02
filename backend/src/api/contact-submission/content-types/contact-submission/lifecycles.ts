@@ -28,7 +28,7 @@ export default {
       const submittedAt = new Date().toLocaleString('en-US', {
         dateStyle: 'full',
         timeStyle: 'short',
-        timeZone: 'Africa/Lagos', // JOOF Foundation is in Lagos, Nigeria
+        timeZone: 'Africa/Lagos', // West Africa Time — JOOF Foundation is based in Ibadan, Nigeria
       });
 
       // Generate branded email content from template

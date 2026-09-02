@@ -11,6 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "key": {
+      "type": "string"
+    },
     "number": {
       "type": "integer",
       "required": true
@@ -18,6 +21,9 @@
     "label": {
       "type": "string",
       "required": true
+    },
+    "suffix": {
+      "type": "string"
     },
     "icon": {
       "type": "string"

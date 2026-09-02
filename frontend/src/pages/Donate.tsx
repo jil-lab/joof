@@ -1,15 +1,27 @@
 import { motion } from 'framer-motion';
 import { FaLock } from 'react-icons/fa';
 import PageHero from '../components/common/PageHero/PageHero';
+import useImpactFigures from '../hooks/useImpactFigures';
 
 const PAYSTACK_LINK = import.meta.env.VITE_PAYSTACK_LINK;
 
 const Donate = () => {
+  // Impact figures come from the same source as the Home page, so the two can't drift.
+  const { get } = useImpactFigures();
+
   const stats = [
-    { value: '100%', label: 'of donations go directly to programmes' },
-    { value: '4,000+', label: 'medical care services delivered' },
-    { value: '21', label: 'community outreach programmes' },
-  ];
+    { id: 'giving-ratio', value: '100%', label: 'of donations go directly to programmes' },
+    {
+      id: 'medical-care',
+      value: get('medical-care')?.display,
+      label: 'medical care recipients',
+    },
+    {
+      id: 'outreach-programs',
+      value: get('outreach-programs')?.display,
+      label: 'community outreach programmes',
+    },
+  ].filter((stat) => stat.value);
 
   return (
     <div className="min-h-screen bg-white">
@@ -28,7 +40,7 @@ const Donate = () => {
             className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100"
           >
             {stats.map((stat) => (
-              <div key={stat.value} className="py-10 px-6 text-center">
+              <div key={stat.id} className="py-10 px-6 text-center">
                 <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
                 <div className="text-gray-500 text-sm">{stat.label}</div>
               </div>

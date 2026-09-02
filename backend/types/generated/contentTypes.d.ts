@@ -678,6 +678,7 @@ export interface ApiImpactStatImpactStat extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     icon: Schema.Attribute.String;
+    key: Schema.Attribute.String;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -688,6 +689,7 @@ export interface ApiImpactStatImpactStat extends Struct.CollectionTypeSchema {
     number: Schema.Attribute.Integer & Schema.Attribute.Required;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
+    suffix: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
